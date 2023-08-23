@@ -3,9 +3,10 @@
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $nomfilao = $_POST["nom"];
-
-    
-        $sql = "INSERT INTO poisson (nomfilao) VALUES ('$nomfilao')";
+        echo $nomfilao;
+        
+        
+        $sql = "INSERT INTO `poisson` (`nomfilao`) VALUES (`$nomfilao`)";
         $stmt = $db->prepare($sql);
 
         if ($stmt->execute()) {
