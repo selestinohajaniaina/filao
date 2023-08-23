@@ -19,14 +19,23 @@ if($nbrExist>0){
     $dbpassword=$fetch["password"];
     
     if($password == $dbpassword ) {
-        echo "connexion autorisé: test login passed";
+         $_SESSION['username'] = $dbname;
+        echo "vous ete connecté en tant que ($dbname)connexion autorisé: test login passed";
     }else{
-        echo "<span>votre mot de passe est incorrect, veillez ressayer</span>";
+        echo "
+        <script>
+            alert('votre mot de passe est incorrect, veillez ressayer')
+        </script>
+        ";
     }
     
 }else{
 
-    echo "<span>ce compte n'existe pas</span>";
+    echo "
+    <script>
+        alert('BCHDSBFHSDBFHK')
+    </script>
+    ";
 
 }
 

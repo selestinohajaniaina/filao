@@ -5,15 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="output.css">
-    <script src="../lottie/lottie-player.js"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <form class="login" method="POST">
-  <input type="text" placeholder="Username" name="name">
-  <input type="password" placeholder="Password" name="password">
-  <input type="submit" value="Login" name="login"/>
+  <input type="text" placeholder="Username" autocomplete="off" name="name">
+  <input type="password" placeholder="Password" autocomplete="off" name="password">
+  <input type="submit" value="Login"  name="login"/>
 </form>
 
 <?php
