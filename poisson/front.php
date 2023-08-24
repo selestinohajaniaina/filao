@@ -15,13 +15,13 @@
     <link rel="stylesheet" href="../poisson/modal.css">
 </head>
 
-<body class="overflow-hidden pl-[20%]">
+<body class="overflow-auto md:pl-[20%]">
 <p id="result"></p>
     
 
 
     <!-- component -->
-    <form>
+    <form method="post" action="../poisson/ajoutDetail.php">
 <div class="min-h-screen bg-purple-400 flex justify-center items-center">
 	<div class="absolute w-60 h-60 rounded-xl bg-purple-300 -top-5 left-[20%] z-0 transform rotate-45 hidden md:block">
 	</div>
@@ -47,7 +47,7 @@
 			<input type="number" type="text" id="Pu" name="pu" placeholder="Enter le prix de ce poisson" class="block text-sm py-3 px-4 rounded-lg w-full border outline-none" />
         </div>
 			<div class="text-center mt-6">
-				<button type="submit" onclick="calculateMultiplication()" class="py-3 w-64 text-xl text-white bg-purple-400 rounded-2xl">Ajouter</button>
+				<button type="submit" onclick="calculateMultiplication()" class="py-3 w-full text-xl text-white bg-purple-400 rounded-2xl">Ajouter</button>
 			</div>
 		</div>
 		<div class="w-40 h-40 absolute bg-purple-300 rounded-full top-0 right-12 hidden md:block"></div>
@@ -55,10 +55,23 @@
 			class="w-20 h-40 absolute bg-purple-300 rounded-full bottom-20 left-[20%] transform rotate-45 hidden md:block">
 		</div>
 	</div>
+    <input type="number" name="id_fournisseur" value="<?=$_GET['id_fournisseur']?>" style="display:none;"/>
+    <input type="number" name="numFact" value="<?=$_GET['numFact']?>" style="display:none;">
     </form>
+    <?php 
+    $id_to_get_fou = $_GET['id_fournisseur'];
 
+        $getFou = $db -> prepare("SELECT nomfournisseur FROM fournisseur WHERE id=$id_to_get_fou");
+        $getFou -> execute();
+        $fetchNom = $getFou -> fetch();
+        $nom_fournisseur = $fetchNom["nomfournisseur"];
+    
+    ?>
 
+    <h1>Numero du Facture: <?=$_GET['numFact']?></h1>
+    <h1>Nom du Fournisseur: <?=$nom_fournisseur?></h1><br>
 
+    <?php require('../detail/filao.php'); ?>
 
 <!-- A modal dialog containing a form -->
 <dialog id="favDialog" class="py-12 px-12 bg-white rounded-2xl shadow-xl z-20">
@@ -66,7 +79,7 @@
             <span class="absolute top-0 right-0 m-4 border-2 cursor-pointer px-2 py-1 rounded-full" id="closeModalBtn">&times;</span>
             <h2 class="text-3xl font-bold text-center mb-4">Ajouter le nouveau poisson</h2>
 
-            <form action="back.php" method="post">
+            <form action="../poisson/back.php" method="post">
 			<input type="text" name="nom" placeholder="NomFilao" class="block text-sm py-3 px-4 rounded-lg w-full border outline-none my-1" />
 				<button type="submit" class="py-3 w-full text-xl text-white bg-purple-400 rounded-2xl">Ajouter</button>
             </form>

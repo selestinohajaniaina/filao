@@ -21,6 +21,11 @@ if($nbrExist>0){
     if($password == $dbpassword ) {
          $_SESSION['username'] = $dbname;
         echo "vous ete connecté en tant que ($dbname)connexion autorisé: test login passed";
+?>
+<script>
+    document.location.href = "../accueil";
+</script>
+<?php
     }else{
         echo "
         <script>

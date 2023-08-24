@@ -7,8 +7,8 @@
     <title>Document</title>
 </head>
 <body>
-    <?php
-        header("location:./login");
-    ?>
+    <script>
+        document.location.href = "./login"
+    </script>
 </body>
 </html>

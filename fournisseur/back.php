@@ -6,7 +6,7 @@
         $adressF = $_POST["adressF"];
         $numeroF = $_POST["numeroF"];
     
-        $sql = "INSERT INTO fournisseur (nomfournisseur, Adress, contact) VALUES ('$nomfournisseur', '$adressF', '$numeroF')";
+        $sql = "INSERT INTO fournisseur(`nomfournisseur`, `Adress`, `contact`) VALUES ('$nomfournisseur', '$adressF', '$numeroF')";
         $stmt = $db->prepare($sql);
 
         if ($stmt->execute()) {

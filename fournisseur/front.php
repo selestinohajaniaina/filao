@@ -17,7 +17,7 @@
 
 <body>
 
-<form>
+<form method="post" action="select.php">
         <label for="fournisseur">Sélectionnez un fournisseur :</label>
         <select id="fournisseur updateDiv"  name="fournisseur">
             <option value=""></option>
@@ -25,7 +25,8 @@
                 <option value="<?= $fournisseur['id'] ?>"><?= $fournisseur['nomfournisseur'] ?> <br></option>
             <?php endforeach; ?>
         </select>
-       
+        <textarea name="description" cols="30" rows="1" placeholder="Ecrire votre text ici!"></textarea>
+       <input type="submit" value="Creer une facture pour ce fournisseur" name="create">
     </form>
 <button id="openModalBtn">Fournisseur Vaovao</button>
     <div id="modal" class="modal">

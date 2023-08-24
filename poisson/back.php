@@ -6,11 +6,15 @@
         echo $nomfilao;
         
         
-        $sql = "INSERT INTO `poisson` (`nomfilao`) VALUES (`$nomfilao`)";
+        $sql = "INSERT INTO poisson(`nomFilao`) VALUES ('$nomfilao')";
         $stmt = $db->prepare($sql);
 
         if ($stmt->execute()) {
-            header("location: front.php");
+            ?>
+<script>
+    document.location.href = "../accueil";
+</script>
+<?php
         } else {
             echo "Erreur lors de l'insertion des données.";
         }

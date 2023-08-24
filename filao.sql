@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 4.9.2
 -- https://www.phpmyadmin.net/
 --
--- Hôte : 127.0.0.1
--- Généré le : mer. 23 août 2023 à 14:46
--- Version du serveur : 10.4.27-MariaDB
--- Version de PHP : 8.0.25
+-- Hôte : 127.0.0.1:3306
+-- Généré le :  jeu. 24 août 2023 à 09:10
+-- Version du serveur :  10.4.10-MariaDB
+-- Version de PHP :  7.3.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -18,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données : `filao`
+-- Base de données :  `filao`
 --
 
 -- --------------------------------------------------------
@@ -27,14 +28,51 @@ SET time_zone = "+00:00";
 -- Structure de la table `detailfilao`
 --
 
-CREATE TABLE `detailfilao` (
-  `Nom` text NOT NULL,
+DROP TABLE IF EXISTS `detailfilao`;
+CREATE TABLE IF NOT EXISTS `detailfilao` (
+  `id_poisson` int(11) NOT NULL,
   `qtt` decimal(50,0) NOT NULL,
   `prixUnit` int(50) NOT NULL,
-  `PrixTotal` decimal(50,0) NOT NULL,
   `NumFac` int(50) NOT NULL,
   `idFournisseur` int(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `detailfilao`
+--
+
+INSERT INTO `detailfilao` (`id_poisson`, `qtt`, `prixUnit`, `NumFac`, `idFournisseur`) VALUES
+(6, '2', 5000, 6, 10),
+(4, '3', 5000, 6, 10),
+(5, '6', 5000, 6, 10),
+(7, '7', 8000, 6, 10),
+(4, '1', 2000, 6, 10);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `facture`
+--
+
+DROP TABLE IF EXISTS `facture`;
+CREATE TABLE IF NOT EXISTS `facture` (
+  `id` int(11) NOT NULL,
+  `id_fou` int(11) NOT NULL,
+  `text` varchar(1000) DEFAULT NULL,
+  `date` datetime NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `facture`
+--
+
+INSERT INTO `facture` (`id`, `id_fou`, `text`, `date`) VALUES
+(2, 3, 'uyyfasuyfyasfdyua', '2023-08-24 10:42:53'),
+(3, 1, 'vaovao ito ai', '2023-08-24 10:56:33'),
+(4, 7, 'iti farany eo', '2023-08-24 10:59:15'),
+(5, 1, '', '2023-08-24 11:05:10'),
+(6, 10, '', '2023-08-24 11:05:31');
 
 -- --------------------------------------------------------
 
@@ -42,12 +80,13 @@ CREATE TABLE `detailfilao` (
 -- Structure de la table `fournisseur`
 --
 
-CREATE TABLE `fournisseur` (
+DROP TABLE IF EXISTS `fournisseur`;
+CREATE TABLE IF NOT EXISTS `fournisseur` (
   `id` int(11) NOT NULL,
   `nomfournisseur` varchar(255) NOT NULL,
   `Adress` varchar(255) NOT NULL,
   `contact` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `fournisseur`
@@ -67,19 +106,22 @@ INSERT INTO `fournisseur` (`id`, `nomfournisseur`, `Adress`, `contact`) VALUES
 -- Structure de la table `poisson`
 --
 
-CREATE TABLE `poisson` (
-  `id` int(11) NOT NULL,
-  `nomFilao` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+DROP TABLE IF EXISTS `poisson`;
+CREATE TABLE IF NOT EXISTS `poisson` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nomFilao` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `poisson`
 --
 
 INSERT INTO `poisson` (`id`, `nomFilao`) VALUES
-(1, 'sdvcbjdsjhds'),
-(2, 'hqfhdsfysfd'),
-(3, 'Makoba');
+(6, 'tsondro vahiny'),
+(5, 'Makoba'),
+(4, 'mahaloky'),
+(7, 'ewrtwertertyytrjuyuk');
 
 -- --------------------------------------------------------
 
@@ -87,11 +129,13 @@ INSERT INTO `poisson` (`id`, `nomFilao`) VALUES
 -- Structure de la table `user`
 --
 
-CREATE TABLE `user` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE IF NOT EXISTS `user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+  `password` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `user`
@@ -101,50 +145,6 @@ INSERT INTO `user` (`id`, `username`, `password`) VALUES
 (1, 'user1', '2000'),
 (2, 'user2', '2000'),
 (3, 'admin', '2000');
-
---
--- Index pour les tables déchargées
---
-
---
--- Index pour la table `fournisseur`
---
-ALTER TABLE `fournisseur`
-  ADD PRIMARY KEY (`id`);
-
---
--- Index pour la table `poisson`
---
-ALTER TABLE `poisson`
-  ADD PRIMARY KEY (`id`);
-
---
--- Index pour la table `user`
---
-ALTER TABLE `user`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT pour les tables déchargées
---
-
---
--- AUTO_INCREMENT pour la table `fournisseur`
---
-ALTER TABLE `fournisseur`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
-
---
--- AUTO_INCREMENT pour la table `poisson`
---
-ALTER TABLE `poisson`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT pour la table `user`
---
-ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
