@@ -23,7 +23,7 @@ if($nbrExist>0){
         echo "vous ete connecté en tant que ($dbname)connexion autorisé: test login passed";
 ?>
 <script>
-    document.location.href = "../accueil";
+    document.location.href = "../fournisseur/front.php";
 </script>
 <?php
     }else{

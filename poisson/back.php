@@ -11,9 +11,9 @@
 
         if ($stmt->execute()) {
             ?>
-<script>
-    document.location.href = "../accueil";
-</script>
+    <script>
+        document.location.href = "../accueil?id_fournisseur=<?=$_GET['id_fournisseur']?>&numFact=<?=$_GET['numFact']?>";
+    </script>
 <?php
         } else {
             echo "Erreur lors de l'insertion des données.";

@@ -6,8 +6,8 @@
     </tr>
     <?php
     require('../db.php');
-
-    $selection = $db -> prepare("SELECT * FROM detailfilao");
+    $numeroFacture = $_GET["numFact"];
+    $selection = $db -> prepare("SELECT * FROM detailfilao WHERE NumFac=$numeroFacture");
     $selection -> execute();
     $fetchAll = $selection -> fetchAll();
 
