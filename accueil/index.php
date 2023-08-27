@@ -9,7 +9,7 @@
 </head>
 <body>
     <?php
-        require('../sidebar/sidebar.php');
+        // require('../sidebar/sidebar.php');
         require('../poisson/front.php');
     ?>
 </body>

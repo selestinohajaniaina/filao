@@ -20,7 +20,8 @@ if($nbrExist>0){
     
     if($password == $dbpassword ) {
          $_SESSION['username'] = $dbname;
-        echo "vous ete connecté en tant que ($dbname)connexion autorisé: test login passed";
+        echo "veillez patienter, ($dbname) connexion ....".
+        "<br><center><img class='profile-pic-image' src='../img/load.gif' width='250'/></center>";
 ?>
 <script>
     document.location.href = "../fournisseur/front.php";

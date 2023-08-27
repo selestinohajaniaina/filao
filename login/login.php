@@ -22,9 +22,7 @@
     if(empty($name)||empty($password)){
       ?>
       <script>
-        let error = document.querySelector("#error");
-        error.innerHTML="veillez remplir tous les champs";
-        error.setAttribute("class","text-sm text-green-500 bg-green-200");
+        alert("veillez remplir tous les champs");
       </script>
       <?php
     }else{

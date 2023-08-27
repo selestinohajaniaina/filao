@@ -16,7 +16,8 @@
         }
 
 
-        echo " $fournisseur avec nouveau numfact = $newNumFact";
+        echo " $fournisseur avec nouveau numfact = $newNumFact encours....".
+        "<br><center><img class='profile-pic-image' src='../img/load.gif' width='250'/></center>";
 
         
         
@@ -26,7 +27,7 @@
         if ($validation->execute()) {
            ?>
                 <script>
-                    document.location.href = "../accueil?id_fournisseur=<?=$fournisseur?>&numFact=<?=$newNumFact?>";
+                    document.location.href = "../html/achatFact.php?id_fournisseur=<?=$fournisseur?>&numFact=<?=$newNumFact?>";
                 </script>
            <?php
         } else {
