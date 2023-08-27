@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  jeu. 24 août 2023 à 09:10
+-- Généré le :  Dim 27 août 2023 à 16:53
 -- Version du serveur :  10.4.10-MariaDB
 -- Version de PHP :  7.3.12
 
@@ -46,7 +46,19 @@ INSERT INTO `detailfilao` (`id_poisson`, `qtt`, `prixUnit`, `NumFac`, `idFournis
 (4, '3', 5000, 6, 10),
 (5, '6', 5000, 6, 10),
 (7, '7', 8000, 6, 10),
-(4, '1', 2000, 6, 10);
+(4, '1', 2000, 6, 10),
+(6, '1', 5000, 7, 12),
+(8, '5', 5000, 7, 12),
+(10, '5', 9000, 7, 12),
+(6, '2', 2000, 8, 1),
+(8, '5', 15000, 8, 1),
+(5, '5', 3000, 8, 1),
+(4, '12', 1000, 8, 1),
+(10, '12', 10000, 8, 1),
+(21, '4', 2000, 8, 1),
+(10, '12', 20000, 9, 7),
+(5, '2', 2000, 13, 12),
+(24, '1', 2000, 14, 12);
 
 -- --------------------------------------------------------
 
@@ -61,7 +73,7 @@ CREATE TABLE IF NOT EXISTS `facture` (
   `text` varchar(1000) DEFAULT NULL,
   `date` datetime NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `facture`
@@ -72,7 +84,16 @@ INSERT INTO `facture` (`id`, `id_fou`, `text`, `date`) VALUES
 (3, 1, 'vaovao ito ai', '2023-08-24 10:56:33'),
 (4, 7, 'iti farany eo', '2023-08-24 10:59:15'),
 (5, 1, '', '2023-08-24 11:05:10'),
-(6, 10, '', '2023-08-24 11:05:31');
+(6, 10, '', '2023-08-24 11:05:31'),
+(7, 12, '', '2023-08-24 12:16:50'),
+(8, 1, '', '2023-08-27 12:52:14'),
+(9, 7, '', '2023-08-27 17:39:33'),
+(10, 8, 'filao', '2023-08-27 18:30:47'),
+(11, 12, '', '2023-08-27 18:52:38'),
+(12, 12, '', '2023-08-27 18:53:13'),
+(13, 12, '', '2023-08-27 18:56:33'),
+(14, 12, '', '2023-08-27 18:57:47'),
+(15, 12, '', '2023-08-27 19:04:52');
 
 -- --------------------------------------------------------
 
@@ -111,7 +132,7 @@ CREATE TABLE IF NOT EXISTS `poisson` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nomFilao` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=27 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `poisson`
@@ -121,7 +142,9 @@ INSERT INTO `poisson` (`id`, `nomFilao`) VALUES
 (6, 'tsondro vahiny'),
 (5, 'Makoba'),
 (4, 'mahaloky'),
-(7, 'ewrtwertertyytrjuyuk');
+(8, 'requin'),
+(10, 'drakaka'),
+(24, 'koukou');
 
 -- --------------------------------------------------------
 
