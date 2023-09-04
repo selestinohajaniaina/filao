@@ -4,6 +4,14 @@
 
 require('../db.php');
 
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $password = $_POST["password"];
+
+// start a session
+session_start();
+$_SESSION['username'] = "user1";
+$name = $_SESSION['username'];
+
 //selecting to db and count if it exist
 
 $select=$db->prepare("select * from user where username='$name'");
@@ -15,12 +23,10 @@ $fetch=$select->fetch();
 
 if($nbrExist>0){
 
-    $dbname=$fetch["username"];
     $dbpassword=$fetch["password"];
     
     if($password == $dbpassword ) {
-         $_SESSION['username'] = $dbname;
-        echo "veillez patienter, ($dbname) connexion ....".
+        echo "veillez patienter, ($name) connexion ....".
         "<br><center><img class='profile-pic-image' src='../img/load.gif' width='250'/></center>";
 ?>
 <script>
@@ -30,7 +36,8 @@ if($nbrExist>0){
     }else{
         echo "
         <script>
-            alert('votre mot de passe est incorrect, veillez ressayer')
+            alert('votre mot de passe est incorrect, veillez ressayer');
+            document.location.href = '../html/login';
         </script>
         ";
     }
@@ -42,6 +49,8 @@ if($nbrExist>0){
         alert('BCHDSBFHSDBFHK')
     </script>
     ";
+
+}
 
 }
 

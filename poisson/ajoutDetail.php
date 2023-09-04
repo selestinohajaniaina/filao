@@ -16,7 +16,7 @@
         if ($stmt->execute()) {
             ?>
                 <script>
-                    document.location.href = "../html/achatFact.php?id_fournisseur=<?=$fournisseur?>&numFact=<?=$numFact?>";
+                    document.location.href = "../html/FactureAchat.php?id_fournisseur=<?=$fournisseur?>&numFact=<?=$numFact?>";
                 </script>
            <?php
         } else {

@@ -3,7 +3,6 @@
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $fournisseur = $_POST["fournisseur"];
-        $description = $_POST["description"];
 
         $sql = "SELECT MAX(id) AS id FROM facture";
         $stmt = $db->prepare($sql);
@@ -21,13 +20,13 @@
 
         
         
-        $creatNewFact = "INSERT INTO facture(`id`, `id_fou`, `text`) VALUES ($newNumFact, $fournisseur, '$description')";
+        $creatNewFact = "INSERT INTO facture(`id`, `id_fou`, `text`) VALUES ($newNumFact, $fournisseur, '')";
         $validation = $db->prepare($creatNewFact);
 
         if ($validation->execute()) {
            ?>
                 <script>
-                    document.location.href = "../html/achatFact.php?id_fournisseur=<?=$fournisseur?>&numFact=<?=$newNumFact?>";
+                   document.location.href = "../html/FactureAchat.php?id_fournisseur=<?=$fournisseur?>&numFact=<?=$newNumFact?>";
                 </script>
            <?php
         } else {
