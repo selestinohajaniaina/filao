@@ -24,7 +24,7 @@ if($nbrExist>0){
         "<br><center><img class='profile-pic-image' src='../img/load.gif' width='250'/></center>";
 ?>
 <script>
-    document.location.href = "../fournisseur/front.php";
+    document.location.href = "../html/";
 </script>
 <?php
     }else{

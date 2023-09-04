@@ -1,3 +1,18 @@
+<?php
+  if(isset($_POST["login"])){
+    $name=$_POST["name"];
+    $password=$_POST["password"];
+    if(empty($name)||empty($password)){
+      ?>
+      <script>
+        alert("veillez remplir tous les champs");
+      </script>
+      <?php
+    }else{
+      require('back.php');
+    }
+  }
+ ?>
 <!doctype html>
 <html lang="en">
 
@@ -28,16 +43,17 @@
                 <form>
                   <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">Nom Utilisateur</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1"autocomplete="off" aria-describedby="emailHelp">
+                    <input type="email" name="name" class="form-control" id="exampleInputEmail1"autocomplete="off" aria-describedby="emailHelp">
                   </div>
                   <div class="mb-4">
                     <label for="exampleInputPassword1" class="form-label">Mot de Passe</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1">
+                    <input type="password" class="form-control" name="password" id="exampleInputPassword1">
                   </div>
                   <div class="d-flex align-items-center justify-content-between mb-4">
                    
                   </div>
-                  <a href="./index.html" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Se Connecter</a>
+                  <input type="submit" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2" value="Login"  name="login"/>
+                  <!-- <a href="./index.html" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Se Connecter</a> -->
                   <div class="d-flex align-items-center justify-content-center">
                     <p class="fs-4 mb-0 fw-bold"></p>
                     <a class="text-primary fw-bold ms-2" href="./authentication-register.html"></a>
