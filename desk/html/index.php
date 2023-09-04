@@ -79,7 +79,7 @@
             <span class="menu-header-text">Opération</span>
           </li>
           <li class="menu-item">
-            <a href="choixFournisseur.html" class="menu-link ">
+            <a href="choixFournisseur.php" class="menu-link ">
               <i class="menu-icon tf-icons bx bx-dock-top"></i>
               <div>Nouvelle Achat</div>
             </a>

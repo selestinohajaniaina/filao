@@ -110,6 +110,7 @@
       </aside>
       <!-- / Menu -->
 
+
       <!-- Layout container -->
       <div class="layout-page">
         <!-- Navbar -->
@@ -164,83 +165,100 @@
             </ul>
           </div>
         </nav>
+
+        <!-- / Navbar -->
+
         <!-- Content wrapper -->
         <div class="content-wrapper">
           <!-- Content -->
 
-          <div class="container-fluid flex-grow-1 container-p-y">
-            <div class="card">
-              <h5 class="card-header"> Liste des Facture D' Achat Aujourdui</h5>
-              <div class="table-responsive text-nowrap">
-                <table class="table">
-                  <thead>
-                    <tr class="text-nowrap">
-                      <th>NumFact</th>
-                      <th>Fournisseur</th>
-                      <th>Poid De produit</th>
-                      <th>Date</th>
-                      <th>Valeur (Ariary)</th>
+          <div class="container-xxl flex-grow-1 container-p-y">
+            <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light"></span> </h4>
 
-                    </tr>
-                  </thead>
-                  <tbody>
+            <!-- Basic Bootstrap Table -->
+            <form action="../fournisseur/select.php" method="post">
+              <div class="card">
+                <h5 class="card-header"></h5>
+                <div class="table-responsive text-nowrap">
+                  <center>
+                    <div class="col-md-6">
+                      <div class="card mb-4">
+                        <h5 class="card-header">Choix de Fournisseur </h5>
+                        <div class="card-body">
+                          <div class="mb-3 col">
+                            <select id="defaultSelect" class="form-select" name="fournisseur">
+                              <?php require('../fournisseur/select_list.php') ?>
+                            </select>
+                            <br>
 
-                    <tr data-bs-toggle="modal" data-bs-target="#basicModal">
-                      <th scope="row"></th>
-                      <td>cbnvcbn </td>
-                      <td>bvcwxbv </td>
-                      <td> cjh</td>
-                      <td> hbchjx</td>
+                            <div class="mb-3">
+                              <button class="btn btn-primary d-grid w-100" type="submit">Valider</button>
+                            </div>
+                            <!-- <div class=" mb-3">
+                              <small class="text-light fw-semibold">Ou</small>
+                              <div class="mt-3"> -->
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-secondary d-grid w-100" data-bs-toggle="modal"
+                              data-bs-target="#basicModal">
+                              Ajouter Un Nouvelle Fournisseur
+                            </button>
 
-                    </tr>
-                    <div class="modal fade" id="basicModal" tabindex="-1" aria-hidden="true">
-                      <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel1"></h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+                            
                           </div>
-                          <form action="">
-                            <div class="modal-body">
-                              <div class="row">
-                                <div class="col mb-3">
-                                  <label for="nameBasic" class="form-label">Nom</label>
-                                  <input type="text" id="nameBasic" autocomplete="off" class="form-control"
-                                    placeholder="" />
-                                </div>
-                              </div>
-                              <div class="row g-2">
-                                <div class="col mb-0">
-                                  <label for="" class="form-label">Adresse</label>
-                                  <input type="text" id="" autocomplete="off" class="form-control" placeholder="" />
-                                </div>
-                                <div class="col mb-0">
-                                  <label for="dobBasic" class="form-label">Contact</label>
-                                  <input type="text" id="dobBasic" autocomplete="off" class="form-control"
-                                    placeholder="" />
-                                </div>
-                              </div>
-                            </div>
-                            <div class="modal-footer">
-
-                              <button type="button" class="btn btn-primary">Enregistrer</button>
-                            </div>
-                          </form>
                         </div>
                       </div>
+
+
                     </div>
+                </div>
+                </center>
 
-
-                  </tbody>
-                </table>
               </div>
-            </div>
-            <!--/ Layout Demo -->
-          </div>
-          <!-- / Content -->
+          </form>
+          <!--/ Basic Bootstrap Table -->
 
-          <!-- Footer -->
+          <!-- Modal -->
+          <div class="modal fade" id="basicModal" tabindex="-1" aria-hidden="true">
+                              <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel1">Nouvelle Fournisseur</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                      aria-label="Close"></button>
+                                  </div>
+                                  <form action="../fournisseur/add_new.php" method="POST">
+                                    <div class="modal-body">
+                                      <div class="row">
+                                        <div class="col mb-3">
+                                          <label for="nameBasic" class="form-label">Nom</label>
+                                          <input type="text" id="nameBasic" autocomplete="off" class="form-control"
+                                            placeholder="Non de Fournisseur" name="nom"/>
+                                        </div>
+                                      </div>
+                                      <div class="row g-2">
+                                        <div class="col mb-0">
+                                          <label for="" class="form-label">Adresse</label>
+                                          <input type="text" id="" autocomplete="off" class="form-control"
+                                            placeholder="Adresse de Fournisseur" name="adressF"/>
+                                        </div>
+                                        <div class="col mb-0">
+                                          <label for="dobBasic" class="form-label">Contact</label>
+                                          <input type="text" id="dobBasic" autocomplete="off" class="form-control"
+                                            placeholder="Contact de Fournisseur" name="numeroF"/>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="modal-footer">
 
+                                      <button  class="btn btn-primary">Enregistrer</button>
+                                    </div>
+                                  </form>
+                                </div>
+                              </div>
+                            </div>
+
+          <!-- / Footer -->
 
           <div class="content-backdrop fade"></div>
         </div>
@@ -253,8 +271,6 @@
     <div class="layout-overlay layout-menu-toggle"></div>
   </div>
   <!-- / Layout wrapper -->
-
-
 
   <!-- Core JS -->
   <!-- build:js assets/vendor/js/core.js -->

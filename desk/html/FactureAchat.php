@@ -110,7 +110,6 @@
       </aside>
       <!-- / Menu -->
 
-
       <!-- Layout container -->
       <div class="layout-page">
         <!-- Navbar -->
@@ -165,7 +164,6 @@
             </ul>
           </div>
         </nav>
-
         <!-- / Navbar -->
 
         <!-- Content wrapper -->
@@ -173,93 +171,155 @@
           <!-- Content -->
 
           <div class="container-xxl flex-grow-1 container-p-y">
-            <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light"></span> </h4>
+            <h4 class="fw-bold py-3 mb-4">
+              <span class="text-muted fw-light"> </span> Facture D'Achat
+            </h4>
 
-            <!-- Basic Bootstrap Table -->
-            <form action="" method="post">
-              <div class="card">
-                <h5 class="card-header"></h5>
-                <div class="table-responsive text-nowrap">
-                  <center>
-                    <div class="col-md-6">
-                      <div class="card mb-4">
-                        <h5 class="card-header">Choix de Fournisseur </h5>
-                        <div class="card-body">
-                          <div class="mb-3 col">
-                            <select id="defaultSelect" class="form-select">
-                              <option>Choisir le Fournisseur</option>
-                              <option value="1">One</option>
-                              <option value="2">Two</option>
-                              <option value="3">Three</option>
-                            </select>
-                            <br>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="row">
+                  <div class="col-md-4 col-12 mb-md-0 mb-4">
+                    <div class="card">
+                      <h5 class="card-header">Creation Facture</h5>
+                      <div class="card-body">
+                        <form id="formAuthentication" class="mb-3" action="../poisson/ajoutDetail.php" method="POST">
+                          <div class="mb-3 form-password-toggle">
+                            <div class="d-flex justify-content-between">
+                              <label class="form-label" for="password">Selection Poisson</label>
 
-                            <div class="mb-3">
-                              <button class="btn btn-primary d-grid w-100" type="submit">Valider</button>
                             </div>
-                            <!-- <div class=" mb-3">
-                              <small class="text-light fw-semibold">Ou</small>
-                              <div class="mt-3"> -->
-                            <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-secondary d-grid w-100" data-bs-toggle="modal"
-                              data-bs-target="#basicModal">
-                              Ajouter Un Nouvelle Fournisseur
-                            </button>
 
 
-                            <!-- Modal -->
-                            <div class="modal fade" id="basicModal" tabindex="-1" aria-hidden="true">
-                              <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                  <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel1">Nouvelle Fournisseur</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                      aria-label="Close"></button>
+                            <div class="d-flex mb-3">
+
+                              <div class="flex-grow-1 row">
+                                <div class="col- col-sm-10 mb-sm-0 mb-8">
+                                  <div class="input-group input-group-merge">
+                                    <select id="defaultSelect" name="poisson" class="form-select">
+                                      <?php require('../poisson/liste.php')?>
+                                    </select>
                                   </div>
-                                  <form action="">
-                                    <div class="modal-body">
-                                      <div class="row">
-                                        <div class="col mb-3">
-                                          <label for="nameBasic" class="form-label">Nom</label>
-                                          <input type="text" id="nameBasic" autocomplete="off" class="form-control"
-                                            placeholder="Non de Fournisseur" />
-                                        </div>
-                                      </div>
-                                      <div class="row g-2">
-                                        <div class="col mb-0">
-                                          <label for="" class="form-label">Adresse</label>
-                                          <input type="text" id="" autocomplete="off" class="form-control"
-                                            placeholder="Adresse de Fournisseur" />
-                                        </div>
-                                        <div class="col mb-0">
-                                          <label for="dobBasic" class="form-label">Contact</label>
-                                          <input type="text" id="dobBasic" autocomplete="off" class="form-control"
-                                            placeholder="Contact de Fournisseur" />
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div class="modal-footer">
-
-                                      <button type="button" class="btn btn-primary">Enregistrer</button>
-                                    </div>
-                                  </form>
                                 </div>
+                                <!-- <div class=""> -->
+
+                                <button type="button" class="col-4 col-sm-2  btn btn-icon btn-primary"
+                                  data-bs-toggle="modal" data-bs-target="#basicModal">
+                                  <i class="">+</i>
+                                </button>
+                                
+                                <!-- </div> -->
                               </div>
                             </div>
+                            <div class="d-flex justify-content-between">
+
+                              <label class="form-label" for="password">Poid en Kg</label>
+
+                            </div>
+                            <div class="input-group input-group-merge">
+                              <input type="number" id="" class="form-control" name="qtt" placeholder="" require/>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                              <label class="form-label" for="password">Prix Unitaire</label>
+
+                            </div>
+                            <div class="input-group input-group-merge">
+                              <input type="number" class="form-control" name="pu" placeholder="" aria-describedby="" require/>
+                              <input type="hidden" name="id_fournisseur" value="<?=$_GET['id_fournisseur']?>"/>
+                              <input type="hidden" name="numFact" value="<?=$_GET['numFact']?>"/>
+                            </div>
                           </div>
+                          <div class="mb-3">
+                            <button class="btn btn-primary d-grid w-100" type="submit">Ajouter</button>
+                          </div>
+                        </form>
+                        <div class="modal fade" id="basicModal" tabindex="-1" aria-hidden="true">
+                                  <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                      <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel1">Ajout Poisson</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                          aria-label="Close"></button>
+                                      </div>
+                                      <form action="../poisson/add_new.php" method='POST'>
+                                        <div class="modal-body">
+                                          <div class="row">
+                                            <div class="col mb-3">
+                                              <label for="nameBasic" class="form-label">Nom</label>
+                                              <input type="text" id="nameBasic" class="form-control"
+                                              placeholder="Non de Poisson" name="nom"/>
+                                              <input type="hidden" name="id_fournisseur" value="<?=$_GET['id_fournisseur']?>"/>
+                                              <input type="hidden" name="numFact" value="<?=$_GET['numFact']?>"/>
+                                            </div>
+                                          </div>
+
+
+                                        </div>
+                                        <div class="modal-footer">
+
+                                          <button type="submit" class="btn btn-primary">Enregistrer</button>
+                                        </div>
+                                      </form>
+                                    </div>
+                                  </div>
+                                </div>
+                        <!-- Connections -->
+
+                        <!-- /Connections -->
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-8 col-12">
+                    <div class="card">
+                      <div class="row">
+                        <!-- Bootstrap carousel -->
+                        <div class="col-md">
+                          <h5 class="my-4">Bootstrap carousel</h5>
+
+
+                        </div>
+                        <!-- Bootstrap crossfade carousel -->
+                        <div class="col-md">
+                          <?php require('../fournisseur/detail.php')?>
+                          <h5 class="my-4">Nom Fournisseur : <?=$nom_fou?></h5>
+                          <h5 class="my-4">Adresse : <?=$Adresse_fou?></h5>
+                          <h5 class="my-4">Contact : <?=$contact_fou?></h5>
+
+
                         </div>
                       </div>
+                      <div class="card-body">
+                        <p></p>
+                        <!-- Social Accounts -->
+                        <div class="card">
+                          <h5 class="card-header">Facture Numero : <?=$_GET['numFact']?></h5>
+                          <div class="table-responsive text-nowrap">
+                            <table class="table">
+                              <thead>
+                                <tr>
+                                  <th>Poisson</th>
+                                  <th>Poid</th>
+                                  <th>Prix Unitaire</th>
+                                  <th>Prix Total</th>
 
-
+                                </tr>
+                              </thead>
+                              <tbody class="table-border-bottom-0">
+                                <?php require('../poisson/list_detail.php')?>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                        <!-- /Social Accounts -->
+                      </div>
                     </div>
+                  </div>
                 </div>
-                </center>
-
               </div>
+            </div>
           </div>
-          </form>
-          <!--/ Basic Bootstrap Table -->
+          <!-- / Content -->
 
+          <!-- Footer -->
 
           <!-- / Footer -->
 
@@ -274,6 +334,8 @@
     <div class="layout-overlay layout-menu-toggle"></div>
   </div>
   <!-- / Layout wrapper -->
+
+
 
   <!-- Core JS -->
   <!-- build:js assets/vendor/js/core.js -->
