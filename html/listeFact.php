@@ -197,23 +197,14 @@
                           <form action="">
                             <div class="modal-body">
                               <div class="row">
+                                <h5>Facture pour AAAAAA apres contre pesage</h5>
                                 <div class="col mb-3">
                                   <label for="nameBasic" class="form-label">Nom</label>
                                   <input type="text" id="nameBasic" autocomplete="off" class="form-control"
                                     placeholder="" />
                                 </div>
                               </div>
-                              <div class="row g-2">
-                                <div class="col mb-0">
-                                  <label for="" class="form-label">Adresse</label>
-                                  <input type="text" id="" autocomplete="off" class="form-control" placeholder="" />
-                                </div>
-                                <div class="col mb-0">
-                                  <label for="dobBasic" class="form-label">Contact</label>
-                                  <input type="text" id="dobBasic" autocomplete="off" class="form-control"
-                                    placeholder="" />
-                                </div>
-                              </div>
+                              
                             </div>
                             <div class="modal-footer">
 

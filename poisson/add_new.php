@@ -17,7 +17,7 @@
             // header("location:../html/FactureAchat.php?id_fournisseur=".$num_fournisseur_one."&numFact=".$num_facture_one);
             ?>
     <script>
-        window.document.location.href = "../html/achatFact.php?id_fournisseur=<?=$num_fournisseur_one?>&numFact=<?=$num_facture_one?>";
+        window.document.location.href = "../html/FactureAchat.php?id_fournisseur=<?=$num_fournisseur_one?>&numFact=<?=$num_facture_one?>";
     </script>
 <?php
         } else {

@@ -11,6 +11,7 @@
 
         require('../db.php');
         require('prix_one_facture.php');
+        require('poid_one_facture.php');
         $sql = "SELECT * FROM facture WHERE date(`date`)=CURDATE() ORDER BY id DESC";
         $stmt = $db->prepare($sql);
         $stmt->execute();
@@ -19,12 +20,16 @@
     
 ?>
  <?php foreach ($all_facture as $get_fact) : ?>
-    <tr data-bs-toggle="modal" data-bs-target="#basicModal">
-                      <th scope="row"><?=$get_fact['id']?></th>
-                      <td><?=get_name($get_fact['id_fou'])?></td>
-                      <td>... </td>
-                      <td><?=$get_fact['date']?></td>
-                      <td><?=nbr_total($get_fact['id'])?></td>
-
+    <tr>
+        <th scope="row"><?=$get_fact['id']?></th>
+        <td><?=get_name($get_fact['id_fou'])?></td>
+        <td><?=poid_total($get_fact['id'])?> KG</td>
+        <td><?=$get_fact['date']?></td>
+        <td><?=nbr_total($get_fact['id'])?></td>
+        <td>
+        <a href="../contrepese/liste_poisson_contre_pese.php?num=<?=$get_fact['id']?>">
+        dirige vers
+        </a>
+        </td>
     </tr>
  <?php endforeach; ?>
