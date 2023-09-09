@@ -216,7 +216,7 @@
 
                             </div>
                             <div class="input-group input-group-merge">
-                              <input type="number" id="" class="form-control" name="qtt" placeholder="" require/>
+                              <input type="number" id="" step="0.01" title="" class="form-control" name="qtt" placeholder="" require/>
                             </div>
                             <div class="d-flex justify-content-between">
                               <label class="form-label" for="password">Prix Unitaire</label>
@@ -269,23 +269,35 @@
                     </div>
                   </div>
                   <div class="col-md-8 col-12">
-                    <div class="card">
-                      <div class="row">
+                  
+                    <div class="card" id="content">
+                           <table class="table">
+                              
+                                <tr>
+                                  <th style="width:200px, background:red"> <br><br>
+                                    <div  class="col-md-12  w-300">
+                                     <center> <img src="../assets/img/logonordine.jpg"width="150px" alt=""></center>
+                                    </div>
+                                  </th>
+                                  <th>
+                                  <div class="col-md">
+                                    <?php require('../fournisseur/detail.php')?>
+                                    <h5 class="my-4">Nom Fournisseur : <?=$nom_fou?></h5>
+                                    <h5 class="my-4">Adresse : <?=$Adresse_fou?></h5>
+                                    <h5 class="my-4">Contact : <?=$contact_fou?></h5>
+
+
+                                  </div>
+                                  </th>
+                                  
+                                </tr>
+                              
+                            </table>
+                    <div class="row">
                         <!-- Bootstrap carousel -->
-                        <div class="col-md">
-                          <h5 class="my-4">Bootstrap carousel</h5>
-
-
-                        </div>
+                        
                         <!-- Bootstrap crossfade carousel -->
-                        <div class="col-md">
-                          <?php require('../fournisseur/detail.php')?>
-                          <h5 class="my-4">Nom Fournisseur : <?=$nom_fou?></h5>
-                          <h5 class="my-4">Adresse : <?=$Adresse_fou?></h5>
-                          <h5 class="my-4">Contact : <?=$contact_fou?></h5>
-
-
-                        </div>
+                        
                       </div>
                       <div class="card-body">
                         <p></p>
@@ -312,6 +324,7 @@
                         <!-- /Social Accounts -->
                       </div>
                     </div>
+                    <button class="btn btn-primary" onclick="imprimerContenu()">Imprimer</button>
                   </div>
                 </div>
               </div>
@@ -356,6 +369,18 @@
 
   <!-- Place this tag in your head or just before your close body tag. -->
   <script async defer src="https://buttons.github.io/buttons.js"></script>
+  <script>
+    function imprimerContenu() {
+            var contenuDiv = document.getElementById('content').innerHTML;
+            var fenetreImpression = window.open('', '_blank');
+            fenetreImpression.document.write('<html><head><link rel="stylesheet" href="../assets/vendor/css/core.css" class="template-customizer-core-css"/><link rel="stylesheet" href="../assets/vendor/css/theme-default.css" class="template-customizer-theme-css" /><link rel="stylesheet" href="../assets/css/demo.css" /><title>Impression</title></head><body>');
+            fenetreImpression.document.write(contenuDiv);
+            fenetreImpression.document.write('</body></html>');
+            fenetreImpression.document.close();
+            fenetreImpression.print();
+            fermerModal(); // Fermer la modal après l'impression
+        }
+  </script>
 </body>
 
 </html>

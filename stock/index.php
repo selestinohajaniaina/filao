@@ -1,5 +1,5 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
-
 <html lang="en" class="light-style layout-menu-fixed" dir="ltr" data-theme="theme-default" data-assets-path="../assets/"
   data-template="vertical-menu-template-free">
 
@@ -68,7 +68,7 @@
         <ul class="menu-inner py-1">
           <!-- Dashboard -->
           <li class="menu-item active">
-            <a href="index.php" class="menu-link">
+            <a href="../html" class="menu-link">
               <i class="menu-icon tf-icons bx bx-home-circle"></i>
               <div data-i18n="Analytics">Dashboard</div>
             </a>
@@ -164,42 +164,147 @@
             </ul>
           </div>
         </nav>
+        <!-- / Navbar -->
+
         <!-- Content wrapper -->
         <div class="content-wrapper">
           <!-- Content -->
 
-          <div class="container-fluid flex-grow-1 container-p-y">
-            <div class="card">
-              <h5 class="card-header"> Liste des Facture D' Achat Aujourdui</h5>
-              <div class="table-responsive text-nowrap">
-                <table class="table">
-                  <thead>
-                    <tr class="text-nowrap">
-                      <th>NumFact</th>
-                      <th>Fournisseur</th>
-                      <th>Poid De produit</th>
-                      <th>Date</th>
-                      <th>Valeur (Ariary)</th>
+          <div class="container-xxl flex-grow-1 container-p-y">
+            <h4 class="fw-bold py-3 mb-4">
+              <span class="text-muted fw-light"> </span> Preparation dans le stock
+            </h4>
 
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <!-- selection des facture aujourd'hui -->
-                    <?php require('../facture/liste.php')?>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="row">
+                  <div class="col-md-4 col-12 mb-md-0 mb-4">
+                    <div class="card">
+                      <h5 class="card-header">Pesage avant le stock</h5>
+                      <div class="card-body">
+                        <form id="formAuthentication" class="mb-3" action="add.php" method="POST">
+                          <input type="radio" name="place" id="eto" value="1" <?=(!empty($_SESSION["emplacement"])? ($_SESSION["emplacement"]=="eto"?"checked":""):"")?>  required>
+                          <label for="eto">Stoquena eto</label>
+                          <input type="radio" name="place" id="any" value="2" <?=(!empty($_SESSION["emplacement"])? ($_SESSION["emplacement"]=="eto"?"":"checked"):"")?> required>
+                          <label for="any">Stoquena any</label>
+                          <div class="mb-3 form-password-toggle">
+                            <div class="d-flex justify-content-between">
+                              <label class="form-label" for="password">Selection Poisson</label>
 
-                    
+                            </div>
 
 
-                  </tbody>
-                </table>
+                            <div class="d-flex mb-3">
+
+                              <div class="flex-grow-1 row">
+                                  <div class="input-group input-group-merge">
+                                    <select id="defaultSelect" name="poisson" class="form-select">
+                                      <?php require('../poisson/liste.php')?>
+                                    </select>
+                                </div>
+                                
+                                <!-- </div> -->
+                              </div>
+                            </div>
+                            <div class="d-flex justify-content-between">
+
+                              <label class="form-label" for="password">Poid en Kg</label>
+
+                            </div>
+                            <div class="input-group input-group-merge">
+                              <input type="number" id="" class="form-control" name="qtt" placeholder="" require/>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                              <label class="form-label" for="password">Nombre de sac</label>
+
+                            </div>
+                            <div class="input-group input-group-merge">
+                              <input type="number" class="form-control" name="sac" placeholder="" aria-describedby="" require/>
+                            </div>
+                          </div>
+                          <div class="mb-3">
+                            <button class="btn btn-primary d-grid w-100" type="submit">Ajouter</button>
+                          </div>
+                        </form>
+                        <div class="modal fade" id="basicModal" tabindex="-1" aria-hidden="true">
+                                  <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                      <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel1">Ajout Poisson</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                          aria-label="Close"></button>
+                                      </div>
+                                      <form action="../poisson/add_new.php" method='POST'>
+                                        <div class="modal-body">
+                                          <div class="row">
+                                            <div class="col mb-3">
+                                              <label for="nameBasic" class="form-label">Nom</label>
+                                              <input type="text" id="nameBasic" class="form-control"
+                                              placeholder="Non de Poisson" name="nom"/>
+                                              <input type="hidden" name="id_fournisseur" value="<?=$_GET['id_fournisseur']?>"/>
+                                              <input type="hidden" name="numFact" value="<?=$_GET['numFact']?>"/>
+                                            </div>
+                                          </div>
+
+
+                                        </div>
+                                        <div class="modal-footer">
+
+                                          <button type="submit" class="btn btn-primary">Enregistrer</button>
+                                        </div>
+                                      </form>
+                                    </div>
+                                  </div>
+                                </div>
+                        <!-- Connections -->
+
+                        <!-- /Connections -->
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-8 col-12">
+                    <div class="card">
+                      <div class="row">
+                        <!-- Bootstrap carousel -->
+                        <div class="col-md">
+                          <h5 class="my-4">Liste des poissons stoqué aujourd'hui</h5>
+
+
+                        </div>
+                      </div>
+                      <div class="card-body">
+                        <p></p>
+                        <!-- Social Accounts -->
+                        <div class="card">
+                          <div class="table-responsive text-nowrap">
+                            <table class="table">
+                              <thead>
+                                <tr>
+                                  <th>Poisson</th>
+                                  <th>Poid</th>
+                                  <th>Nombre de sac</th>
+
+                                </tr>
+                              </thead>
+                              <tbody class="table-border-bottom-0">
+                                <?php require('liste.php')?>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                        <!-- /Social Accounts -->
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-            <!--/ Layout Demo -->
           </div>
           <!-- / Content -->
 
           <!-- Footer -->
 
+          <!-- / Footer -->
 
           <div class="content-backdrop fade"></div>
         </div>

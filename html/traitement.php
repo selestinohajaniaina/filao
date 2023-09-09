@@ -1,3 +1,56 @@
+
+<?php
+
+        require('../db.php');
+
+        function get_name($id_to_get) {
+            require('../db.php');
+        $new_sql = "SELECT * FROM poisson WHERE id = $id_to_get";
+        $new_st = $db->prepare($new_sql);
+        $new_st->execute();
+        $fetch_name = $new_st -> fetch();
+        return $fetch_name["nomFilao"];
+        }
+
+        function return_type($num_to_get) {
+            require('../db.php');
+            $numeroFacture = $_GET["num"];
+            $selection = $db -> prepare("SELECT * FROM detailfilaocontre WHERE NumFac=$numeroFacture AND id_poisson=$num_to_get");
+            $selection -> execute();
+            $fetchAll = $selection -> fetchAll();
+            $nbr = count($fetchAll);
+            if($nbr) {
+              $qtt_f = $fetchAll[0]['qtt'];
+        return $qtt_f;
+
+            }
+        return false;
+        }
+
+        // avant entrer dans la chambre froid
+        function return_type_avant($num_to_get) {
+          require('../db.php');
+          $numeroFacture = $_GET["num"];
+          $selection = $db -> prepare("SELECT * FROM detailavant WHERE NumFac=$numeroFacture AND id_poisson=$num_to_get");
+          $selection -> execute();
+          $fetchAll = $selection -> fetchAll();
+          $nbr = count($fetchAll);
+          if($nbr) {
+            $qtt_f = $fetchAll[0]['qtt'];
+      return $qtt_f;
+
+          }
+      return false;
+      }
+
+        $numeroFacture = $_GET["num"];
+        $select_sql = "SELECT * FROM detailfilao WHERE NumFac=$numeroFacture";
+        $stmt_contre = $db->prepare($select_sql);
+        $stmt_contre->execute();
+    
+        $all_produit = $stmt_contre->fetchAll(PDO::FETCH_ASSOC);
+        $count = 0;
+?>
 <!DOCTYPE html>
 
 <html lang="en" class="light-style layout-menu-fixed" dir="ltr" data-theme="theme-default" data-assets-path="../assets/"
@@ -52,19 +105,12 @@
       <!-- Menu -->
 
       <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
-        <div class="app-brand demo">
-          <a href="index.html" class="app-brand-link">
+        <br><br>
 
             <center>
-              <img src="../assets/img/logo.jpg" alt class="w-px-150 h-auto rounded-circle" />
+              <img src="../assets/img/logonordine.jpg" alt class="w-px-150 h-auto rounded-circle" />
             </center>
-
-          </a>
-
-
-        </div>
-
-
+            <br>
         <ul class="menu-inner py-1">
           <!-- Dashboard -->
           <li class="menu-item active">
@@ -134,7 +180,7 @@
             <ul class="navbar-nav flex-row align-items-center ms-auto">
               <!-- Place this tag where you want the button to render. -->
               <li>
-                <a class="dropdown-item" href="auth-login-basic.html">
+                <a class="dropdown-item" href="login.html">
                   <i class="bx bx-power-off me-2"></i>
                   <span class="align-middle">Se déconnecter</span>
                 </a>
@@ -144,7 +190,7 @@
               <li class="nav-item navbar-dropdown dropdown-user dropdown">
                 <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
                   <div class="avatar avatar-online">
-                    <img src="../assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
+                    <img src="../assets/img/logo.jpg" alt class="w-px-40 h-auto rounded-circle" />
                   </div>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end">
@@ -164,32 +210,89 @@
             </ul>
           </div>
         </nav>
+
+        <!-- / Navbar -->
+
         <!-- Content wrapper -->
         <div class="content-wrapper">
           <!-- Content -->
 
           <div class="container-fluid flex-grow-1 container-p-y">
             <div class="card">
-              <h5 class="card-header"> Liste des Facture D' Achat Aujourdui</h5>
+              <h5 class="card-header"> Traitement Facture n° <?=$numeroFacture?></h5>
               <div class="table-responsive text-nowrap">
                 <table class="table">
                   <thead>
-                    <tr class="text-nowrap">
-                      <th>NumFact</th>
-                      <th>Fournisseur</th>
-                      <th>Poid De produit</th>
-                      <th>Date</th>
-                      <th>Valeur (Ariary)</th>
-
-                    </tr>
+                   <td>Nom</td>
+                   <td>Initial</td>
+                   <td>Apres</td>
+                   <td>decalage</td>
+                   <td>Apres Traitement</td>
                   </thead>
                   <tbody>
                     <!-- selection des facture aujourd'hui -->
-                    <?php require('../facture/liste.php')?>
+                    <?php 
+                        foreach ($all_produit as $get_fact) {
+                            
 
-                    
+                            ?>
+                            <tr>
+                                <form action="../contrepese/add_new.php" method="post">
+                                    <input type="hidden" name="num" value="<?=$numeroFacture?>">
+                                    <input type="hidden" name="id_poisson" value="<?=$get_fact['id_poisson']?>">
+                                    <td><?=get_name($get_fact['id_poisson'])?></td>
+                                    <td id="poid_init"><?=$get_fact['qtt']?> KG</td>
+                                  <?php if(!return_type($get_fact['id_poisson'])) {$count +=1;?>
+                                    <td><input type="text" name="qtt" value="<?=$get_fact['qtt']?>" id="input_qtt" onkeyup="maka_p(<?=$get_fact['qtt']?>,event,<?=$count?>)"> KG
+                                    <button class="btn btn-primary" type="submit">Sauvegarder</button></td>
+                                    <td><span id="valeur_apres"></span></td>
+                                    <?php }else { ?>
+                                    <td><?=return_type($get_fact['id_poisson'])?> KG
+                                  </td>
+                                    <?php  
+                                  if(return_type($get_fact['id_poisson'])) {
+                                   $rest = $get_fact['qtt'] - return_type($get_fact['id_poisson']);
+                                   $pourcentage = (( return_type($get_fact['id_poisson']) * 100 ) / $get_fact['qtt']);
+                                   $decicationPourcentage = 100 - $pourcentage;
+                                   $decicationPourcentage = round($decicationPourcentage,2);
+                                   echo "<td> $decicationPourcentage %</td>";
+                                  }else{
+                                    echo "<td>la valeur ne doit pas etre null</td>";
+                                  }
+                                  } 
+                                  ?>
+                                </form>
+                                <?php
+                                  if(return_type($get_fact['id_poisson'])) {
+                                    ?>
+                                      <td>
+                                  <!-- apres traitement -->
+                                <form action="../contrepese/avant_chambre.php" method="post">
+                                    <input type="hidden" name="num" value="<?=$numeroFacture?>">
+                                    <input type="hidden" name="id_poisson" value="<?=$get_fact['id_poisson']?>">
+                                  <?php if(!return_type_avant($get_fact['id_poisson'])) {$count +=1;?>
+                                    <input type="text" name="qtt" value="<?=return_type($get_fact['id_poisson'])?>" id="input_qtt" onkeyup="maka_p(<?=return_type($get_fact['id_poisson'])?>,event,<?=$count?>)"> KG
+                                    <button class="btn btn-primary" type="submit">Sauvegarder</button>
+                                    <span id="valeur_apres"></span>
+                                    <?php }else { ?>
+                                    <?=return_type_avant($get_fact['id_poisson'])?> KG
+                                  
+                                    <?php
+                                  } 
+                                  ?>
+                                </form>
+                                </td>
+                                    <?php
+                                  }else{
+                                    ?>
+                                      <td><i></i></td>
+                                    <?php
+                                  }
+                                ?>
+                            </tr>
+                            <?php  } ?>
 
-
+                
                   </tbody>
                 </table>
               </div>
@@ -203,6 +306,26 @@
 
           <div class="content-backdrop fade"></div>
         </div>
+
+<script>
+    let poid_init = document.querySelector('#poid_init');
+    let input_qtt = document.querySelector('#input_qtt');
+    var valeur_apres = document.querySelectorAll('#valeur_apres');
+    let poisson = document.querySelector('#poisson');
+    
+    function maka_p(valeur,e,x) {
+        if(valeur>=e.target.value) {
+        let rest = valeur - e.target.value;
+        let pourcentage = (( e.target.value * 100 ) / valeur);
+        let decicationPourcentage = 100 - pourcentage;
+        valeur_apres[x-1].innerText = `${decicationPourcentage.toFixed(2)} %`;
+        }else{
+        // valeur_apres[x-1].innerText = "la valeur doit etre inferieur au initiale";
+        alert("la valeur doit etre inferieur ou egale au initiale");
+        input_qtt.value = "";
+        }
+    }
+</script>
         <!-- Content wrapper -->
       </div>
       <!-- / Layout page -->
@@ -212,7 +335,6 @@
     <div class="layout-overlay layout-menu-toggle"></div>
   </div>
   <!-- / Layout wrapper -->
-
 
 
   <!-- Core JS -->
@@ -226,11 +348,13 @@
   <!-- endbuild -->
 
   <!-- Vendors JS -->
+  <script src="../assets/vendor/libs/apex-charts/apexcharts.js"></script>
 
   <!-- Main JS -->
   <script src="../assets/js/main.js"></script>
 
   <!-- Page JS -->
+  <script src="../assets/js/dashboards-analytics.js"></script>
 
   <!-- Place this tag in your head or just before your close body tag. -->
   <script async defer src="https://buttons.github.io/buttons.js"></script>

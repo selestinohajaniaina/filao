@@ -1,5 +1,5 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
-
 <html lang="en" class="light-style layout-menu-fixed" dir="ltr" data-theme="theme-default" data-assets-path="../assets/"
   data-template="vertical-menu-template-free">
 
@@ -33,10 +33,10 @@
   <!-- Vendors CSS -->
   <link rel="stylesheet" href="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
 
-  <!-- <link rel="stylesheet" href="../assets/vendor/libs/apex-charts/apex-charts.css" /> -->
+  <link rel="stylesheet" href="../assets/vendor/libs/apex-charts/apex-charts.css" />
 
   <!-- Page CSS -->
-  <script src="../dashboardata/chart.js"></script>
+
   <!-- Helpers -->
   <script src="../assets/vendor/js/helpers.js"></script>
 
@@ -52,16 +52,23 @@
       <!-- Menu -->
 
       <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
-        <br><br>
+        <div class="app-brand demo">
+          <a href="index.html" class="app-brand-link">
 
             <center>
-              <img src="../assets/img/logonordine.jpg" alt class="w-px-150 h-auto rounded-circle" />
+              <img src="../assets/img/logo.jpg" alt class="w-px-150 h-auto rounded-circle" />
             </center>
-            <br>
+
+          </a>
+
+
+        </div>
+
+
         <ul class="menu-inner py-1">
           <!-- Dashboard -->
           <li class="menu-item active">
-            <a href="index.php" class="menu-link">
+            <a href="../html" class="menu-link">
               <i class="menu-icon tf-icons bx bx-home-circle"></i>
               <div data-i18n="Analytics">Dashboard</div>
             </a>
@@ -127,7 +134,7 @@
             <ul class="navbar-nav flex-row align-items-center ms-auto">
               <!-- Place this tag where you want the button to render. -->
               <li>
-                <a class="dropdown-item" href="login.html">
+                <a class="dropdown-item" href="auth-login-basic.html">
                   <i class="bx bx-power-off me-2"></i>
                   <span class="align-middle">Se déconnecter</span>
                 </a>
@@ -137,7 +144,7 @@
               <li class="nav-item navbar-dropdown dropdown-user dropdown">
                 <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
                   <div class="avatar avatar-online">
-                    <img src="../assets/img/logo.jpg" alt class="w-px-40 h-auto rounded-circle" />
+                    <img src="../assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
                   </div>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end">
@@ -157,7 +164,6 @@
             </ul>
           </div>
         </nav>
-
         <!-- / Navbar -->
 
         <!-- Content wrapper -->
@@ -165,54 +171,106 @@
           <!-- Content -->
 
           <div class="container-xxl flex-grow-1 container-p-y">
+            <h4 class="fw-bold py-3 mb-4">
+              <span class="text-muted fw-light"> </span> Enregistrement pour le vent rapide
+            </h4>
 
             <div class="row">
-              <!-- Order Statistics -->
-              
-              <div class="col-md-6 col-lg-4 col-xl-4 order-1 mb-4">
-                <div class="card h-100">
-                  <div class="card-body">
-                    <div class="d-flex justify-content-between align-items-center mb-3">
-                      <div class="d-flex flex-column align-items-center gap-0">
-                        <h2 class="mb-2">8,258</h2>
-                        <span>Total Os</span>
+              <div class="col-md-12">
+                <div class="row">
+                  <div class="col-md-4 col-12 mb-md-0 mb-4">
+                    <div class="card">
+                      <h5 class="card-header">Les poissons sortie</h5>
+                      <div class="card-body">
+                        <form id="formAuthentication" class="mb-3" action="add.php" method="POST">
+                          <div class="mb-3 form-password-toggle">
+                            <div class="d-flex justify-content-between">
+                              <label class="form-label" for="password">Selection Poisson</label>
+
+                            </div>
+
+
+                            <div class="d-flex mb-3">
+
+                              <div class="flex-grow-1 row">
+                                  <div class="input-group input-group-merge">
+                                    <select id="defaultSelect" name="poisson" class="form-select">
+                                      <?php require('../poisson/liste.php')?>
+                                    </select>
+                                </div>
+                                
+                                <!-- </div> -->
+                              </div>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                
+                                <label class="form-label" for="password">Poid en Kg</label>
+                                
+                            </div>
+                            <div class="input-group input-group-merge">
+                                <input type="number" id="" class="form-control" name="qtt" placeholder="" required/>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                              <label class="form-label" for="password">Prix par KG</label>
+
+                            </div>
+                            <div class="input-group input-group-merge">
+                              <input type="number" class="form-control" name="pu" placeholder="" aria-describedby="" required/>
+                            </div>
+                          </div>
+                          <div class="mb-3">
+                            <button class="btn btn-primary d-grid w-100" type="submit">Ajouter</button>
+                          </div>
+                        </form>
+                        
+
+                        <!-- /Connections -->
                       </div>
-                      
-                        <canvas class="d-flex flex-column align-items-center gap-0"id="myChart2" style="display: block; width: 100%; height: 150px;"><h1></h1></canvas>
-                        <h1></h1>
-                      
-                              
+                    </div>
                   </div>
-                    
+                  <div class="col-md-8 col-12">
+                    <div class="card">
+                      <div class="row">
+                        <!-- Bootstrap carousel -->
+                        <div class="col-md">
+                          <h5 class="my-4">Vente particulier aujourd'hui du chargemnt aujourd'hui</h5>
+
+
+                        </div>
+                      </div>
+                      <div class="card-body">
+                        <p></p>
+                        <!-- Social Accounts -->
+                        <div class="card">
+                          <div class="table-responsive text-nowrap">
+                            <table class="table">
+                              <thead>
+                                <tr>
+                                  <th>Poisson</th>
+                                  <th>Poid</th>
+                                  <th>Nombre de sac</th>
+
+                                </tr>
+                              </thead>
+                              <tbody class="table-border-bottom-0">
+                                <?php require('liste.php')?>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                        <!-- /Social Accounts -->
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-              <!--/ Order Statistics -->
-
-              <!-- Expense Overview -->
-              
-              <!--/ Expense Overview -->
-
-              <!-- Transactions -->
-              <div class="col-md-8 col-lg-8 order-0 mb-8">
-                <div class="card h-100">
-                  <div class="card-header d-flex align-items-center justify-content-between">
-                    <h5 class="card-title m-0 me-2">Courbe</h5>
-
-                  </div>
-                  <div class="card-body">
-                  <div>
-                    <canvas id="myChart"></canvas>
-                  </div>
-                  </div>
-                </div>
-              </div>
-              <!--/ Transactions -->
             </div>
           </div>
           <!-- / Content -->
 
+          <!-- Footer -->
 
+          <!-- / Footer -->
 
           <div class="content-backdrop fade"></div>
         </div>
@@ -226,61 +284,8 @@
   </div>
   <!-- / Layout wrapper -->
 
-  <script>
-    
-    var ctx = document.getElementById("myChart").getContext("2d");
-    var myChart = new Chart(ctx, {
-      type: "line",
-      data: {
-        labels: [
-          "Lundi",
-          "Mardi",
-          "Mercredi",
-          "Jeudi",
-          "Vendredi",
-          "Samedi",
-          "Dimanche",
-        ],
-        datasets: [
-          {
-            label: "work load",
-            data: [2, 9, 3, 5, 6, 3, 7],
-            backgroundColor: "rgba(153,205,1,0.6)",
-          },
-          {
-            label: "free hours",
-            data: [2, 2, 5, 5, 2, 1, 1],
-            backgroundColor: "rgba(155,153,10,0.6)",
-          },
-        ],
-      },
-    });
-  
-    var ctx2 = document.getElementById("myChart2").getContext("2d");
-    var stockexterne = 12;
-    var stockinterne = 20;
-    var myChart2 = new Chart(ctx2, {
-      type: "doughnut",
-      data: {
-        labels: [
-         
-          
-        ],
-        datasets: [
-          {
-            label: "work load",
-            data: [stockexterne,stockinterne],
-            backgroundColor: [
-            'rgb(255, 99, 132)',
-            'rgb(54, 162, 235)'
-            ],
-            
-          }
-        ],
-      },
-    });
 
-  </script>
+
   <!-- Core JS -->
   <!-- build:js assets/vendor/js/core.js -->
   <script src="../assets/vendor/libs/jquery/jquery.js"></script>
@@ -292,13 +297,11 @@
   <!-- endbuild -->
 
   <!-- Vendors JS -->
-  <script src="../assets/vendor/libs/apex-charts/apexcharts.js"></script>
 
   <!-- Main JS -->
   <script src="../assets/js/main.js"></script>
 
   <!-- Page JS -->
-  <script src="../assets/js/dashboards-analytics.js"></script>
 
   <!-- Place this tag in your head or just before your close body tag. -->
   <script async defer src="https://buttons.github.io/buttons.js"></script>
