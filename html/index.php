@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-
+<?php 
+require('data.php');
+require('date.php');
+?>
 <html lang="en" class="light-style layout-menu-fixed" dir="ltr" data-theme="theme-default" data-assets-path="../assets/"
   data-template="vertical-menu-template-free">
 
@@ -50,114 +53,15 @@
   <div class="layout-wrapper layout-content-navbar">
     <div class="layout-container">
       <!-- Menu -->
-
-      <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
-        <br><br>
-
-            <center>
-              <img src="../assets/img/logonordine.jpg" alt class="w-px-150 h-auto rounded-circle" />
-            </center>
-            <br>
-        <ul class="menu-inner py-1">
-          <!-- Dashboard -->
-          <li class="menu-item active">
-            <a href="index.php" class="menu-link">
-              <i class="menu-icon tf-icons bx bx-home-circle"></i>
-              <div data-i18n="Analytics">Dashboard</div>
-            </a>
-          </li>
-
-
-          <li class="menu-header small text-uppercase">
-            <span class="menu-header-text">Opération</span>
-          </li>
-          <li class="menu-item">
-            <a href="choixFournisseur.php" class="menu-link ">
-              <i class="menu-icon tf-icons bx bx-dock-top"></i>
-              <div>Nouvelle Achat</div>
-            </a>
-
-          </li>
-          <li class="menu-item">
-            <a href="listeFact.php" class="menu-link">
-              <i class="menu-icon tf-icons bx bx-dock-top"></i>
-              <div>Suivi Traitement</div>
-            </a>
-
-          </li>
-          <li class="menu-item">
-            <a href="#" class="menu-link">
-              <i class="menu-icon tf-icons bx bx-dock-top"></i>
-              <div>Gestion de Stock</div>
-            </a>
-
-          </li>
-          <li class="menu-item">
-            <a href="" class="menu-link">
-              <i class="menu-icon tf-icons bx bx-dock-top"></i>
-              <div>Gestion de Chargement</div>
-            </a>
-
-          </li>
-        </ul>
-      </aside>
+      <?php require('../nav/menu.php')?>
       <!-- / Menu -->
 
       <!-- Layout container -->
       <div class="layout-page">
+
         <!-- Navbar -->
-
-        <nav
-          class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
-          id="layout-navbar">
-          <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
-            <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
-              <i class="bx bx-menu bx-sm"></i>
-            </a>
-          </div>
-
-          <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
-            <!-- Search -->
-            <div class="navbar-nav align-items-center">
-              <div class="nav-item d-flex align-items-center">
-              </div>
-            </div>
-            <!-- /Search -->
-
-            <ul class="navbar-nav flex-row align-items-center ms-auto">
-              <!-- Place this tag where you want the button to render. -->
-              <li>
-                <a class="dropdown-item" href="login.html">
-                  <i class="bx bx-power-off me-2"></i>
-                  <span class="align-middle">Se déconnecter</span>
-                </a>
-              </li>
-
-              <!-- User -->
-              <li class="nav-item navbar-dropdown dropdown-user dropdown">
-                <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
-                  <div class="avatar avatar-online">
-                    <img src="../assets/img/logo.jpg" alt class="w-px-40 h-auto rounded-circle" />
-                  </div>
-                </a>
-                <ul class="dropdown-menu dropdown-menu-end">
-                  <li>
-                    <a class="dropdown-item" href="#">
-                      <i class="bx bx-cog me-2"></i>
-                      <span class="align-middle">Changer le Mot de passe</span>
-                    </a>
-                  </li>
-                  <li>
-                    <div class="dropdown-divider"></div>
-                  </li>
-
-                </ul>
-              </li>
-              <!--/ User -->
-            </ul>
-          </div>
-        </nav>
-
+        <?php $title='Dashboard'?>
+      <?php require('../nav/header.php')?>
         <!-- / Navbar -->
 
         <!-- Content wrapper -->
@@ -172,14 +76,18 @@
               <div class="col-md-6 col-lg-4 col-xl-4 order-1 mb-4">
                 <div class="card h-100">
                   <div class="card-body">
-                    <div class="d-flex justify-content-between align-items-center mb-3">
+                    <div class="d-flex justify-content-between align-items-center flex-column mb-3">
+                      <h1>Nombre de sac</h1>
+                      <canvas class="d-flex flex-column align-items-center gap-0"id="myChart2" style="display: block; width: 100%; height: 150px;"><h1></h1></canvas>
                       <div class="d-flex flex-column align-items-center gap-0">
-                        <h2 class="mb-2">8,258</h2>
-                        <span>Total Os</span>
+                        <h2 class="mb-2"><?=(get_all(2)[0]-get_sortie(2)[0])?> KG</h2>
+                        <span>Poids total externe</span>
+                      </div>
+                      <div class="d-flex flex-column align-items-center gap-0">
+                        <h2 class="mb-2"><?=(get_all(1)[0]-get_sortie(1)[0])?> KG</h2>
+                        <span>Poids total interne</span>
                       </div>
                       
-                        <canvas class="d-flex flex-column align-items-center gap-0"id="myChart2" style="display: block; width: 100%; height: 150px;"><h1></h1></canvas>
-                        <h1></h1>
                       
                               
                   </div>
@@ -197,7 +105,7 @@
               <div class="col-md-8 col-lg-8 order-0 mb-8">
                 <div class="card h-100">
                   <div class="card-header d-flex align-items-center justify-content-between">
-                    <h5 class="card-title m-0 me-2">Courbe</h5>
+                    <h5 class="card-title m-0 me-2">Diagramme </h5>
 
                   </div>
                   <div class="card-body">
@@ -208,63 +116,100 @@
                 </div>
               </div>
               <!--/ Transactions -->
+
+
+              <?php require('liste_facture.php')?>
+              <?php require('liste_chargement.php')?>
+              <?php require('liste_stock.php')?>
             </div>
           </div>
           <!-- / Content -->
 
-
-
+          
           <div class="content-backdrop fade"></div>
         </div>
         <!-- Content wrapper -->
       </div>
       <!-- / Layout page -->
     </div>
-
+    
     <!-- Overlay -->
     <div class="layout-overlay layout-menu-toggle"></div>
   </div>
   <!-- / Layout wrapper -->
 
   <script>
+    let sem = [
+      "Dimanche",
+      "Lundi",
+      "Mardi",
+      "Mercredi",
+      "Jeudi",
+      "Vendredi",
+      "Samedi",
+        ];
+        var date = new Date();
+
+        function get_jour(sous) {
+          let code = (date.getDay()-sous);
+          code = code < 0 ? 7 + code : code;
+          console.log(code);
+          return code;
+        }
     
     var ctx = document.getElementById("myChart").getContext("2d");
     var myChart = new Chart(ctx, {
       type: "line",
       data: {
         labels: [
-          "Lundi",
-          "Mardi",
-          "Mercredi",
-          "Jeudi",
-          "Vendredi",
-          "Samedi",
-          "Dimanche",
+          sem[get_jour(7)],
+          sem[get_jour(6)],
+          sem[get_jour(5)],
+          sem[get_jour(4)],
+          sem[get_jour(3)],
+          sem[get_jour(2)],
+          sem[get_jour(1)],
         ],
         datasets: [
           {
-            label: "work load",
-            data: [2, 9, 3, 5, 6, 3, 7],
+            label: "Achat effectué",
+            data: [
+              <?=get_achat($hier_6)?>,
+              <?=get_achat($hier_5)?>,
+              <?=get_achat($hier_4)?>,
+              <?=get_achat($hier_3)?>,
+              <?=get_achat($hier_2)?>,
+              <?=get_achat($hier_1)?>,
+              <?=get_achat($hier)?>,
+            ],
             backgroundColor: "rgba(153,205,1,0.6)",
           },
           {
-            label: "free hours",
-            data: [2, 2, 5, 5, 2, 1, 1],
+            label: "vente particulier",
+            data: [
+              <?=get_particulier($hier_6)?>,
+              <?=get_particulier($hier_5)?>,
+              <?=get_particulier($hier_4)?>,
+              <?=get_particulier($hier_3)?>,
+              <?=get_particulier($hier_2)?>,
+              <?=get_particulier($hier_1)?>,
+              <?=get_particulier($hier)?>,
+            ],
             backgroundColor: "rgba(155,153,10,0.6)",
           },
         ],
       },
     });
-  
+    // console.log(get_jour(6),get_jour(5),get_jour(4),get_jour(3),get_jour(2),get_jour(1),get_jour(0),);
     var ctx2 = document.getElementById("myChart2").getContext("2d");
-    var stockexterne = 12;
-    var stockinterne = 20;
+    var stockexterne = <?=(get_all(2)[1]-get_sortie(2)[1])?>;
+    var stockinterne = <?=(get_all(1)[1]-get_sortie(1)[1])?>;
     var myChart2 = new Chart(ctx2, {
       type: "doughnut",
       data: {
         labels: [
-         
-          
+          "externe",
+          "interne",
         ],
         datasets: [
           {

@@ -19,7 +19,9 @@
         $all_facture = $stmt->fetchAll(PDO::FETCH_ASSOC);
     
 ?>
- <?php foreach ($all_facture as $get_fact) : ?>
+ <?php foreach ($all_facture as $get_fact) : 
+        if(poid_total($get_fact['id']) >0 ){
+            ?>
     <tr>
         <th scope="row"><?=$get_fact['id']?></th>
         <td><?=get_name($get_fact['id_fou'])?></td>
@@ -27,9 +29,9 @@
         <td><?=$get_fact['date']?></td>
         <td><?=nbr_total($get_fact['id'])?></td>
         <td>
-        <a href="../contrepese/liste_poisson_contre_pese.php?num=<?=$get_fact['id']?>">
-        dirige vers
-        </a>
+            <a href="../contrepese/traitement.php?num=<?=$get_fact['id']?>">
+                traiter
+            </a>
         </td>
     </tr>
- <?php endforeach; ?>
+    <?php } endforeach; ?>   

@@ -66,7 +66,7 @@
               <div class="mb-3 form-password-toggle">
                 <div class="d-flex justify-content-between">
                   <label class="form-label" for="password">Mot de Passe</label>
-
+                  <input type="hidden" name="name" value="<?=$_GET['name']?>">
                 </div>
                 <div class="input-group input-group-merge">
                   <input type="password" id="password" required autocomplete="off" class="form-control" name="password"

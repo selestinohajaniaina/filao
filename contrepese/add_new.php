@@ -13,7 +13,7 @@
         if ($stmt->execute()) {
             ?>
                 <script>
-                    document.location.href = "liste_poisson_contre_pese.php?num=<?=$num_facture?>";
+                    document.location.href = "traitement.php?num=<?=$num_facture?>";
                 </script>
            <?php
         } else {

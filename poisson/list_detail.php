@@ -12,13 +12,14 @@
         $fetchBy = $getBy -> fetch();
         return $fetchBy["nomFilao"];
     }
-
+    $total = 0;
+    $total_poid =0;
     foreach($fetchAll as $fetch){
         $id_poisson = getNomPoisson($fetch['id_poisson']);
         $qtt_poisson = $fetch['qtt'];
         $prix_poisson = $fetch['prixUnit'];
-
-
+        $total += ($qtt_poisson*$prix_poisson);
+        $total_poid += $qtt_poisson;
         ?>
 
 <tr>

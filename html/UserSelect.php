@@ -61,7 +61,7 @@
 <br>
                   <h1 class="fs-0"><?=strtoupper(get_name(1)[0])?></h1>
                 </div>
-                <a href="login.php" class=""><?=get_name(1)?></a>
+                <a href="login.php?name=<?=get_name(1)?>" class=""><?=get_name(1)?></a>
                 </center>
               </div>
             </div>
@@ -75,7 +75,7 @@
 <br>
                   <h1 class="fs-0"><?=strtoupper(get_name(2)[0])?></h1>
                 </div>
-                <a href="login.php" class=""><?=get_name(2)?></a>
+                <a href="login.php?name=<?=get_name(2)?>" class=""><?=get_name(2)?></a>
                 </center>
               </div>
             </div>
@@ -86,10 +86,10 @@
               <center>
                 <div class="bg-success rounded-circle  align-items-center"style="width: 100px; height: 100px;">
                 <!-- <div class="d-flex flex-column  gap-1"> -->
-<br>
+<br> 
                   <h1 class="fs-0"><?=strtoupper(get_name(3)[0])?></h1>
                 </div>
-                <a href="login.php" class=""><?=get_name(3)?></a>
+                <a href="login.php?name=<?=get_name(3)?>" class=""><?=get_name(3)?></a>
                 </center>
               </div>
             </div>

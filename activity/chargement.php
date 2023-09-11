@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en" class="light-style layout-menu-fixed" dir="ltr" data-theme="theme-default" data-assets-path="../assets/"
   data-template="vertical-menu-template-free">
 
@@ -33,10 +32,10 @@
   <!-- Vendors CSS -->
   <link rel="stylesheet" href="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
 
-  <link rel="stylesheet" href="../assets/vendor/libs/apex-charts/apex-charts.css" />
+  <!-- <link rel="stylesheet" href="../assets/vendor/libs/apex-charts/apex-charts.css" /> -->
 
   <!-- Page CSS -->
-
+  <script src="../dashboardata/chart.js"></script>
   <!-- Helpers -->
   <script src="../assets/vendor/js/helpers.js"></script>
 
@@ -49,70 +48,31 @@
   <!-- Layout wrapper -->
   <div class="layout-wrapper layout-content-navbar">
     <div class="layout-container">
-      
       <!-- Menu -->
       <?php require('../nav/menu.php')?>
       <!-- / Menu -->
 
       <!-- Layout container -->
       <div class="layout-page">
-        
+
         <!-- Navbar -->
-        <?php $title='Facture'?>
-        <?php require('../nav/header.php')?>
-        <!-- / Navbar -->
+        <?php $title='Toute les Livraisons'?>
+      <?php require('../nav/header.php')?>
+      <!-- / Navbar -->
 
-        <!-- Content wrapper -->
-        <div class="content-wrapper">
-          <!-- Content -->
+      <!-- search bar -->
+      <?php require('search.php')?>
+        <!-- / serach bar -->
 
-          <div class="container-fluid flex-grow-1 container-p-y">
-            <div class="card">
-              <h5 class="card-header"> Liste des Facture D' Achat Aujourdui</h5>
-              <div class="table-responsive text-nowrap">
-                <table class="table">
-                  <thead>
-                    <tr class="text-nowrap">
-                      <th>NumFact</th>
-                      <th>Fournisseur</th>
-                      <th>Poid De produit</th>
-                      <th>Date</th>
-                      <th>Valeur (Ariary)</th>
-
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <!-- selection des facture aujourd'hui -->
-                    <?php require('../facture/liste.php')?>
-
-                    
-
-
-                  </tbody>
-                </table>
-              </div>
-            </div>
-            <!--/ Layout Demo -->
-          </div>
-          <!-- / Content -->
-
-          <!-- Footer -->
-
-
-          <div class="content-backdrop fade"></div>
-        </div>
-        <!-- Content wrapper -->
-      </div>
-      <!-- / Layout page -->
+        <?php require('charge_liste.php')?>
     </div>
-
+    <!-- / Layout page -->
+</div>
+    
     <!-- Overlay -->
     <div class="layout-overlay layout-menu-toggle"></div>
   </div>
   <!-- / Layout wrapper -->
-
-
-
   <!-- Core JS -->
   <!-- build:js assets/vendor/js/core.js -->
   <script src="../assets/vendor/libs/jquery/jquery.js"></script>
@@ -124,11 +84,13 @@
   <!-- endbuild -->
 
   <!-- Vendors JS -->
+  <script src="../assets/vendor/libs/apex-charts/apexcharts.js"></script>
 
   <!-- Main JS -->
   <script src="../assets/js/main.js"></script>
 
   <!-- Page JS -->
+  <script src="../assets/js/dashboards-analytics.js"></script>
 
   <!-- Place this tag in your head or just before your close body tag. -->
   <script async defer src="https://buttons.github.io/buttons.js"></script>
