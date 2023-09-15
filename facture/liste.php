@@ -12,7 +12,7 @@
         require('../db.php');
         require('prix_one_facture.php');
         require('poid_one_facture.php');
-        $sql = "SELECT * FROM facture WHERE date(`date`)=CURDATE() ORDER BY id DESC";
+        $sql = "SELECT * FROM facture ORDER BY id DESC";
         $stmt = $db->prepare($sql);
         $stmt->execute();
     

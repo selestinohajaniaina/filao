@@ -16,6 +16,7 @@
         $id_poisson = getNomPoisson($fetch['id_poisson']);
         $qtt_poisson = $fetch['qtt'];
         $nombre_sac = $fetch['prix'];
+        $id = $fetch['id'];
 
 
         ?>
@@ -34,10 +35,7 @@
                                         <i class="bx bx-dots-vertical-rounded"></i>
                                       </button>
                                       <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="javascript:void(0);"><i
-                                            class="bx bx-edit-alt me-1"></i>
-                                          Modifier</a>
-                                        <a class="dropdown-item" href="javascript:void(0);"><i
+                                        <a class="dropdown-item" href="delete.php?id=<?=$id?>"><i
                                             class="bx bx-trash me-1"></i>
                                           Suprimer</a>
                                       </div>

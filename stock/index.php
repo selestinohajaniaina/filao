@@ -158,6 +158,7 @@
                       </div>
                     </div>
                   </div>
+
                   <div class="col-md-8 col-12">
                     <div class="card">
                       <div class="row">
@@ -179,6 +180,7 @@
                                   <th>Poisson</th>
                                   <th>Poid</th>
                                   <th>Nombre de sac</th>
+                                  <th>Stock</th>
 
                                 </tr>
                               </thead>
@@ -192,6 +194,9 @@
                       </div>
                     </div>
                   </div>
+
+                  <?php require("liste_traitement.php")?>
+
                 </div>
               </div>
             </div>

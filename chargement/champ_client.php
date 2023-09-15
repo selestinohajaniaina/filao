@@ -4,11 +4,5 @@
     $execute->execute();
     $resultat = $execute -> fetch(); 
     $destin = $resultat["destination"];
-    if($destin == "client") :
 ?>
-    <form action="" method="post">
-        <input type="text" name="nom" id="nom" placeholder="Nom du client">
-        <input type="text" name="Adresse" id="Adresse" placeholder="Adress du client">
-        <input type="text" name="contact" id="contact" placeholder="Contact">
-    </form>
-<?php endif; ?>
+    <p>Expedier à <?=$destin?></p>

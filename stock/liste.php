@@ -1,7 +1,7 @@
 <?php
     require('../db.php');
     $range = !empty($_SESSION["emplacement"])?($_SESSION["emplacement"] == "eto" ? 1:2):1;
-    $selection = $db -> prepare("SELECT * FROM stock WHERE date(`date`)=CURDATE() AND place=$range ORDER BY id DESC");
+    $selection = $db -> prepare("SELECT * FROM stock WHERE date(`date`)=CURDATE() ORDER BY id DESC");
     $selection -> execute();
     $fetchAll = $selection -> fetchAll();
 
@@ -16,7 +16,9 @@
     foreach($fetchAll as $fetch){
         $id_poisson = getNomPoisson($fetch['id_poisson']);
         $qtt_poisson = $fetch['qtt'];
+        $id = $fetch['id'];
         $nombre_sac = $fetch['nombre_sac'];
+        $place = $fetch['place'];
 
 
         ?>
@@ -29,16 +31,16 @@
                                   <?=$nombre_sac?>
                                   </td>
                                   <td>
+                                  <?=($place==1?"interne":"externe")?>
+                                  </td>
+                                  <td>
                                     <div class="dropdown">
                                       <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
                                         data-bs-toggle="dropdown">
                                         <i class="bx bx-dots-vertical-rounded"></i>
                                       </button>
                                       <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="javascript:void(0);"><i
-                                            class="bx bx-edit-alt me-1"></i>
-                                          Modifier</a>
-                                        <a class="dropdown-item" href="javascript:void(0);"><i
+                                        <a class="dropdown-item" href="delete.php?id=<?=$id?>"><i
                                             class="bx bx-trash me-1"></i>
                                           Suprimer</a>
                                       </div>

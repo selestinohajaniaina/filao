@@ -113,7 +113,7 @@
 
                             </div>
                             <div class="input-group input-group-merge">
-                              <input type="number" id="" class="form-control" name="qtt" placeholder="" require/>
+                              <input type="number" step="0.01" id="" class="form-control" name="qtt" placeholder="" require/>
                             </div>
                           </div>
                           <div class="mb-3">
