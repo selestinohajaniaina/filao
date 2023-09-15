@@ -11,9 +11,7 @@
         $stmt = $db->prepare($sql);
         
         if ($stmt->execute()) {
-            echo $nomfilao.
-        "<br><center><img class='profile-pic-image' src='../img/load.gif' width='250'/></center>";
-        ;
+            
             // header("location:../html/FactureAchat.php?id_fournisseur=".$num_fournisseur_one."&numFact=".$num_facture_one);
             ?>
     <script>

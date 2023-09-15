@@ -8,7 +8,7 @@
   <meta name="viewport"
     content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-  <title>Login Basic - Pages | Sneat - Bootstrap 5 HTML Admin Template - Pro</title>
+  <title>Nordine Collecte| login</title>
 
   <meta name="description" content="" />
 
@@ -65,19 +65,20 @@
             <form id="formAuthentication" class="mb-3" action="../login/back.php" method="POST">
               <div class="mb-3 form-password-toggle">
                 <div class="d-flex justify-content-between">
-                  <label class="form-label" for="password">Mot de Passe</label>
+                  <label class="form-label" for="password"> Mot de Passe</label>
                   <input type="hidden" name="name" value="<?=$_GET['name']?>">
                 </div>
                 <div class="input-group input-group-merge">
                   <input type="password" id="password" required autocomplete="off" class="form-control" name="password"
-                    placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
-                    aria-describedby="password" />
+                    placeholder="<?=$_GET['name']?> Entrer votre Mots de passe" aria-describedby="password" />
                   <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
                 </div>
               </div>
 
               <div class="mb-3">
-                <button class="btn btn-primary d-grid w-100" type="submit">Se Connecter</button>
+                <button class="btn btn-primary d-grid w-100" type="submit">Se Connecter</button><br>
+                <a href="UserSelect.php" class="btn btn-success d-grid w-100">Retour</a>
+
               </div>
             </form>
 

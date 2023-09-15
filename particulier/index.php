@@ -129,7 +129,7 @@
                       <div class="row">
                         <!-- Bootstrap carousel -->
                         <div class="col-md">
-                          <h5 class="my-4">Vente particulier aujourd'hui du chargemnt aujourd'hui</h5>
+                          <h5 class="my-4">Vente d' aujourd'hui </h5>
 
 
                         </div>

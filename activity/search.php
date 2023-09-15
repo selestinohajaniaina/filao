@@ -1,3 +1,4 @@
+<form method="post">
 <nav
           class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
           id="layout-navbar">
@@ -36,9 +37,9 @@
             
             
         </div>
-        <button class="btn btn-primary">Rechercher</button>
+        <button class="btn btn-primary" type="submit" name="btn_search">Rechercher</button>
         </nav>
-
+        </form>
         <script>
             let select = document.querySelector('#select').value;
             var label = document.querySelector('#label');
@@ -48,9 +49,6 @@
                 if(e.target.value =="date") {
                     label.innerHTML = "Choisir une date: ";
                     contenu.innerHTML = `<input type="date" name="date" class="form-control">`;
-                }else if(e.target.value =="id_fou") {
-                    label.innerHTML = "Entrer un nom: ";
-                    contenu.innerHTML = `<input type="search" name="nom" class="form-control">`;
                 }else {
                     label.innerHTML = "";
                     contenu.innerHTML = ``;

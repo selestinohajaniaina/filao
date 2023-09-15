@@ -1,4 +1,5 @@
-<?php session_start(); ?>
+
+
 <!DOCTYPE html>
 <html lang="en" class="light-style layout-menu-fixed" dir="ltr" data-theme="theme-default" data-assets-path="../assets/"
   data-template="vertical-menu-template-free">
@@ -67,10 +68,6 @@
           <!-- Content -->
 
           <div class="container-xxl flex-grow-1 container-p-y">
-            <h4 class="fw-bold py-3 mb-4">
-              <span class="text-muted fw-light"> </span> Preparation a la chargement
-            </h4>
-
             <div class="row">
               <div class="col-md-12">
                 <div class="row">

@@ -14,11 +14,7 @@
             $newNumFact = 1;
         }
 
-
-        echo " $fournisseur avec nouveau numfact = $newNumFact encours....".
-        "<br><center><img class='profile-pic-image' src='../img/load.gif' width='250'/></center>";
-
-        
+     
         
         $creatNewFact = "INSERT INTO facture(`id`, `id_fou`, `text`) VALUES ($newNumFact, $fournisseur, '')";
         $validation = $db->prepare($creatNewFact);

@@ -8,7 +8,7 @@
   <meta name="viewport"
     content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-  <title>Login Basic - Pages | Sneat - Bootstrap 5 HTML Admin Template - Pro</title>
+  <title>Nordine Collecte</title>
 
   <meta name="description" content="" />
 
@@ -61,7 +61,8 @@
 <br>
                   <h1 class="fs-0"><?=strtoupper(get_name(1)[0])?></h1>
                 </div>
-                <a href="login.php?name=<?=get_name(1)?>" class=""><?=get_name(1)?></a>
+                <br>
+                <a class="btn btn-primary w-100" href="login.php?name=<?=get_name(1)?>" class=""><?=get_name(1)?></a>
                 </center>
               </div>
             </div>
@@ -74,8 +75,8 @@
                 <!-- <div class="d-flex flex-column  gap-1"> -->
 <br>
                   <h1 class="fs-0"><?=strtoupper(get_name(2)[0])?></h1>
-                </div>
-                <a href="login.php?name=<?=get_name(2)?>" class=""><?=get_name(2)?></a>
+                </div> <br>
+                <a class="btn btn-primary w-100" href="login.php?name=<?=get_name(2)?>" class=""><?=get_name(2)?></a>
                 </center>
               </div>
             </div>
@@ -88,8 +89,8 @@
                 <!-- <div class="d-flex flex-column  gap-1"> -->
 <br> 
                   <h1 class="fs-0"><?=strtoupper(get_name(3)[0])?></h1>
-                </div>
-                <a href="login.php?name=<?=get_name(3)?>" class=""><?=get_name(3)?></a>
+                </div> <br>
+                <a class="btn btn-primary w-100" href="login.php?name=<?=get_name(3)?>" class=""><?=get_name(3)?></a>
                 </center>
               </div>
             </div>

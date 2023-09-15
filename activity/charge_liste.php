@@ -1,7 +1,7 @@
 <?php
-
+        function liste($param, $query, $ordre) {
         require('../db.php');
-        $sql = "SELECT * FROM facturesortie ORDER BY id";
+        $sql = "SELECT * FROM facturesortie $param ORDER BY $query $ordre";
         $stmt = $db->prepare($sql);
         $stmt->execute();
     
@@ -46,3 +46,26 @@
             </div>
             <!--/ Layout Demo -->
           </div>
+
+          <?php
+        }
+if(isset($_POST["btn_search"])){
+  if($_POST["search"]=="date"){
+    $new_date = $_POST["date"];
+    if(!empty($new_date)) {
+    // echo "WHERE date(`date`)=$new_date id ".$_POST['try'];
+    liste("WHERE date(`date`)='".$new_date."'", "id", $_POST["try"]);
+    }else{
+      liste("WHERE date(`date`)=CURDATE()", "id", $_POST["try"]);
+    }
+  }
+  if($_POST["search"]=="id"){
+    liste("", "id", $_POST["try"]);
+  }
+  if($_POST["search"]=="id_fou"){
+    liste("", "destination", $_POST["try"]);
+  }
+}else{
+  liste("", "id", "DESC");
+}
+?>

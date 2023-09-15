@@ -2,7 +2,9 @@
 <?php 
 require('data.php');
 require('date.php');
+
 ?>
+
 <html lang="en" class="light-style layout-menu-fixed" dir="ltr" data-theme="theme-default" data-assets-path="../assets/"
   data-template="vertical-menu-template-free">
 
@@ -11,7 +13,7 @@ require('date.php');
   <meta name="viewport"
     content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-  <title>Logiciel de Gestion</title>
+  <title>Nordine Collect</title>
 
   <meta name="description" content="" />
 
@@ -76,15 +78,15 @@ require('date.php');
               <div class="col-md-6 col-lg-4 col-xl-4 order-1 mb-4">
                 <div class="card h-100">
                   <div class="card-body">
-                    <div class="d-flex justify-content-between align-items-center flex-column mb-3">
+                    <div class="d-flex justify-content-between  flex-column mb-3">
                       <h1>Nombre de sac</h1>
                       <canvas class="d-flex flex-column align-items-center gap-0"id="myChart2" style="display: block; width: 100%; height: 150px;"><h1></h1></canvas>
-                      <div class="d-flex flex-column align-items-center gap-0">
-                        <h2 class="mb-2"><?=(get_all(2)[0]-get_sortie(2)[0])?> KG</h2>
+                      <div class="d-flex flex-column  gap-0">
+                        <h3 class="mb-2"><?=(get_all(2)[0]-get_sortie(2)[0])?> Kg :   <?=(get_all(2)[1]-get_sortie(2)[1])?> Sac</h3>
                         <span>Poids total externe</span>
                       </div>
-                      <div class="d-flex flex-column align-items-center gap-0">
-                        <h2 class="mb-2"><?=(get_all(1)[0]-get_sortie(1)[0])?> KG</h2>
+                      <div class="d-flex flex-column  gap-0">
+                        <h3 class="mb-2"><?=(get_all(1)[0]-get_sortie(1)[0])?> Kg :   <?=(get_all(1)[1]-get_sortie(1)[1])?> Sac</h3>
                         <span>Poids total interne</span>
                       </div>
                       

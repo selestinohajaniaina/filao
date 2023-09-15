@@ -1,20 +1,22 @@
 <?php
 
-        require('../db.php');
-        $sql = "SELECT * FROM stock ORDER BY id DESC";
-        $stmt = $db->prepare($sql);
-        $stmt->execute();
-    
-        $all_facture = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         function getNomPoisson($id_selector) {
-            require('../db.php');
-            $getBy = $db -> prepare("SELECT nomFilao FROM poisson WHERE id=$id_selector");
-            $getBy -> execute();
+          require('../db.php');
+          $getBy = $db -> prepare("SELECT nomFilao FROM poisson WHERE id=$id_selector");
+          $getBy -> execute();
             $fetchBy = $getBy -> fetch();
             return $fetchBy["nomFilao"];
-        }
-    
+          }
+          
+          function liste($param, $query, $ordre) {
+          require('../db.php');
+          $sql = "SELECT * FROM stock $param ORDER BY $query $ordre";
+          $stmt = $db->prepare($sql);
+          $stmt->execute();
+          
+          $all_facture = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
 
 
@@ -51,3 +53,27 @@
             </div>
             <!--/ Layout Demo -->
           </div>
+
+          <?php
+}
+
+if(isset($_POST["btn_search"])){
+  if($_POST["search"]=="date"){
+    $new_date = $_POST["date"];
+    if(!empty($new_date)) {
+    // echo "WHERE date(`date`)=$new_date id ".$_POST['try'];
+    liste("WHERE date(`date`)='".$new_date."'", "id", $_POST["try"]);
+    }else{
+      liste("WHERE date(`date`)=CURDATE()", "id", $_POST["try"]);
+    }
+  }
+  if($_POST["search"]=="id"){
+    echo "<i>Auccun numero a trier!</i>";
+  }
+  if($_POST["search"]=="id_fou"){
+    liste("", "id_poisson", $_POST["try"]);
+  }
+}else{
+  liste("", "id", "DESC");
+}
+?>
