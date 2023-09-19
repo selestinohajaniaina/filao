@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <?php 
+require('../session.php');
 require('data.php');
 require('date.php');
 

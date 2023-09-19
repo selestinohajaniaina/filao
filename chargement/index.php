@@ -1,4 +1,6 @@
-
+<?php
+  require('../session.php');
+  ?>
 
 <!DOCTYPE html>
 <html lang="en" class="light-style layout-menu-fixed" dir="ltr" data-theme="theme-default" data-assets-path="../assets/"

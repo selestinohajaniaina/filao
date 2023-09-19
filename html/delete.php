@@ -1,4 +1,7 @@
 <?php
+  require('../session.php');
+  ?>
+<?php
     require('../db.php');
     $id = $_GET["id"];
     $id_fournisseur = $_GET["id_fournisseur"];

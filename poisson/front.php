@@ -1,4 +1,7 @@
 <?php
+  require('../session.php');
+  ?>
+<?php
 
         require('../db.php');
         $sql = "SELECT id, nomfilao FROM poisson";

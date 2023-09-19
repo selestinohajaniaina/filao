@@ -1,3 +1,4 @@
+
 <?php
 
         function get_name($id_to_get) {
@@ -42,8 +43,8 @@
                             <td><?=get_name($get_fact['id_fou'])?></td>
                             <td><?=$get_fact['date']?></td>
                             <td>
-                            <a href="../activity/facture.php?num=<?=$get_fact['id']?>">
-                                Consulter >
+                            <a class="btn btn-success" href="../activity/facture.php?num=<?=$get_fact['id']?>">
+                                Consulter
                             </a>
                         </td>
                     </tr>

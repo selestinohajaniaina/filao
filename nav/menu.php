@@ -1,7 +1,3 @@
-<?php 
-
-
-?>
 <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
         <br><br>
 
@@ -23,17 +19,32 @@
             <span class="menu-header-text text-black"><strong>Opération</strong></span>
           </li>
           <li class="menu-item">
-            <a href="../html/choixFournisseur.php" class="menu-link ">
+            <a href="../html/choixFournisseur.php" id="menumenu" class="menu-link ">
               <i class="menu-icon tf-icons bx bx-dock-top"></i>
               <div class="card-title mb-9 fw-semibold text-black">Nouvelle Achat</div>
             </a>
 
           </li>
           <li class="menu-item">
-            <a href="../html/listeFact.php" class="menu-link">
-              <i class="menu-icon tf-icons bx bx-dock-top"></i>
-              <div class=" card-title mb-9 fw-semibold text-black">Suivi Traitement</div>
-            </a>
+          <?php 
+            $isessid = $_SESSION['id'];
+            if ($isessid == 1) {
+              ?>
+                <a href="../html/listeFact.php" class="menu-link">
+                  <i class="menu-icon tf-icons bx bx-dock-top"></i>
+                  <div class=" card-title mb-9 fw-semibold text-black">Suivi Traitement</div>
+                </a>
+              <?php
+            }elseif ($isessid == 2) {
+              ?>
+                <a href="../html/listeFact.php" class="menu-link">
+                  <i class="menu-icon tf-icons bx bx-dock-top"></i>
+                  <div class=" card-title mb-9 fw-semibold text-black">Suivi Traitement</div>
+                </a>
+              <?php
+            }
+            ?>
+            
 
           </li>
           <li class="menu-item">

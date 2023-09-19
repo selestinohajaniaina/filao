@@ -1,4 +1,6 @@
-
+<?php
+  require('../session.php');
+  ?>
 <?php
 
         require('../db.php');
@@ -128,10 +130,9 @@
                    <td>Nom</td>
                    <td>Initial</td>
                    <td>Apres</td>
-                   <td>Decication 01</td>
+                   <td>Décication 01</td>
                    <td>Apres Traitement</td>
-                   <td>Decication 02</td>
-
+                   <td>Décication 02</td>
                   </thead>
                   <tbody>
                     <!-- selection des facture aujourd'hui -->
@@ -147,7 +148,7 @@
                                     <td><?=get_name($get_fact['id_poisson'])?></td>
                                     <td id="poid_init"><?=$get_fact['qtt']?> KG</td>
                                   <?php if(!return_type($get_fact['id_poisson'])) {$count +=1;?>
-                                    <td><input type="number"step="0.01" name="qtt" value="<?=$get_fact['qtt']?>" id="input_qtt" onkeyup="maka_p(<?=$get_fact['qtt']?>,event,<?=$count?>)"> KG
+                                    <td><input type="text" name="qtt" value="<?=$get_fact['qtt']?>" id="input_qtt" onkeyup="maka_p(<?=$get_fact['qtt']?>,event,<?=$count?>)"> KG
                                     <button class="btn btn-primary" type="submit">Sauvegarder</button></td>
                                     <td><span id="valeur_apres"></span></td>
                                     <?php }else { ?>
@@ -175,25 +176,32 @@
                                     <input type="hidden" name="num" value="<?=$numeroFacture?>">
                                     <input type="hidden" name="id_poisson" value="<?=$get_fact['id_poisson']?>">
                                   <?php if(!return_type_avant($get_fact['id_poisson'])) {$count +=1;?>
-                                    <input type="number"step="0.01" name="qtt" value="<?=return_type($get_fact['id_poisson'])?>" id="input_qtt_y" onkeyup="maka_py(<?=return_type($get_fact['id_poisson'])?>,event,<?=$count?>)"> KG
+                                    <input type="text" name="qtt" value="<?=return_type($get_fact['id_poisson'])?>" id="input_qtt_y" onkeyup="maka_py(<?=return_type($get_fact['id_poisson'])?>,event,<?=$count?>)"> KG
                                     <button class="btn btn-primary" type="submit">Sauvegarder</button>
-                                    <span id="valeur_apres"></span>
-                                    <?php }else { ?>
-                                    <?=return_type_avant($get_fact['id_poisson']);
-                                       
-                                    ?> KG
-                                    <?php
+                                  </td>
 
+                                   <td>
+                                     <span id="valeur_apres"></span>
+                                    <?php }else { ?>
+                                    <?=return_type_avant($get_fact['id_poisson'])?> KG
+                                  
+                                    <?php
+                                     if(return_type_avant($get_fact['id_poisson'])) {
+                                   $rest = $get_fact['qtt'] - return_type_avant($get_fact['id_poisson']);
+                                   $pourcentage = ((return_type_avant($get_fact['id_poisson']) * 100 ) / $get_fact['qtt']);
+                                   $decicationPourcentage = 100 - $pourcentage;
+                                   $decicationPourcentage = round($decicationPourcentage,2);
+                                   echo "<td> $decicationPourcentage %</td>";
+                                  }else{
+                                    echo "<td>la valeur ne doit pas etre null</td>";
+                                  }
+                                  } 
                                   } 
                                   ?>
                                 </form>
                                 </td>
                                     <?php
-                                  }else{
-                                    ?>
-                                      <td><i></i></td>
-                                    <?php
-                                  }
+                                 
                                 ?>
                             </tr>
                             <?php  } ?>
