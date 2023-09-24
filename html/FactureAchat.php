@@ -115,18 +115,19 @@
 
                             </div>
                             <div class="input-group input-group-merge">
-                              <input type="number" id="" step="0.01" title="" class="form-control" name="qtt" placeholder="" require/>
+                              <input type="number" id="" step="0.01" title="" class="form-control" name="qtt" placeholder="" required/>
                             </div>
                             <div class="d-flex justify-content-between">
                               <label class="form-label" for="password">Prix Unitaire</label>
 
                             </div>
                             <div class="input-group input-group-merge">
-                              <input type="number" class="form-control" name="pu" placeholder="" aria-describedby="" require/>
-                              <input type="hidden" name="id_fournisseur" value="<?=$_GET['id_fournisseur']?>"/>
-                              <input type="hidden" name="numFact" value="<?=$_GET['numFact']?>"/>
+                              <input type="number" class="form-control" name="pu" placeholder="" aria-describedby="" required/>
+                              
                             </div>
                           </div>
+                          <input type="hidden" name="id_fournisseur" value="<?=$_GET['id_fournisseur']?>"/>
+                              <input type="hidden" name="numFact" value="<?=$_GET['numFact']?>"/>
                           <div class="mb-3">
                             <button class="btn btn-primary d-grid w-100" type="submit">Ajouter</button>
                           </div>
@@ -181,9 +182,9 @@
                                   <th>
                                   <div class="col-md">
                                     <?php require('../fournisseur/detail.php')?>
-                                    <h5 class="my-4">Nom Fournisseur : <?=$nom_fou?></h5>
-                                    <h5 class="my-4">Adresse : <?=$Adresse_fou?></h5>
-                                    <h5 class="my-4">Contact : <?=$contact_fou?></h5>
+                                    <h6 class="my-4">Nom Fournisseur : <?=$nom_fou?></h6>
+                                    <h6 class="my-4">Adresse : <?=$Adresse_fou?></h6>
+                                    <h6 class="my-4">Contact : <?=$contact_fou?></h6>
 
 
                                   </div>

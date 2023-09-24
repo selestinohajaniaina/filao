@@ -155,6 +155,40 @@
                                 </tr>
                               </thead>
                               <tbody class="table-border-bottom-0">
+                                <?php require('liste_total.php')?>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                        <!-- /Social Accounts -->
+                      </div>
+                    </div>
+                  </div>
+                  <!-- tout les liste  -->
+                  <div class="col-md-12 col-12">
+                    <div class="card">
+                      <div class="row">
+                        <!-- Bootstrap carousel -->
+                        <div class="col-md">
+                          <h5 class="my-4">Tout les listes detailler</h5>
+
+                        </div>
+                      </div>
+                      <div class="card-body">
+                        <p></p>
+                        <!-- Social Accounts -->
+                        <div class="card">
+                          <div class="table-responsive text-nowrap">
+                            <table class="table">
+                              <thead>
+                                <tr>
+                                  <th>Poisson</th>
+                                  <th>Poid</th>
+                                  <th>Nombre de sac</th>
+
+                                </tr>
+                              </thead>
+                              <tbody class="table-border-bottom-0">
                                 <?php require('liste.php')?>
                               </tbody>
                             </table>
@@ -164,6 +198,7 @@
                       </div>
                     </div>
                   </div>
+
                 </div>
               </div>
             </div>

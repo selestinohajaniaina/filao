@@ -97,7 +97,7 @@
                               <div class="mt-3"> -->
                             <!-- Button trigger modal -->
                             <button type="button" class="btn btn-secondary d-grid w-100" data-bs-toggle="modal"
-                              data-bs-target="#basicModal">
+                              data-bs-target="#basicModl">
                               Ajouter Un Nouvelle Fournisseur
                             </button>
 
@@ -117,7 +117,7 @@
           <!--/ Basic Bootstrap Table -->
 
           <!-- Modal -->
-          <div class="modal fade" id="basicModal" tabindex="-1" aria-hidden="true">
+          <div class="modal fade" id="basicModl" tabindex="-1" aria-hidden="true">
                               <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                   <div class="modal-header">

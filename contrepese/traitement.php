@@ -133,6 +133,7 @@
                    <td>Décication 01</td>
                    <td>Apres Traitement</td>
                    <td>Décication 02</td>
+                   <td>Observation</td>
                   </thead>
                   <tbody>
                     <!-- selection des facture aujourd'hui -->
@@ -148,7 +149,7 @@
                                     <td><?=get_name($get_fact['id_poisson'])?></td>
                                     <td id="poid_init"><?=$get_fact['qtt']?> KG</td>
                                   <?php if(!return_type($get_fact['id_poisson'])) {$count +=1;?>
-                                    <td><input type="text" name="qtt" value="<?=$get_fact['qtt']?>" id="input_qtt" onkeyup="maka_p(<?=$get_fact['qtt']?>,event,<?=$count?>)"> KG
+                                    <td colspan="3"><input type="text" name="qtt" value="<?=$get_fact['qtt']?>" id="input_qtt" onkeyup="maka_p(<?=$get_fact['qtt']?>,event,<?=$count?>)"> KG
                                     <button class="btn btn-primary" type="submit">Sauvegarder</button></td>
                                     <td><span id="valeur_apres"></span></td>
                                     <?php }else { ?>
@@ -200,9 +201,7 @@
                                   ?>
                                 </form>
                                 </td>
-                                    <?php
-                                 
-                                ?>
+                                <?php require('obs.php')?>
                             </tr>
                             <?php  } ?>
 
@@ -212,6 +211,19 @@
               </div>
             </div>
             <!--/ Layout Demo -->
+            <div class="container-fluid flex-grow-1 container-p-y">
+                      <div class="card">
+                        <h5 class="card-header">Commentaire pour cette facture</h5>
+                        <div class="card-body">
+                          <form id="formAuthentication" class="mb-3" action="add_coms.php" method="POST">
+                            <input type="hidden" name="num_fact" value="<?=$_GET["num"]?>">
+                            <?php require('coms.php')?>
+                              
+                              <button class="btn btn-primary m-1" type="submit">Ajouter</button>
+                          </form>
+                          </div>
+                          </div>
+            </div>
           </div>
           <!-- / Content -->
 

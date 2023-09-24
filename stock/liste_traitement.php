@@ -1,7 +1,7 @@
 <?php
 
         require('../db.php');
-        $sql = "SELECT * FROM detailavant ORDER BY id_poisson DESC";
+        $sql = "SELECT id_poisson, SUM(qtt) AS qtt_total FROM detailavant GROUP BY id_poisson ORDER BY id_poisson ASC";
         $stmt = $db->prepare($sql);
         $stmt->execute();
     
@@ -36,7 +36,7 @@
                     <?php foreach ($all_facture as $get_fact) : ?>
                         <tr>
                             <th scope="row"><?=getNomPoisson($get_fact['id_poisson'])?></th>
-                            <td><?=($get_fact['qtt'])?></td>
+                            <td><?=($get_fact['qtt_total'])?></td>
                     </tr>
                     <?php endforeach; ?>
                   </tbody>
