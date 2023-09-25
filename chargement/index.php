@@ -79,10 +79,6 @@
                       <div class="card-body">
                         <form id="formAuthentication" class="mb-3" action="add.php" method="POST">
                             <input type="hidden" name="id_sortie" value="<?=$_GET["id"]?>">
-                          <input type="radio" name="place" id="eto" value="1" required>
-                          <label for="eto">sortie depuis interne</label><br>
-                          <input type="radio" name="place" id="any" value="2" required>
-                          <label for="any">sortie depuis externe</label>
                           <div class="mb-3 form-password-toggle">
                             <div class="d-flex justify-content-between">
                               <label class="form-label" for="password">Selection Poisson</label>

@@ -71,5 +71,16 @@
 
           </li>
 
+          </li>
+          <li class="menu-item">
+            <a href="../personnel" class="menu-link">
+              <i class="menu-icon tf-icons bx bx-dock-top"></i>
+              <div class="card-title mb-9 fw-semibold text-black">Gestion Personnel</div>
+              
+            </a>
+
+          </li>
+
+
         </ul>
       </aside>

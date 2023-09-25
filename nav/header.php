@@ -44,6 +44,13 @@
                     </a>
                   </li>
                   <li>
+                    <a class="dropdown-item" type="button" class="btn btn-secondary d-grid w-100" data-bs-toggle="modal"
+                              data-bs-target="#ModalUser" href="#">
+                      <i class="bx bx-cog me-2"></i>
+                      <span class="align-middle">Ajouter Un Nouvelle Utilisateur</span>
+                    </a>
+                  </li>
+                  <li>
                     <div class="dropdown-divider"></div>
                   </li>
 
@@ -63,7 +70,8 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                       aria-label="Close"></button>
                                   </div>
-                                  <form action="../fournisseur/add_new.php" method="POST">
+                                  <form action="../profile/editpswrd.php" method="POST">
+                                    <input type="hidden" name="iduser" value="<?=$_SESSION["id"]?>">
                                     <div class="modal-body">
                                       <div class="row">
                                         <div class="col mb-3">
@@ -86,4 +94,46 @@
                                   </form>
                                 </div>
                               </div>
-                            </div>
+        </div>
+        <div class="modal fade" id="ModalUser" tabindex="-1" aria-hidden="true">
+                              <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel1">Nouvelle Utilisateur</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                      aria-label="Close"></button>
+                                  </div>
+                                  <form action="../profile/adduser.php" method="POST">
+                                    <div class="modal-body">
+                                      <div class="col">
+                                        <div class="col mb-3">
+                                          <label for="nameBasic" class="form-label">Nom De l' utilisateur</label>
+                                          <input type="text" id="nameBasic" autocomplete="off" class="form-control" placeholder="Nom d'utilisateur" name="username"/>
+                                        </div>
+
+                                        <div class="col m-3">
+                                          <label for="nameBasic" class="form-label">Responsabilité</label>
+                                        </div>
+                                        <div class="col">
+                                        <input type="checkbox" name="action" id="vente">
+                                        <label for="vente">Responsable de Vente</label>
+                                        </div>
+                                        <div class="col">
+                                        <input type="checkbox" name="action1" id="achat">
+                                        <label for="achat">Responsable d' Achat et Traitement</label>
+                                        </div>
+                                        <div class="col">
+                                        <input type="checkbox" name="action2" id="stock">
+                                        <label for="stock">Responsable de Stock et Chargement</label>
+                                        </div>
+                                      </div>
+                                     
+                                    </div>
+                                    <div class="modal-footer">
+
+                                      <button  class="btn btn-primary">Enregistrer</button>
+                                    </div>
+                                  </form>
+                                </div>
+                              </div>
+        </div>

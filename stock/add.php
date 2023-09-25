@@ -4,7 +4,7 @@
       $poisson = $_POST["poisson"];
       $qtt = $_POST["qtt"];
       $sac = $_POST["sac"];
-      $place = $_POST["place"];
+      $place = 1;
       session_start();
         $_SESSION['emplacement'] = $place == 1 ? "eto" : "any";
         

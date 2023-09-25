@@ -31,9 +31,6 @@
                                   <?=$nombre_sac?>
                                   </td>
                                   <td>
-                                  <?=($place==1?"interne":"externe")?>
-                                  </td>
-                                  <td>
                                     <div class="dropdown">
                                       <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
                                         data-bs-toggle="dropdown">

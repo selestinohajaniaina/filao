@@ -79,10 +79,6 @@
                       <h5 class="card-header">Pesage avant le stock</h5>
                       <div class="card-body">
                         <form id="formAuthentication" class="mb-3" action="add.php" method="POST">
-                          <input type="radio" name="place" id="eto" value="1" <?=(!empty($_SESSION["emplacement"])? ($_SESSION["emplacement"]=="eto"?"checked":""):"")?>  required>
-                          <label for="eto">Stock interne</label>
-                          <input type="radio" name="place" id="any" value="2" <?=(!empty($_SESSION["emplacement"])? ($_SESSION["emplacement"]=="eto"?"":"checked"):"")?> required>
-                          <label for="any">Stock externe</label>
                           <div class="mb-3 form-password-toggle">
                             <div class="d-flex justify-content-between">
                               <label class="form-label" for="password">Selection Poisson</label>
@@ -180,7 +176,6 @@
                                   <th>Poisson</th>
                                   <th>Poid</th>
                                   <th>Nombre de sac</th>
-                                  <th>Stock</th>
 
                                 </tr>
                               </thead>

@@ -5,7 +5,7 @@
       $id_sortie = $_POST["id_sortie"];
       $qtt = $_POST["qtt"];
       $sac = $_POST["sac"];
-      $place = $_POST["place"];
+      $place = 1;
         
         $sql = "INSERT INTO detailfilaosortie(`id_poisson`, `sac`, `qtt`, `id_sortie`, `place`) VALUES ($poisson, $sac, $qtt, $id_sortie, $place)";
         $stmt = $db->prepare($sql);
