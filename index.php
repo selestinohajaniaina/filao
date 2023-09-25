@@ -8,7 +8,7 @@
 </head>
 <body>
     <script>
-        document.location.href = "./html/UserSelect.php";
+        document.location.href = "./html/login.php";
     </script>
 </body>
 </html>

@@ -37,9 +37,17 @@
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end">
                   <li>
-                    <a class="dropdown-item" href="#">
+                    <a class="dropdown-item" type="button" class="btn btn-secondary d-grid w-100" data-bs-toggle="modal"
+                              data-bs-target="#basical" href="#">
                       <i class="bx bx-cog me-2"></i>
                       <span class="align-middle">Changer le Mot de passe</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" type="button" class="btn btn-secondary d-grid w-100" data-bs-toggle="modal"
+                              data-bs-target="#ModalUser" href="#">
+                      <i class="bx bx-cog me-2"></i>
+                      <span class="align-middle">Ajouter Un Nouvelle Utilisateur</span>
                     </a>
                   </li>
                   <li>
@@ -50,5 +58,76 @@
               </li>
               <!--/ User -->
             </ul>
+
+
           </div>
         </nav>
+        <div class="modal fade" id="basical" tabindex="-1" aria-hidden="true">
+                              <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel1">Modification de Mot de passe</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                      aria-label="Close"></button>
+                                  </div>
+                                  <form action="../fournisseur/add_new.php" method="POST">
+                                    <div class="modal-body">
+                                      <div class="row">
+                                        <div class="col mb-3">
+                                          <label for="nameBasic" class="form-label">Mot de passe Actuel</label>
+                                          <input type="password" id="nameBasic" autocomplete="off" class="form-control"
+                                            placeholder="Mot de passe actuel" name="actpassword"/>
+                                        </div>
+                                        <div class="col mb-3">
+                                          <label for="nameBasic" class="form-label">Nouveau Mot de passe</label>
+                                          <input type="password" id="nameBasic" autocomplete="off" class="form-control"
+                                            placeholder="Nouveau mot de passe" name="newpassword"/>
+                                        </div>
+                                      </div>
+                                     
+                                    </div>
+                                    <div class="modal-footer">
+
+                                      <button  class="btn btn-primary">Enregistrer la modification</button>
+                                    </div>
+                                  </form>
+                                </div>
+                              </div>
+        </div>
+        <div class="modal fade" id="ModalUser" tabindex="-1" aria-hidden="true">
+                              <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel1">Nouvelle Utilisateur</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                      aria-label="Close"></button>
+                                  </div>
+                                  <form action="../ajoutUser/addnew.php" method="POST">
+                                    <div class="modal-body">
+                                      <div class="col">
+                                        <div class="col mb-3">
+                                          <label for="nameBasic" class="form-label">Nom De l' utilisateur</label>
+                                          <input type="text" id="nameBasic" autocomplete="off" class="form-control"
+                                            placeholder="Nom d'utilisateur" name="userName"/>
+                                        </div>
+                                        
+                                        <div class="col mb-3">
+                                          <label for="nameBasic" class="form-label">Responsabilité</label>
+                                          <select id="defaultSelect" class="form-select" placeholder="Nom d'utilisateur" name="UserResp">
+                                            <option value=""></option>
+                                            <option value="">Responsable de Vente </option>
+                                            <option value="">Responsable d' Achat et Traitement</option>
+                                            <option value="">Responsable de Stock et Chargement</option>
+                                          </select>
+                                        </div>
+                                      </div>
+                                     
+                                    </div>
+                                    <div class="modal-footer">
+
+                                      <button  class="btn btn-primary">Enregistrer</button>
+                                    </div>
+                                  </form>
+                                </div>
+                              </div>
+        </div>

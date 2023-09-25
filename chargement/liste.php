@@ -1,17 +1,17 @@
 <?php
     require('../db.php');
     $id_sortie=$_GET['id'];
-    $selection = $db -> prepare("SELECT * FROM detailfilaosortie WHERE id_sortie=$id_sortie ORDER BY id DESC");
+    $selection = $db -> prepare("SELECT * FROM detailfilaosortie WHERE id_sortie=$id_sortie ORDER BY id_poisson DESC");
     $selection -> execute();
     $fetchAll = $selection -> fetchAll();
 
-    function getNomPoisson($id_selector) {
-        require('../db.php');
-        $getBy = $db -> prepare("SELECT nomFilao FROM poisson WHERE id=$id_selector");
-        $getBy -> execute();
-        $fetchBy = $getBy -> fetch();
-        return $fetchBy["nomFilao"];
-    }
+    // function getNomPoisson($id_selector) {
+    //     require('../db.php');
+    //     $getBy = $db -> prepare("SELECT nomFilao FROM poisson WHERE id=$id_selector");
+    //     $getBy -> execute();
+    //     $fetchBy = $getBy -> fetch();
+    //     return $fetchBy["nomFilao"];
+    // }
 
     foreach($fetchAll as $fetch){
         $id_poisson = getNomPoisson($fetch['id_poisson']);

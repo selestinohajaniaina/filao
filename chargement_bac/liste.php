@@ -1,7 +1,6 @@
 <?php
     require('../db.php');
-    $range = !empty($_SESSION["emplacement"])?($_SESSION["emplacement"] == "eto" ? 1:2):1;
-    $selection = $db -> prepare("SELECT * FROM stock WHERE date(`date`)=CURDATE() ORDER BY id DESC");
+    $selection = $db -> prepare("SELECT * FROM chargement_bac WHERE date(`date`)=CURDATE() ORDER BY id DESC");
     $selection -> execute();
     $fetchAll = $selection -> fetchAll();
 
@@ -17,8 +16,7 @@
         $id_poisson = getNomPoisson($fetch['id_poisson']);
         $qtt_poisson = $fetch['qtt'];
         $id = $fetch['id'];
-        $nombre_sac = $fetch['nombre_sac'];
-        $place = $fetch['place'];
+        $nombre_bac = $fetch['bac'];
 
 
         ?>
@@ -28,7 +26,7 @@
                                     </strong></td>
                                   <td><?=$qtt_poisson?></td>
                                   <td>
-                                  <?=$nombre_sac?>
+                                  <?=$nombre_bac?>
                                   </td>
                                   <td>
                                     <div class="dropdown">

@@ -12,7 +12,7 @@
 
   <title>Logiciel de Gestion</title>
 
-  <meta name="description" content="" />
+  <meta name="description" content=""/>
 
   <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="../assets/img/favicon/favicon.ico" />
@@ -89,6 +89,8 @@
                                     </div>
                                 <div class="mb-3">
                                 <button class="btn btn-primary d-grid w-100" type="submit">Valider</button>
+                                <center>Ou</center>
+                                <a href="../chargement_bac/" class="btn btn-success d-grid w-100">Chargement au Bac</a>
                                 </div>
                                 <!-- <div class=" mb-3">
                                 <small class="text-light fw-semibold">Ou</small>

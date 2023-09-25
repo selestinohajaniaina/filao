@@ -29,8 +29,8 @@
         <td><?=$get_fact['date']?></td>
         <td><?=nbr_total($get_fact['id'])?></td>
         <td>
-            <a href="../contrepese/traitement.php?num=<?=$get_fact['id']?>">
-                traiter
+            <a class="btn btn-success" href="../contrepese/traitement.php?num=<?=$get_fact['id']?>">
+                Traiter
             </a>
         </td>
     </tr>

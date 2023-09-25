@@ -24,7 +24,6 @@
             if($nbr) {
               $qtt_f = $fetchAll[0]['qtt'];
         return $qtt_f;
-
             }
         return false;
         }
@@ -129,10 +128,12 @@
                   <thead>
                    <td>Nom</td>
                    <td>Initial</td>
-                   <td>Apres</td>
+                   <td>Contre Pesage</td>
                    <td>Décication 01</td>
+                   <td>Sortie</td>
                    <td>Apres Traitement</td>
                    <td>Décication 02</td>
+                   <td>Observation</td>
                   </thead>
                   <tbody>
                     <!-- selection des facture aujourd'hui -->
@@ -148,8 +149,8 @@
                                     <td><?=get_name($get_fact['id_poisson'])?></td>
                                     <td id="poid_init"><?=$get_fact['qtt']?> KG</td>
                                   <?php if(!return_type($get_fact['id_poisson'])) {$count +=1;?>
-                                    <td><input type="text" name="qtt" value="<?=$get_fact['qtt']?>" id="input_qtt" onkeyup="maka_p(<?=$get_fact['qtt']?>,event,<?=$count?>)"> KG
-                                    <button class="btn btn-primary" type="submit">Sauvegarder</button></td>
+                                    <td colspan="3"><input type="text" name="qtt" value="<?=$get_fact['qtt']?>" id="input_qtt" onkeyup="maka_p(<?=$get_fact['qtt']?>,event,<?=$count?>)"> KG
+                                    <button class="btn btn-primary" type="submit">ok</button></td>
                                     <td><span id="valeur_apres"></span></td>
                                     <?php }else { ?>
                                     <td><?=return_type($get_fact['id_poisson'])?> KG
@@ -167,6 +168,7 @@
                                   } 
                                   ?>
                                 </form>
+                                <td>12</td>
                                 <?php
                                   if(return_type($get_fact['id_poisson'])) {
                                     ?>
@@ -177,7 +179,7 @@
                                     <input type="hidden" name="id_poisson" value="<?=$get_fact['id_poisson']?>">
                                   <?php if(!return_type_avant($get_fact['id_poisson'])) {$count +=1;?>
                                     <input type="text" name="qtt" value="<?=return_type($get_fact['id_poisson'])?>" id="input_qtt_y" onkeyup="maka_py(<?=return_type($get_fact['id_poisson'])?>,event,<?=$count?>)"> KG
-                                    <button class="btn btn-primary" type="submit">Sauvegarder</button>
+                                    <button class="btn btn-primary" type="submit">ok</button>
                                   </td>
 
                                    <td>
@@ -200,9 +202,7 @@
                                   ?>
                                 </form>
                                 </td>
-                                    <?php
-                                 
-                                ?>
+                                <?php require('obs.php')?>
                             </tr>
                             <?php  } ?>
 
@@ -212,6 +212,19 @@
               </div>
             </div>
             <!--/ Layout Demo -->
+            <div class="container-fluid flex-grow-1 container-p-y">
+                      <div class="card">
+                        <h5 class="card-header">Commentaire pour cette facture</h5>
+                        <div class="card-body">
+                          <form id="formAuthentication" class="mb-3" action="add_coms.php" method="POST">
+                            <input type="hidden" name="num_fact" value="<?=$_GET["num"]?>">
+                            <?php require('coms.php')?>
+                              
+                              <button class="btn btn-primary m-1" type="submit">Ajouter</button>
+                          </form>
+                          </div>
+                          </div>
+            </div>
           </div>
           <!-- / Content -->
 

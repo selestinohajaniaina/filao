@@ -4,7 +4,7 @@ session_destroy();
 echo "
         <script>
             
-            document.location.href = '../html/UserSelect.php';
+            document.location.href = '../html/login.php';
         </script>
         ";
         ?>

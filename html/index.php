@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <?php 
-require('../session.php');
-require('data.php');
-require('date.php');
-
+  require('../session.php');
+  require('data.php');
+  require('date.php');
 ?>
 
 <html lang="en" class="light-style layout-menu-fixed" dir="ltr" data-theme="theme-default" data-assets-path="../assets/"
-  data-template="vertical-menu-template-free">
+ data-template="vertical-menu-template-free">
 
 <head>
   <meta charset="utf-8" />

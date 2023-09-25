@@ -5,7 +5,7 @@
         $qtt = $_POST["qtt"];
         $id_poisson = $_POST["id_poisson"];
         $num_facture = $_POST['num'];
-        echo $qtt." / ".$id_poisson." / ".$num_facture;
+        // echo $qtt." / ".$id_poisson." / ".$num_facture;
 
         $sql = "INSERT INTO detailavant(`id_poisson`, `NumFac`, `qtt`) VALUES ($id_poisson, $num_facture, $qtt)";
         $stmt = $db->prepare($sql);

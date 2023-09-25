@@ -64,13 +64,17 @@
             <!-- /Logo -->
             <form id="formAuthentication" class="mb-3" action="../login/back.php" method="POST">
               <div class="mb-3 form-password-toggle">
+              <label class="form-label" for="name">Nom</label>
+
                 <div class="d-flex justify-content-between">
-                  <label class="form-label" for="password"> Mot de Passe</label>
-                  <input type="hidden" name="name" value="<?=$_GET['name']?>">
+                  <input type="text" name="name" required  class="form-control" 
+                  placeholder="Entrer votre nom"autocomplete=off value=""/>
                 </div>
+                <label class="form-label" for="name"> Mot de Passe</label>
+
                 <div class="input-group input-group-merge">
                   <input type="password" id="password" required autocomplete="off" class="form-control" name="password"
-                    placeholder="<?=$_GET['name']?> Entrer votre Mots de passe" aria-describedby="password" />
+                    placeholder="Entrer votre Mots de passe" aria-describedby="password" />
                   <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
                 </div>
               </div>
@@ -81,9 +85,7 @@
 
               </div>
             </form>
-
             <p class="text-center">
-
             </p>
           </div>
         </div>

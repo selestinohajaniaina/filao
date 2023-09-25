@@ -38,7 +38,7 @@ if($nbrExist>0){
                 echo "
                 <script>
                     alert('votre mot de passe est incorrect, veillez ressayer');
-                    document.location.href = '../html/login.php?name=$name';
+                    document.location.href = '../html/login.php;
                 </script>
                 ";
             }

@@ -60,6 +60,7 @@
               <div class="card-title mb-9 fw-semibold text-black">Gestion de Chargement</div>
             </a>
 
+            
           </li>
           <li class="menu-item">
             <a href="../particulier" class="menu-link">
@@ -69,5 +70,6 @@
             </a>
 
           </li>
+
         </ul>
       </aside>
