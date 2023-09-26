@@ -19,7 +19,7 @@
                     <tr class="text-nowrap">
                       <th>Nom</th>
                       <th>Contact</th>
-                      
+                       
                     </tr>
                 </thead>
                 <tbody>
@@ -31,7 +31,7 @@
                             <td><?=($get_per['nom'])?></td>
                             <td><?=$get_per['contact']?></td>
                             <td>
-                            <a class="btn btn-danger sup" href="../activity/facture.php?num=<?=$get_per['id']?>">
+                            <a class="btn btn-danger sup" href="sup.php?id=<?=$get_per['id']?>">
                                 Suprimer
                             </a>
                         </td>

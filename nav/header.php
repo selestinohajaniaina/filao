@@ -35,7 +35,7 @@
                     <img src="../assets/img/logo.jpg" alt class="w-px-40 h-auto rounded-circle" />
                   </div>
                 </a>
-                <ul class="dropdown-menu dropdown-menu-end">
+                <ul class="dropdown-menu dropdown-menu-end z-index-10">
                   <li>
                     <a class="dropdown-item" type="button" class="btn btn-secondary d-grid w-100" data-bs-toggle="modal"
                               data-bs-target="#basical" href="#">

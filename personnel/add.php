@@ -13,7 +13,7 @@
         if ($stmt->execute()) {
             
             // header("location:../html/FactureAchat.php?id_fournisseur=".$num_fournisseur_one."&numFact=".$num_facture_one);
-            ?>
+            ?> 
     <script>
         window.document.location.href = "../personnel";
     </script>

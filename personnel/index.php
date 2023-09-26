@@ -97,9 +97,9 @@
         </form>
         <!-- / add bar -->
 
-        <?php
+        <?php 
         // ajouter a la variable $vile le poste
-        
+
         $ville = "Antananarivo";
         require('liste_mj.php');
         $ville = "Mahajanga";
