@@ -11,7 +11,7 @@ if(!empty($fetch["text"])){
     <?php
 }else{
     ?>
-<textarea name="coms" class="form-control" placeholder="Auccun comentaire pour le moment! Ajouter a nouveau" required></textarea>
+<textarea name="coms" class="form-control" placeholder="Aucun comentaire pour le moment" required></textarea>
     <?php
 }
     ?>

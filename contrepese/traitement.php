@@ -27,6 +27,16 @@
             }
         return false;
         }
+        // sortie
+        function return_type_sortie($num_to_get){
+          // $id_sortie=$get_fact["id"];
+          require('../db.php');
+          $num=$_GET['num'];
+          $selection_sortie = $db -> prepare("SELECT * FROM sortie WHERE id_sortie=$id_sortie");
+          $selection_sortie -> execute();
+          $fetch_sortie = $selection_sortie -> fetch();
+          return $fetch_sortie["sortieqtt"];
+        }
 
         // avant entrer dans la chambre froid
         function return_type_avant($num_to_get) {
@@ -168,7 +178,11 @@
                                   } 
                                   ?>
                                 </form>
-                                <td>12</td>
+                               
+                                <?php 
+                                require('sortieshow.php')
+                                ?>
+
                                 <?php
                                   if(return_type($get_fact['id_poisson'])) {
                                     ?>
@@ -177,8 +191,10 @@
                                 <form action="../contrepese/avant_chambre.php" method="post">
                                     <input type="hidden" name="num" value="<?=$numeroFacture?>">
                                     <input type="hidden" name="id_poisson" value="<?=$get_fact['id_poisson']?>">
-                                  <?php if(!return_type_avant($get_fact['id_poisson'])) {$count +=1;?>
-                                    <input type="text" name="qtt" value="<?=return_type($get_fact['id_poisson'])?>" id="input_qtt_y" onkeyup="maka_py(<?=return_type($get_fact['id_poisson'])?>,event,<?=$count?>)"> KG
+                                  <?php 
+                                  
+                                  if(!return_type_avant($get_fact['id_poisson'])) {$count +=1; $atraite=return_type($get_fact['id_poisson'])?>
+                                    <input type="text" name="qtt" value="<?= $atraite - $sortie?>" id="input_qtt_y" onkeyup="maka_py(<?=return_type($get_fact['id_poisson'])?>,event,<?=$count?>)"> KG
                                     <button class="btn btn-primary" type="submit">ok</button>
                                   </td>
 
@@ -186,11 +202,11 @@
                                      <span id="valeur_apres"></span>
                                     <?php }else { ?>
                                     <?=return_type_avant($get_fact['id_poisson'])?> KG
-                                  
+                                   
                                     <?php
                                      if(return_type_avant($get_fact['id_poisson'])) {
-                                   $rest = $get_fact['qtt'] - return_type_avant($get_fact['id_poisson']);
-                                   $pourcentage = ((return_type_avant($get_fact['id_poisson']) * 100 ) / $get_fact['qtt']);
+                                   $rest = return_type($get_fact['id_poisson']) - return_type_avant($get_fact['id_poisson']);
+                                   $pourcentage = ((return_type_avant($get_fact['id_poisson']) * 100 ) / return_type($get_fact['id_poisson']));
                                    $decicationPourcentage = 100 - $pourcentage;
                                    $decicationPourcentage = round($decicationPourcentage,2);
                                    echo "<td> $decicationPourcentage %</td>";

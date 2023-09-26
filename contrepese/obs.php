@@ -16,13 +16,13 @@ $fetch_obs = $selection_obs -> fetch();
 if(empty($fetch_obs["obs"])){
 
     ?>
-        <input type="text" class="form-control" name="obs" placeholder="Appuyer 'Entrer' pour envoyer">
+        <input type="text" class="form-control" name="obs" autocomplete="off" placeholder="Appuyer 'Entrer' pour envoyer">
     <?php
 
 }else{
 
-    ?>
-        <p><?=$fetch_obs["obs"]?></p>
+?>
+    <?=$fetch_obs["obs"]?>
 <?php
 
 }
