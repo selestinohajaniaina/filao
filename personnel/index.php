@@ -104,6 +104,9 @@
         require('liste_mj.php');
         $ville = "Mahajanga";
         require('liste_mj.php');
+
+        // presence
+        require('presence.php');
         ?>
     </div>
     <!-- / Layout page -->
