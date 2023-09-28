@@ -61,12 +61,10 @@
       <!-- / Navbar -->
 
       <!-- add bar -->
-<br>
-<form method="post" action="add.php">
-
+      <form method="post" action="add.php">
 <nav
-          class="container-fluid container-xxl navbar w-55+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ navbar-expand-xl align-items-center bg-navbar-theme"
-          id="layout-">
+          class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
+          id="layout-navbar">
           <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
             <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
               <i class="bx bx-menu bx-sm"></i>
@@ -93,12 +91,11 @@
                 </div> 
                 </div>
             </div>
-
         </div>
-        <button class="btn btn-primary m-10" type="submit" name="btn_search">Ajouter</button>
+        <button class="btn btn-primary" type="submit" name="btn_search">Ajouter</button>
         </nav>
-        <!-- / add bar -->
         </form>
+        <!-- / add bar -->
 
         <?php 
         // ajouter a la variable $vile le poste
@@ -107,6 +104,9 @@
         require('liste_mj.php');
         $ville = "Mahajanga";
         require('liste_mj.php');
+
+        // presence
+        require('presence.php');
         ?>
     </div>
     <!-- / Layout page -->

@@ -42,6 +42,8 @@
                             <th scope="row"><?=$get_fact['id']?></th>
                             <td><?=get_name($get_fact['id_fou'])?></td>
                             <td><?=$get_fact['date']?></td>
+                            <td><?=$get_fact['date']?></td>
+
                             <td>
                             <a class="btn btn-success" href="../activity/facture.php?num=<?=$get_fact['id']?>">
                                 Consulter

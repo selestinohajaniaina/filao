@@ -24,8 +24,9 @@ $fetch=$select->fetch();
 if($nbrExist>0){
 
     $dbpassword=$fetch["password"];
+    $dbname=$fetch["username"];
     
-    if($password == $dbpassword ) {
+    if(($password == $dbpassword) & ($dbname == $name)  ) {
         $_SESSION["id"] = true;
         $_SESSION["id"] = $fetch["id"];
         $_SESSION["name"] = $fetch["username"];

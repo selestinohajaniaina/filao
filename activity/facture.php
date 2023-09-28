@@ -97,6 +97,7 @@
                           <h6>Prix total a payer: <i><?=$total?></i> AR</h6>
                         </div>
                         <button class="btn btn-primary" onclick="imprimerContenu()">Imprimer</button>
+                        <?php require('is_payer.php')?>
                         <!-- /Social Accounts -->
                     </div>
                     <!-- / Content -->

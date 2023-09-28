@@ -29,13 +29,13 @@
               </li>
 
               <!-- User -->
-              <li class=" nav-item navbar-dropdown dropdown-user dropdown">
+              <li class="nav-item navbar-dropdown dropdown-user dropdown">
                 <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
                   <div class="avatar avatar-online">
                     <img src="../assets/img/logo.jpg" alt class="w-px-40 h-auto rounded-circle" />
                   </div>
                 </a>
-                <ul class=" dropdown-menu dropdown-menu-end">
+                <ul class="dropdown-menu dropdown-menu-end">
                   <li>
                     <a class="dropdown-item" type="button" class="btn btn-secondary d-grid w-100" data-bs-toggle="modal"
                               data-bs-target="#basical" href="#">
@@ -70,7 +70,8 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                       aria-label="Close"></button>
                                   </div>
-                                  <form action="../fournisseur/add_new.php" method="POST">
+                                  <form action="../profil/editpswrd.php" method="POST">
+                                    <input type="hidden" name="iduser" value="<?=$_SESSION["id"]?>">
                                     <div class="modal-body">
                                       <div class="row">
                                         <div class="col mb-3">
@@ -102,23 +103,32 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                       aria-label="Close"></button>
                                   </div>
-                                  <form action="../ajoutUser/addnew.php" method="POST">
+                                  <form action="../profil/adduser.php" method="POST">
                                     <div class="modal-body">
                                       <div class="col">
                                         <div class="col mb-3">
                                           <label for="nameBasic" class="form-label">Nom De l' utilisateur</label>
-                                          <input type="text" id="nameBasic" autocomplete="off" class="form-control"
-                                            placeholder="Nom d'utilisateur" name="userName"/>
+                                          <input type="text" id="nameBasic" autocomplete="off" class="form-control" placeholder="Nom d'utilisateur" name="username"/>
                                         </div>
-                                        
-                                        <div class="col mb-3">
+
+                                        <div class="col m-3">
                                           <label for="nameBasic" class="form-label">Responsabilité</label>
-                                          <select id="defaultSelect" class="form-select" placeholder="Nom d'utilisateur" name="UserResp">
-                                            <option value=""></option>
-                                            <option value="">Responsable de Vente </option>
-                                            <option value="">Responsable d' Achat et Traitement</option>
-                                            <option value="">Responsable de Stock et Chargement</option>
-                                          </select>
+                                        </div>
+                                        <div class="col">
+                                        <input type="checkbox" name="action" id="vente">
+                                        <label for="vente">Responsable de Vente</label>
+                                        </div>
+                                        <div class="col">
+                                        <input type="checkbox" name="action1" id="achat">
+                                        <label for="achat">Responsable d' Achat et Traitement</label>
+                                        </div>
+                                        <div class="col">
+                                        <input type="checkbox" name="action2" id="stock">
+                                        <label for="stock">Responsable de Stock et Chargement</label>
+                                        </div>
+                                        <div class="col">
+                                        <input type="checkbox" name="action3" id="stock">
+                                        <label for="stock">Trésorerie et Dépense</label>
                                         </div>
                                       </div>
                                      

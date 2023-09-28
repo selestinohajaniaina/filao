@@ -227,6 +227,7 @@
                       </div>
                     </div>
                     <button class="btn btn-primary" onclick="imprimerContenu()">Imprimer</button>
+                    <?php require('payement/is_payer.php')?>
                   </div>
                 </div>
               </div>
