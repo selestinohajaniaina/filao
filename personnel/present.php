@@ -1,16 +1,27 @@
 <?php
     require('../db.php');
-    $id = $_GET["id"];
-    $sql = "INSERT INTO present(`id_personnel`) VALUE ('$id')";
-    $stmt = $db->prepare($sql);
 
-    if ($stmt->execute()) {
-        ?>
-            <script>
-                document.location.href = "../personnel";
-            </script>
-       <?php
-    } else {
-        echo " $sql Erreur lors de supression des personnel.";
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $id = $_POST["id"];
+        $debut = $_POST['debut'];
+        $fin = $_POST['fin'];
+        
+        $sql = "INSERT INTO present(`id_personnel`, `debut`, `fin`) VALUES ($id, '$debut', '$fin')";
+        echo $sql;
+        $stmt = $db->prepare($sql);
+        
+        if ($stmt->execute()) {
+            
+            // header("location:../html/FactureAchat.php?id_fournisseur=".$num_fournisseur_one."&numFact=".$num_facture_one);
+            ?> 
+    <script>
+        window.document.location.href = "../personnel";
+    </script>
+<?php
+        } else {
+            echo "Erreur lors de l'insertion des données au personnnel.";
+        }
     }
+        
 ?>
+

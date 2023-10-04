@@ -2,10 +2,10 @@
 
 function is_present($id_selector) {
     require('../db.php');
-    $getBy = $db -> prepare("SELECT * FROM present WHERE id_personnel=$id_selector AND date(`date`)=CURDATE()");
+    $getBy = $db -> prepare("SELECT id, id_personnel, debut, fin, TIMEDIFF(fin, debut) AS suple FROM present WHERE id_personnel=$id_selector AND date(`date`)=CURDATE()");
     $getBy -> execute();
     $fetchBy = $getBy -> fetch();
-    return ($fetchBy["id"]);
+    return ($fetchBy);
 }
 
         require('../db.php');
@@ -26,6 +26,9 @@ function is_present($id_selector) {
                   <thead>
                     <tr class="text-nowrap">
                       <th>Nom</th>
+                      <th>Debut</th>
+                      <th>Fin</th>
+                      <th>H. Supplementaire</th>
                       <th>Presence</th>
                        
                     </tr>
@@ -37,23 +40,40 @@ function is_present($id_selector) {
                     <?php foreach ($stmt_personnel_pre as $get_per_pre) : ?>
                         <tr class="tr">
                             <td><?=($get_per_pre['nom'])?></td>
-                            <td>
-                                <?php
-                                    if(!is_present($get_per_pre['id'])){
-                                ?>
-                            <a class="btn btn-success" title="Marquer <?=($get_per_pre['nom'])?> comme present" href="present.php?id=<?=$get_per_pre['id']?>">
-                            Absent
-                            </a>
+                          <?php
+                                    if(!is_present($get_per_pre['id'])["id"]){
+                                      ?>
+                                <form action="present.php" method="post">
+                                  <td>
+                                    <input type="hidden" name="id" value="<?=$get_per_pre['id']?>"/>
+                                    <input type="time" name="debut" required/>
+                                  </td>
+                                  <td>
+                                    <input type="time" name="fin" required/>
+                                  </td>
+                                  <td>
+                                    00:00 H
+                                  </td>
+                                  <td>
+                                  <button type="submit"  class="btn btn-success" title="Marquer <?=($get_per_pre['nom'])?> comme present">
+                                  Absent
+                                  </button>
+                                </td>
+                                </form>
                             <?php
                                     }else{
                                 ?>
-                            <a class="btn btn-primary" title="Marquer <?=($get_per_pre['nom'])?> comme absent" href="absent.php?id=<?=$get_per_pre['id']?>">
-                                Present
-                            </a>
+                            <td><?=(is_present($get_per_pre['id'])["debut"])?></td>
+                            <td><?=(is_present($get_per_pre['id'])["fin"])?></td>
+                            <td><?=(is_present($get_per_pre['id'])["suple"])?></td>
+                                <td>
+                                  <a class="btn btn-primary" title="Marquer <?=($get_per_pre['nom'])?> comme absent" href="absent.php?id=<?=$get_per_pre['id']?>">
+                                    Present
+                                  </a>
+                                </td>
                             <?php
                                    }
                                 ?>
-                            </td>
                     </tr>
                     <?php endforeach; ?>
                   </tbody>
