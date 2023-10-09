@@ -52,7 +52,7 @@ function is_present($id_selector) {
                                     <input type="time" name="fin" required/>
                                   </td>
                                   <td>
-                                    00:00 H
+                                    00:00:00
                                   </td>
                                   <td>
                                   <button type="submit"  class="btn btn-success" title="Marquer <?=($get_per_pre['nom'])?> comme present">
@@ -65,7 +65,16 @@ function is_present($id_selector) {
                                 ?>
                             <td><?=(is_present($get_per_pre['id'])["debut"])?></td>
                             <td><?=(is_present($get_per_pre['id'])["fin"])?></td>
-                            <td><?=(is_present($get_per_pre['id'])["suple"])?></td>
+                            <td><?php
+                            $vitany = DateTime::createFromFormat('H:i:s', is_present($get_per_pre['id'])["suple"]);
+                            $normal = DateTime::createFromFormat('H:i:s', "10:30:00");
+                            $dec = $normal -> diff($vitany);
+                            $h = $dec->h;
+                            if($h<0){
+                              echo "-";
+                            }
+                            echo $h.":".$dec->i.":".$dec->s;
+                            ?></td>
                                 <td>
                                   <a class="btn btn-primary" title="Marquer <?=($get_per_pre['nom'])?> comme absent" href="absent.php?id=<?=$get_per_pre['id']?>">
                                     Present
