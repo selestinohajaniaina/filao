@@ -61,49 +61,17 @@
       <!-- / Navbar -->
 
       <!-- add bar -->
-      <form method="post" action="add.php">
-<nav  class="container-fluid flex-grow-1 container-p-y col-md-8 col-lg-12 order-2 mb-12"id="layout-navbar">
-          <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
-            <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
-              <i class="bx bx-menu bx-sm"></i>
-            </a>
-          </div>
-
-          <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
-            <div class="navbar-nav align-items-center">
-              <div class="nav-item d-flex align-items-center">
-                <div class="mx-2">Nom: </div>
-                <div>
-                    <input type="text" name="name" class="form-control"/>
-                </div>
-                <div class="mx-2">Contact: </div>
-                <div>
-                    <input type="text" name="contact" class="form-control"/>
-                </div>
-                <div class="mx-2">Poste: </div>
-                <div>
-                    <select name="poste" class="form-select">
-                        <option value="Mahajanga">Mahajanga</option>
-                        <option value="Antananarivo">Antananarivo</option>
-                    </select>
-                </div> 
-                </div>
-            </div>
-        </div>
-        <button class="btn btn-primary" type="submit" name="btn_search">Ajouter</button>
-        </nav>
-        </form>
-        <!-- / add bar -->
-
         <?php 
         // ajouter a la variable $vile le poste
 
-        $ville = "Antananarivo";
-        require('liste_mj.php');
-        $ville = "Mahajanga";
-        require('liste_mj.php');
+        //$ville = "Antananarivo";
+        //require('liste_mj.php');
+        //$ville = "Mahajanga";
+        //require('liste_mj.php');
 
         // presence
+        require('presence.php');
+
         ?>
     </div>
     <!-- / Layout page -->

@@ -1,7 +1,7 @@
 <?php
 
         require('../db.php');
-        $sql = "SELECT id_poisson, SUM(qtt) AS qtt_total FROM detailavant GROUP BY id_poisson ORDER BY id_poisson ASC";
+        $sql = "SELECT idfilao, SUM(qtt) AS qtt_total FROM detailavant GROUP BY idfilao ORDER BY idfilao ASC";
         $stmt = $db->prepare($sql);
         $stmt->execute();
     
@@ -27,6 +27,7 @@
                     <tr class="text-nowrap">
                       <th>Nom poisson</th>
                       <th>Poid</th>
+                      <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -35,12 +36,24 @@
                     
                     <?php foreach ($all_facture as $get_fact) : ?>
                         <tr>
-                            <th scope="row"><?=getNomPoisson($get_fact['id_poisson'])?></th>
+                            <th scope="row"><?=getNomPoisson($get_fact['idfilao'])?></th>
                             <td><?=($get_fact['qtt_total'])?></td>
+                            <td>
+                              <form action="updatefilao.php" method="post">
+                                <input type="hidden" name="idf"value="<?=($get_fact['idfilao'])?>">
+                                <select name="newid"class="form-control" id="">
+                                <?=require("../poisson/liste.php");?>
+                                </select>
+                            </td>
+                            <td>
+                                <input class="btn btn-primary" type="submit" value="ok">
+                              </form>
+                            </td>
                     </tr>
                     <?php endforeach; ?>
                   </tbody>
                 </table>
+
               </div>
             </div>
             <!--/ Layout Demo -->

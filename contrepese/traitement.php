@@ -29,9 +29,9 @@
         }
         // sortie
         function return_type_sortie($num_to_get){
-          // $id_sortie=$get_fact["id"];
           require('../db.php');
-          $num=$_GET['num'];
+          $id_sortie= $_GET["num"];
+          $num =$_GET['num'];
           $selection_sortie = $db -> prepare("SELECT * FROM sortie WHERE id_sortie=$id_sortie");
           $selection_sortie -> execute();
           $fetch_sortie = $selection_sortie -> fetch();
@@ -176,15 +176,12 @@
                                   } 
                                   ?>
                                 </form>
-                               
-                                <?php 
-                                require('sortieshow.php')
-                                ?>
 
                                 <?php
+                                 require('sortieshow.php');
                                   if(return_type($get_fact['id_poisson'])) {
                                     ?>
-                                      <td>
+                                <td>
                                   <!-- apres traitement -->
                                 <form action="../contrepese/avant_chambre.php" method="post">
                                     <input type="hidden" name="num" value="<?=$numeroFacture?>">
@@ -216,7 +213,7 @@
                                   ?>
                                 </form>
                                 </td>
-                                <?php require('obs.php')?>
+                                <?php require('obs.php');?>
                             </tr>
                             <?php  } ?>
 

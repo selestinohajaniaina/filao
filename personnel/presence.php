@@ -18,7 +18,7 @@ function is_present($id_selector) {
 ?>
 
 
-<div class="container-fluid flex-grow-1 container-p-y col-md-8 col-lg-8 order-2 mb-8">
+<div class="container-fluid flex-grow-1 container-p-y col-md-8 col-lg-12 order-2 mb-12">
     <div class="card">
               <h5 class="card-header">Fiche de presence aujourd'hui</h5>
               <div class="table-responsive text-nowrap">
@@ -29,6 +29,7 @@ function is_present($id_selector) {
                       <th>Debut</th>
                       <th>Fin</th>
                       <th>H. Supplementaire</th>
+                      <th>Total Heure</th>
                       <th>Presence</th>
                        
                     </tr>
@@ -82,3 +83,7 @@ function is_present($id_selector) {
             </div>
             <!--/ Layout Demo -->
           </div>
+
+
+
+          

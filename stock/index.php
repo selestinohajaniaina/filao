@@ -1,4 +1,20 @@
-<?php session_start(); ?>
+<?php session_start();
+
+require('../db.php');
+$range = !empty($_SESSION["emplacement"])?($_SESSION["emplacement"] == "eto" ? 1:2):1;
+$selection = $db -> prepare("SELECT * FROM stock WHERE date(`date`)=CURDATE() ORDER BY id DESC");
+$selection -> execute();
+$fetchAll = $selection -> fetchAll();
+
+function getNomPoisson($id_selector) {
+    require('../db.php');
+    $getBy = $db -> prepare("SELECT nomFilao FROM poisson WHERE id=$id_selector");
+    $getBy -> execute();
+    $fetchBy = $getBy -> fetch();
+    return $fetchBy["nomFilao"];
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en" class="light-style layout-menu-fixed" dir="ltr" data-theme="theme-default" data-assets-path="../assets/"
   data-template="vertical-menu-template-free">
@@ -65,15 +81,16 @@
         <!-- Content wrapper -->
         <div class="content-wrapper">
           <!-- Content -->
-
           <div class="container-xxl flex-grow-1 container-p-y">
             <h4 class="fw-bold py-3 mb-4">
               <span class="text-muted fw-light"> </span> Preparation dans le stock
             </h4>
-
+            <button type="button"class="btn btn-primary">Combiner  des poisson</button>
             <div class="row">
               <div class="col-md-12">
                 <div class="row">
+                <?php require("liste_traitement.php")?>
+
                   <div class="col-md-4 col-12 mb-md-0 mb-4">
                     <div class="card">
                       <h5 class="card-header">Pesage avant le stock</h5>
@@ -91,7 +108,10 @@
                               <div class="flex-grow-1 row">
                                   <div class="input-group input-group-merge">
                                     <select id="defaultSelect" name="poisson" class="form-select">
-                                      <?php require('../poisson/liste.php')?>
+                                      <?php foreach ($all_facture as $get_fact) : ?>
+                                              <option value="<?=$get_fact['idfilao']?>"><?=getNomPoisson($get_fact['idfilao'])?></option>
+                                      <?php endforeach; ?>
+                                
                                     </select>
                                 </div>
                                 
@@ -118,39 +138,9 @@
                             <button class="btn btn-primary d-grid w-100" type="submit">Ajouter</button>
                           </div>
                         </form>
-                        <div class="modal fade" id="basicModal" tabindex="-1" aria-hidden="true">
-                                  <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                      <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel1">Ajout Poisson</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                          aria-label="Close"></button>
-                                      </div>
-                                      <form action="../poisson/add_new.php" method='POST'>
-                                        <div class="modal-body">
-                                          <div class="row">
-                                            <div class="col mb-3">
-                                              <label for="nameBasic" class="form-label">Nom</label>
-                                              <input type="text" id="nameBasic" class="form-control"
-                                              placeholder="Non de Poisson" name="nom"/>
-                                              <input type="hidden" name="id_fournisseur" value="<?=$_GET['id_fournisseur']?>"/>
-                                              <input type="hidden" name="numFact" value="<?=$_GET['numFact']?>"/>
-                                            </div>
-                                          </div>
-
-
-                                        </div>
-                                        <div class="modal-footer">
-
-                                          <button type="submit" class="btn btn-primary">Enregistrer</button>
-                                        </div>
-                                      </form>
-                                    </div>
-                                  </div>
-                                </div>
+                      
                         <!-- Connections -->
 
-                        <!-- /Connections -->
                       </div>
                     </div>
                   </div>
@@ -158,7 +148,6 @@
                   <div class="col-md-8 col-12">
                     <div class="card">
                       <div class="row">
-                        <!-- Bootstrap carousel -->
                         <div class="col-md">
                           <h5 class="my-4">Liste des poissons stoqué aujourd'hui</h5>
 
@@ -167,7 +156,6 @@
                       </div>
                       <div class="card-body">
                         <p></p>
-                        <!-- Social Accounts -->
                         <div class="card">
                           <div class="table-responsive text-nowrap">
                             <table class="table">
@@ -185,12 +173,10 @@
                             </table>
                           </div>
                         </div>
-                        <!-- /Social Accounts -->
                       </div>
                     </div>
                   </div>
 
-                  <?php require("liste_traitement.php")?>
 
                 </div>
               </div>

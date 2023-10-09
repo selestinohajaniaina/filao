@@ -10,7 +10,7 @@ $fetch_obs = $selection_obs -> fetch();
 <td id="sortiefilao"> 
 <?php
 if(empty($fetch_obs["sortieqtt"])){
-   $sortie= "hhhhhh"
+   $sortie = 0
     ?>
      <form action="sortie.php" method="post">
         <input type="hidden" name="num" value="<?=$numeroFacture?>">

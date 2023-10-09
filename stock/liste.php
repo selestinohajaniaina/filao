@@ -1,17 +1,5 @@
 <?php
-    require('../db.php');
-    $range = !empty($_SESSION["emplacement"])?($_SESSION["emplacement"] == "eto" ? 1:2):1;
-    $selection = $db -> prepare("SELECT * FROM stock WHERE date(`date`)=CURDATE() ORDER BY id DESC");
-    $selection -> execute();
-    $fetchAll = $selection -> fetchAll();
 
-    function getNomPoisson($id_selector) {
-        require('../db.php');
-        $getBy = $db -> prepare("SELECT nomFilao FROM poisson WHERE id=$id_selector");
-        $getBy -> execute();
-        $fetchBy = $getBy -> fetch();
-        return $fetchBy["nomFilao"];
-    }
 
     foreach($fetchAll as $fetch){
         $id_poisson = getNomPoisson($fetch['id_poisson']);
