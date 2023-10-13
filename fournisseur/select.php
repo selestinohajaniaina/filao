@@ -14,9 +14,9 @@
             $newNumFact = 1;
         }
 
-     
+
         
-        $creatNewFact = "INSERT INTO facture(`id`, `id_fou`, `text`) VALUES ($newNumFact, $fournisseur, '')";
+        $creatNewFact = "INSERT INTO facture(`id`, `id_fou`, `totalapayee`,`payee`,`restapayer`) VALUES ($newNumFact, $fournisseur, 0, 0 ,0)";
         $validation = $db->prepare($creatNewFact);
 
         if ($validation->execute()) {

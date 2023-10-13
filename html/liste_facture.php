@@ -1,4 +1,3 @@
-
 <?php
 
         function get_name($id_to_get) {
@@ -11,46 +10,46 @@
         }
 
         require('../db.php');
-        $sql = "SELECT * FROM facture ORDER BY id DESC LIMIT 7";
+        require('../facture/prix_one_facture.php');
+        require('../facture/poid_one_facture.php');
+        $sql = "SELECT * FROM facture ORDER BY id DESC";
         $stmt = $db->prepare($sql);
         $stmt->execute();
     
         $all_facture = $stmt->fetchAll(PDO::FETCH_ASSOC);
     
 ?>
-
-
-<div class="container-fluid flex-grow-1 container-p-y col-md-8 col-lg-8 order-2 mb-8">
+<div class="container-fluid flex-grow-1 container-p-y col-md-8 col-lg-8 order-3 mb-8">
     <div class="card">
-              <h5 class="card-header"> Liste D' Achat Effectué</h5>
+              <h5 class="card-header"> Liste des Stocks Effectué</h5>
               <div class="table-responsive text-nowrap">
                 <table class="table">
                   <thead>
                     <tr class="text-nowrap">
-                      <th>NumFact</th>
-                      <th>Fournisseur</th>
+                      <th>Num Fact</th>
+                      <th>fournisseur</th>
+                      <th>Poid</th>
                       <th>Date</th>
-                      
+                      <th>Somme</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- selection des facture aujourd'hui -->
-                    
-                    
-                    <?php foreach ($all_facture as $get_fact) : ?>
-                        <tr>
-                            <th scope="row"><?=$get_fact['id']?></th>
-                            <td><?=get_name($get_fact['id_fou'])?></td>
-                            <td><?=$get_fact['date']?></td>
-                            <td><?=$get_fact['date']?></td>
-
-                            <td>
-                            <a class="btn btn-success" href="../activity/facture.php?num=<?=$get_fact['id']?>">
-                                Consulter
-                            </a>
-                        </td>
-                    </tr>
-                    <?php endforeach; ?>
+                  <?php foreach ($all_facture as $get_fact) : 
+                          if(poid_total($get_fact['id']) >0 ){
+                              ?>
+                      <tr>
+                          <th scope="row"><?=$get_fact['id']?></th>
+                          <td><?=get_name($get_fact['id_fou'])?></td>
+                          <td><?=poid_total($get_fact['id'])?> KG</td>
+                          <td><?=$get_fact['date']?></td>
+                          <td>Ar  <?=nbr_total($get_fact['id'])?> </td>
+                          <td>
+                              <a class="btn btn-success" href="../activity/facture.php?num=<?=$get_fact['id']?>">
+                                                  Consulter
+                                              </a>
+                          </td>
+                      </tr>
+                      <?php } endforeach; ?>   
 
                         <tr>
                             <td colspan="4">

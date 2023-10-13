@@ -1,7 +1,20 @@
 <?php
     require('../db.php');
-    $id = $_GET["id"];
-    $sql = "UPDATE `facture` SET `text`= 'non' WHERE id=$id";
+    function getpaied($id_selector) {
+        require('../db.php');
+        $getBy = $db -> prepare("SELECT payee FROM facture WHERE id=$id_selector");
+        $getBy -> execute();
+        $fetchBy = $getBy -> fetch();
+        return $fetchBy["payee"];
+    }
+    
+    $id = $_POST["numfac"];
+    $payee = $_POST["payeena"];
+    $total = $_POST["totalapayer"];
+    $apayee= getpaied( $id ) + $payee;
+    $rest = $_POST["totalapayer"] - $apayee ;
+
+    $sql = "UPDATE `facture` SET `payee`= $apayee,`restapayer`=$rest WHERE id=$id";
     $stmt = $db->prepare($sql);
 
     if ($stmt->execute()) {

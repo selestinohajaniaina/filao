@@ -62,10 +62,26 @@
 
             
           </li>
-          <li class="menu-item">
+          <!-- <li class="menu-item">
             <a href="../particulier" class="menu-link">
               <i class="menu-icon tf-icons bx bx-dock-top"></i>
               <div class="card-title mb-9 fw-semibold text-black">Vente Particulier</div>
+              
+            </a>
+
+          </li> -->
+          <!-- <li class="menu-item">
+            <a href="../personnel" class="menu-link">
+              <i class="menu-icon tf-icons bx bx-dock-top"></i>
+              <div class="card-title mb-9 fw-semibold text-black">Controle des personnel</div>
+              
+            </a>
+
+          </li> -->
+          <li class="menu-item">
+            <a href="../depense" class="menu-link">
+              <i class="menu-icon tf-icons bx bx-dock-top"></i>
+              <div class="card-title mb-9 fw-semibold text-black">Gestion de dépenses</div>
               
             </a>
 

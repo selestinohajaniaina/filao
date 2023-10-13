@@ -69,9 +69,9 @@
                 <label class="form-label" for="name"> Mot de Passe</label>
 
                 <div class="input-group input-group-merge">
-                  <input type="text" id="password" required autocomplete="off" class="form-control" name="password"
+                  <input type="password" id="password" required autocomplete="off" class="form-control" name="password"
                     placeholder="Entrer votre Mots de passe" aria-describedby="password" />
-                  <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+                  <span class="input-group-text cursor-pointer"><i class="bx bx-de"></i></span>
                 </div>
               </div>
 

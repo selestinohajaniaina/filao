@@ -1,40 +1,38 @@
 <?php
 
 
-    foreach($fetchAll as $fetch){
-        $id_poisson = getNomPoisson($fetch['id_poisson']);
-        $qtt_poisson = $fetch['qtt'];
-        $id = $fetch['id'];
-        $nombre_sac = $fetch['nombre_sac'];
-        $place = $fetch['place'];
+foreach ($fetchAll as $fetch) {
+  $id_poisson = getNomPoisson($fetch['id_poisson']);
+  $qtt_poisson = $fetch['qtt'];
+  $id = $fetch['id'];
+  $nombre_sac = $fetch['nombre_sac'];
+  $place = $fetch['place'];
 
 
-        ?>
+?>
 
-<tr>
-                                  <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong><?=$id_poisson?>
-                                    </strong></td>
-                                  <td><?=$qtt_poisson?></td>
-                                  <td>
-                                  <?=$nombre_sac?>
-                                  </td>
-                                  <td>
-                                    <div class="dropdown">
-                                      <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
-                                        data-bs-toggle="dropdown">
-                                        <i class="bx bx-dots-vertical-rounded"></i>
-                                      </button>
-                                      <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="delete.php?id=<?=$id?>"><i
-                                            class="bx bx-trash me-1"></i>
-                                          Suprimer</a>
-                                      </div>
-                                    </div>
-                                  </td>
-                                </tr>
+  <tr>
+    <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong><?= $id_poisson ?>
+      </strong></td>
+    <td><?= $qtt_poisson ?></td>
+    <td>
+      <?= $nombre_sac ?>
+    </td>
+    <td>
+      <div class="dropdown">
+        <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+          <i class="bx bx-dots-vertical-rounded"></i>
+        </button>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="delete.php?id=<?= $id ?>"><i class="bx bx-trash me-1"></i>
+            Suprimer</a>
+        </div>
+      </div>
+    </td>
+  </tr>
 
-        <?php
+<?php
 
-    }
-    ?>
-    </table>
+}
+?>
+</table>

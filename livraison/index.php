@@ -77,18 +77,8 @@
                             <div class="card-body">
                             <div class="mb-3 col">
                             <div class="modal-body">
-
-                                    <div class="mb-1">
-                                        <input type="radio" name="livraison" id="client" value="client" required>
-                                        <label for="client">Livré a client</label>
-                                    </div>
-                                    <br>
-                                    <div class="mb-1">
-                                        <input type="radio" name="livraison" id="depot" value="depot" required>
-                                        <label for="depot">Livré a depot</label>
-                                    </div>
                                 <div class="mb-3">
-                                <button class="btn btn-primary d-grid w-100" type="submit">Valider</button>
+                                <button class="btn btn-primary d-grid w-100" type="submit">chargement Normale</button>
                                 <center>Ou</center>
                                 <a href="../chargement_bac/" class="btn btn-success d-grid w-100">Chargement au Bac</a>
                                 </div>
