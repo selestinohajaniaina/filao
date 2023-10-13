@@ -81,6 +81,15 @@
 
           </li>
 
+          <li class="menu-item">
+            <a href="../depense" class="menu-link">
+              <i class="menu-icon tf-icons bx bx-dock-top"></i>
+              <div class="card-title mb-9 fw-semibold text-black">Suivie de Depence</div>
+              
+            </a>
+
+          </li>
+
 
         </ul>
       </aside>
