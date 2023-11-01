@@ -48,7 +48,8 @@ if($nbrExist>0){
 
             echo "
             <script>
-                alert('BCHDSBFHSDBFHK')
+                alert('Identification introuvable');
+                document.location.href = '../html/login.php;
             </script>
             ";
 

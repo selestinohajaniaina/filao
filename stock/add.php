@@ -1,5 +1,5 @@
 <?php
-    require('../db.php');
+    require ('../db.php');
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $poisson = $_POST["poisson"];
       $qtt = $_POST["qtt"];

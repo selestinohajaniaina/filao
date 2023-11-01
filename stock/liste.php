@@ -1,11 +1,20 @@
 <?php
 
+require ('../db.php');
+// $range = !empty($_SESSION["emplacement"]) ? ($_SESSION["emplacement"] == "eto" ? 1 : 2) : 1;
+//$selection = $db->prepare("SELECT * FROM stock WHERE date(`date`)=CURDATE() ORDER BY id DESC");
+$selection = $db->prepare("SELECT id_poisson, SUM(nombre_sac) AS total_sac, SUM(qtt) AS total_qtt FROM stock WHERE date(`date`)=CURDATE()  GROUP BY id_poisson ORDER BY id_poisson DESC");
+
+$selection->execute();
+$fetchAll = $selection->fetchAll();
+
+
 
 foreach ($fetchAll as $fetch) {
   $id_poisson = getNomPoisson($fetch['id_poisson']);
-  $qtt_poisson = $fetch['qtt'];
+  $qtt_poisson = $fetch['total_qtt'];
   $id = $fetch['id'];
-  $nombre_sac = $fetch['nombre_sac'];
+  $nombre_sac = $fetch['total_sac'];
   $place = $fetch['place'];
 
 

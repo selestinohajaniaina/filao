@@ -189,7 +189,7 @@
                                   <?php 
                                   
                                   if(!return_type_avant($get_fact['id_poisson'])) {$count +=1; $atraite=return_type($get_fact['id_poisson'])?>
-                                    <input type="text" name="qtt" value="<?= $atraite - $sortie?>" id="input_qtt_y" onkeyup="maka_py(<?=return_type($get_fact['id_poisson'])?>,event,<?=$count?>)"> KG
+                                    <input type="text" name="qtt" value="<?= $atraite - $sortie?>" id="input_qtt_y"> KG
                                     <button class="btn btn-primary" type="submit">ok</button>
                                   </td>
 
@@ -202,7 +202,7 @@
                                      if(return_type_avant($get_fact['id_poisson'])) {
                                    $rest = return_type($get_fact['id_poisson']) - $sortie ;
                                    $pourcentage = ((return_type_avant($get_fact['id_poisson']) * 100 ) / $rest);
-                                   $decicationPourcentage = $pourcentage;
+                                   $decicationPourcentage = 100-$pourcentage;
                                    $decicationPourcentage = round($decicationPourcentage,2);
                                    echo "<td> $decicationPourcentage %</td>";
                                   }else{

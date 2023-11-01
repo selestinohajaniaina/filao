@@ -7,13 +7,14 @@ $stmt->execute();
 
 $all_facture = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-// function getNomPoisson($id_selector) {
-//     require('../db.php');
-//     $getBy = $db -> prepare("SELECT nomFilao FROM poisson WHERE id=$id_selector");
-//     $getBy -> execute();
-//     $fetchBy = $getBy -> fetch();
-//     return $fetchBy["nomFilao"];
-// }
+function getNomPoisson($id_selector)
+{
+  require('../db.php');
+  $getBy = $db->prepare("SELECT nomFilao FROM poisson WHERE id=$id_selector");
+  $getBy->execute();
+  $fetchBy = $getBy->fetch();
+  return $fetchBy["nomFilao"];
+}
 
 ?>
 
@@ -25,7 +26,7 @@ $all_facture = $stmt->fetchAll(PDO::FETCH_ASSOC);
       <table class="table">
         <thead>
           <tr class="text-nowrap">
-            <th>Nom poisson</th>
+            <th>categorie poisson</th>
             <th>Poid</th>
             <th></th>
           </tr>
@@ -38,17 +39,7 @@ $all_facture = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <tr>
               <th scope="row"><?= getNomPoisson($get_fact['idfilao']) ?></th>
               <td><?= ($get_fact['qtt_total']) ?></td>
-              <td>
-                <form action="updatefilao.php" method="post">
-                  <input type="hidden" name="idf" value="<?= ($get_fact['idfilao']) ?>">
-                  <select name="newid" class="form-control" id="">
-                    <?= require("../poisson/liste.php"); ?>
-                  </select>
-              </td>
-              <td>
-                <input class="btn btn-primary" type="submit" value="ok">
-                </form>
-              </td>
+              
             </tr>
           <?php endforeach; ?>
         </tbody>

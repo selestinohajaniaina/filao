@@ -78,66 +78,105 @@ function getRest($id_selector)
         <!-- Content wrapper -->
         <div class="content-wrapper">
           <!-- Content -->
+          <div class="container-xxl flex-grow-1 container-p-y">
 
-          <div class="card-body">
-            <?php require('detail_fournisseur.php') ?>
+            <div class="row">
+              <div class="col-md-8 col-lg-8 order-0 mb-8">
+                <div class="card h-100">
+                  <div class="card-body">
+                    <?php require('detail_fournisseur.php') ?>
 
-            <!-- Social Accounts -->
-            <div class="card" id="content">
-              <div class="col-md">
-                <h5 class="mt-4 mx-2">Facture Numero : <?= $_GET['num'] ?></h5>
-                <h5 class="my-2 mx-2">Nom Fournisseur : <?= $nom_fou ?></h5>
-                <h5 class="my-2 mx-2">Adresse : <?= $Adresse_fou ?></h5>
-                <h5 class="mb-4 mx-2">Contact : <?= $contact_fou ?></h5>
+                    <!-- Social Accounts -->
+                    <div class="card" id="content">
+                      <div class="col-md">
+                        <h5 class="mt-4 mx-2">Facture Numero : <?= $_GET['num'] ?></h5>
+                        <h5 class="my-2 mx-2">Nom Fournisseur : <?= $nom_fou ?></h5>
+                        <h5 class="my-2 mx-2">Adresse : <?= $Adresse_fou ?></h5>
+                        <h5 class="mb-4 mx-2">Contact : <?= $contact_fou ?></h5>
+                      </div>
+                      <div class="table-responsive text-nowrap">
+                        <table class="table">
+                          <thead>
+                            <tr>
+                              <th>Poisson</th>
+                              <th>Poid</th>
+                              <th>Prix Unitaire</th>
+                              <th>Prix Total</th>
+                            </tr>
+                          </thead>
+                          <tbody class="table-border-bottom-0">
+                            <?php require('liste_all_facture.php') ?>
+                          </tbody>
+                        </table>
+                      </div>
+                      <h6>Prix total a payer: <i><?= $total ?></i> AR</h6>
+                    </div>
+
+
+
+                    <button class="btn btn-primary" onclick="imprimerContenu()">Imprimer</button>
+
+                    <!-- /Social Accounts -->
+
+
+                  </div>
+                  <!-- / Content -->
+
+                  <div class="content-backdrop fade"></div>
+                </div>
               </div>
-              <div class="table-responsive text-nowrap">
-                <table class="table">
-                  <thead>
-                    <tr>
-                      <th>Poisson</th>
-                      <th>Poid</th>
-                      <th>Prix Unitaire</th>
-                      <th>Prix Total</th>
+              <div class="col-md-6 col-lg-4 col-xl-4 order-1 mb-4">
+                <div class="card h-100">
+                  <div class="card-body">
+                    <?php require('detail_fournisseur.php') ?>
 
-                    </tr>
-                  </thead>
-                  <tbody class="table-border-bottom-0">
-                    <?php require('liste_all_facture.php') ?>
-                  </tbody>
-                </table>
+                    <!-- Social Accounts -->
+                    <div class="card" id="content">
+                      <center><h2>Payment</h2></center>
+                      <div class="col-md">
+                        <h3>somme payer :</h3>  <?= getpaied($_GET['num']) ?> AR
+                        <h3>Reste à payer:</h3>  <?= getRest($_GET['num']) ?> AR
+                        <?php
+                        $vita =  $total;
+                        $paid =  Getpaied($_GET['num']);
+                        if ($vita == $paid) {
+                        ?>
+                          <br><br>
+                          <form action="non_payer.php" method="post">
+                            <input type="text" name="totalapayer"class="form-control"value="<?= $total ?> Ariary" readonly>
+                            <br><input type="text" name="numfac" class="form-control" value="<?= $_GET['num'] ?>" readonly>
+                            <br><input type="text" name="payeena"class="form-control"value="facture fa vita" readonly id="">
+                            <br><input type="button" class="form-control btn btn-primary"disabled value="Enregistrer">
+                          </form>
+                        <?php
+                        } else {
+                        ?>
+                          <form action="non_payer.php" method="post">
+                            <input type="text" name="totalapayer" value="<?= $total ?>" readonly>
+                            <input type="text" name="numfac" value="<?= $_GET['num'] ?>" readonly>
+                            <input type="number" name="payeena" id="">
+                          
+                          </form>
+                        <?php
+                        }
+                        ?>
+                      </div>
+                     
+
+
+                    
+
+                    <!-- /Social Accounts -->
+
+
+                  </div>
+                  <!-- / Content -->
+
+                  <div class="content-backdrop fade"></div>
+                </div>
               </div>
-              <h6>Prix total a payer: <i><?= $total ?></i> AR</h6>
             </div>
-            <h6>somme payer : <i><?= getpaied($_GET['num']) ?> </i> AR</h6>
-            <h6>Reste à payer: <i><?= getRest($_GET['num']) ?> </i> AR</h6>
-            <?php
-            $vita =  $total;
-            $paid =  Getpaied($_GET['num']);
-            if ($vita == $paid) {
-            ?>
-              <h2>facture fa vita</h2>
-            <?php
-            } else {
-            ?>
-              <form action="non_payer.php" method="post">
-                <input type="hidden" name="totalapayer" value="<?= $total ?>">
-                <input type="hidden" name="numfac" value="<?= $_GET['num'] ?>">
-                <input type="number" name="payeena" id="">
-              </form>
-            <?php
-            }
-            ?>
-
-
-            <button class="btn btn-primary" onclick="imprimerContenu()">Imprimer</button>
-            <?php require('is_payer.php') ?>
-            <!-- /Social Accounts -->
-
-
           </div>
-          <!-- / Content -->
-
-          <div class="content-backdrop fade"></div>
         </div>
         <!-- Content wrapper -->
       </div>

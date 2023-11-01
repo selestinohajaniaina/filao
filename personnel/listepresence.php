@@ -67,10 +67,12 @@
         //$ville = "Antananarivo";
         //require('liste_mj.php');
         //$ville = "Mahajanga";
-        //require('liste_mj.php');
-
+        
         // presence
-        require('presence.php');
+        require('presence.php'); 
+
+        // liste pendant un mois
+        require('liste_absent.php');
 
         ?>
     </div>

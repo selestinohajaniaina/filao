@@ -1,28 +1,22 @@
 <?php session_start();
 
-require('../db.php');
-$range = !empty($_SESSION["emplacement"])?($_SESSION["emplacement"] == "eto" ? 1:2):1;
-$selection = $db -> prepare("SELECT * FROM stock WHERE date(`date`)=CURDATE() ORDER BY id DESC");
-$selection -> execute();
-$fetchAll = $selection -> fetchAll();
 
-function getNomPoisson($id_selector) {
-    require('../db.php');
-    $getBy = $db -> prepare("SELECT nomFilao FROM poisson WHERE id=$id_selector");
-    $getBy -> execute();
-    $fetchBy = $getBy -> fetch();
-    return $fetchBy["nomFilao"];
-}
+// function getNomPoisson($id_selector)
+// {
+//   require('../db.php');
+//   $getBy = $db->prepare("SELECT nomFilao FROM poisson WHERE id=$id_selector");
+//   $getBy->execute();
+//   $fetchBy = $getBy->fetch();
+//   return $fetchBy["nomFilao"];
+// }
 
 ?>
 <!DOCTYPE html>
-<html lang="en" class="light-style layout-menu-fixed" dir="ltr" data-theme="theme-default" data-assets-path="../assets/"
-  data-template="vertical-menu-template-free">
+<html lang="en" class="light-style layout-menu-fixed" dir="ltr" data-theme="theme-default" data-assets-path="../assets/" data-template="vertical-menu-template-free">
 
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport"
-    content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
   <title>Logiciel de Gestion</title>
 
@@ -34,9 +28,7 @@ function getNomPoisson($id_selector) {
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
-    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet" />
 
   <!-- Icons. Uncomment required icon fonts -->
   <link rel="stylesheet" href="../assets/vendor/fonts/boxicons.css" />
@@ -65,31 +57,29 @@ function getNomPoisson($id_selector) {
   <!-- Layout wrapper -->
   <div class="layout-wrapper layout-content-navbar">
     <div class="layout-container">
-      
+
       <!-- Menu -->
-      <?php require('../nav/menu.php')?>
+      <?php require('../nav/menu.php') ?>
       <!-- / Menu -->
 
       <!-- Layout container -->
       <div class="layout-page">
-        
+
         <!-- Navbar -->
-        <?php $title='Gestion de Stock'?>
-        <?php require('../nav/header.php')?>
+        <?php $title = 'Gestion de Stock' ?>
+        <?php require('../nav/header.php') ?>
         <!-- / Navbar -->
 
         <!-- Content wrapper -->
         <div class="content-wrapper">
           <!-- Content -->
           <div class="container-xxl flex-grow-1 container-p-y">
-            <h4 class="fw-bold py-3 mb-4">
-              <span class="text-muted fw-light"> </span> Preparation dans le stock
-            </h4>
-            <button type="button"class="btn btn-primary">Combiner  des poisson</button>
+
             <div class="row">
               <div class="col-md-12">
                 <div class="row">
-                <?php require("liste_traitement.php")?>
+                  <?php require("liste_traitement.php") ?>
+
 
                   <div class="col-md-4 col-12 mb-md-0 mb-4">
                     <div class="card">
@@ -106,15 +96,15 @@ function getNomPoisson($id_selector) {
                             <div class="d-flex mb-3">
 
                               <div class="flex-grow-1 row">
-                                  <div class="input-group input-group-merge">
-                                    <select id="defaultSelect" name="poisson" class="form-select">
-                                      <?php foreach ($all_facture as $get_fact) : ?>
-                                              <option value="<?=$get_fact['idfilao']?>"><?=getNomPoisson($get_fact['idfilao'])?></option>
-                                      <?php endforeach; ?>
-                                
-                                    </select>
+                                <div class="input-group input-group-merge">
+                                  <select id="defaultSelect" name="poisson" class="form-select">
+                                    <?php foreach ($all_facture as $get_fact) : ?>
+                                      <option value="<?= $get_fact['idfilao'] ?>"><?= getNomPoisson($get_fact['idfilao']) ?></option>
+                                    <?php endforeach; ?>
+
+                                  </select>
                                 </div>
-                                
+
                                 <!-- </div> -->
                               </div>
                             </div>
@@ -124,21 +114,21 @@ function getNomPoisson($id_selector) {
 
                             </div>
                             <div class="input-group input-group-merge">
-                              <input type="number" id="" class="form-control" name="qtt" placeholder="" require/>
+                              <input type="number" id="" class="form-control" name="qtt" placeholder="" require />
                             </div>
                             <div class="d-flex justify-content-between">
                               <label class="form-label" for="password">Nombre de sac</label>
 
                             </div>
                             <div class="input-group input-group-merge">
-                              <input type="number" class="form-control" name="sac" placeholder="" aria-describedby="" require/>
+                              <input type="number" class="form-control" name="sac" placeholder="" aria-describedby="" require />
                             </div>
                           </div>
                           <div class="mb-3">
                             <button class="btn btn-primary d-grid w-100" type="submit">Ajouter</button>
                           </div>
                         </form>
-                      
+
                         <!-- Connections -->
 
                       </div>
@@ -149,9 +139,9 @@ function getNomPoisson($id_selector) {
                     <div class="card">
                       <div class="row">
                         <div class="col-md">
-                          <h5 class="my-4">Liste des poissons stoqué aujourd'hui</h5>
+                          <h5 class="my-4">Classement des poissons en stock</h5>
 
-
+                          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#mutation">Voir la facture <label for=""></label></button>
                         </div>
                       </div>
                       <div class="card-body">
@@ -161,14 +151,13 @@ function getNomPoisson($id_selector) {
                             <table class="table">
                               <thead>
                                 <tr>
-                                  <th>Poisson</th>
-                                  <th>Poid</th>
-                                  <th>Nombre de sac</th>
-
+                                  <th>Classement</th>
+                                  <th>Nom</th>
+                                  <th>Operation</th>
                                 </tr>
                               </thead>
                               <tbody class="table-border-bottom-0">
-                                <?php require('liste.php')?>
+                                <?php require('mutation.php') ?>
                               </tbody>
                             </table>
                           </div>
@@ -200,7 +189,43 @@ function getNomPoisson($id_selector) {
   </div>
   <!-- / Layout wrapper -->
 
+  <!-- modal -->
+  <div class="modal col-md-12 col-12" id="mutation" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog col-md-12 col-12" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel1">Facture</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="col-md-12 col-12">
+          <div class="card">
+            <div class="card-body">
+              <p></p>
+              <div class="card">
+                <div class="table-responsive text-nowrap">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th>Nom</th>
+                        <th>poid</th>
+                        <th>Nombre de sacs</th>
 
+                      </tr>
+                    </thead>
+                    <tbody class="table-border-bottom-0">
+                      <?php require('liste.php') ?>
+
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- fin modal -->
 
   <!-- Core JS -->
   <!-- build:js assets/vendor/js/core.js -->
