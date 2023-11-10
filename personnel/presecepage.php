@@ -110,83 +110,53 @@
         <!-- / Navbar -->
 
         <!-- add bar -->
-        <div class="container-fluid flex-grow-1 container-p-y col-md-8 col-lg-12 order-2 mb-12">
-          <center>
-            <div class="tab">
-              <button class="tablinks" id="defaultOpen" onclick="openCity(event, 'London')">Liste Majunga</button>
-              <button class="tablinks" onclick="openCity(event, 'Paris')">Liste Antananarivo</button>
+       
+        <!-- <form method="post" action="add.php">
+          <nav class="container-fluid flex-grow-1 container-p-y col-md-8 col-lg-12 order-2 mb-12" id="layout-navbar">
+            <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
+              <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
+                <i class="bx bx-menu bx-sm"></i>
+              </a>
             </div>
-          </center>
 
-          <!-- Tab content -->
-          <div id="London" class="tabcontent">
-            <h3>Personnel à Mahajanga</h3>
-            <?php
-            $ville = "Mahajanga";
-            require('liste_mj.php');
-            ?>
-          </div>
-
-          <div id="Paris" class="tabcontent">
-            <h3>Personnel à Antananarivo</h3>
-            <?php
-            $ville = "Antananarivo";
-            require('liste_mj.php');
-            ?>
-          </div>
-
-
-          <?php
-          //$ville = "Mahajanga";
-          //require('abst.php');
-          //require('liste_mois_precedent.php'); 
-          ?>
-
-
-        </div>
-        <div class="container-fluid flex-grow-1 container-p-y col-md-12 col-lg-12 order-2 mb-12">
-          <div class="card"><br>
-          <h5 class="card-header">Liste de suivis pendant le precedant (<?= $nomMoisPrecedent ?>)</h5>
-
-              <form method="post" action="add.php">
-                
-                
-
-                  <br>
-                        <div class="mx-2">Nom: </div>
-                        <div>
-                          <input type="text" name="name" class="form-control" />
-                        </div><br>
-                        <div class="mx-2">Contact: </div>
-                        <div>
-                          <input type="text" name="contact" class="form-control" />
-                        </div><br>
-                        <div class="mx-2">Poste: </div>
-                        <div>
-                          <select name="poste" class="form-select">
-                            <option value="Mahajanga">Mahajanga</option>
-                            <option value="Antananarivo">Antananarivo</option>
-                          </select>
-                     
+            <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
+              <div class="navbar-nav align-items-center">
+                <div class="nav-item d-flex align-items-center">
+                  <div class="mx-2">Nom: </div>
+                  <div>
+                    <input type="text" name="name" class="form-control" />
                   </div>
-                  <br>
-                  <button class="btn btn-primary form-control" type="submit" name="btn_search">Ajouter</button>
-                
-              </form>
+                  <div class="mx-2">Contact: </div>
+                  <div>
+                    <input type="text" name="contact" class="form-control" />
+                  </div>
+                  <div class="mx-2">Poste: </div>
+                  <div>
+                    <select name="poste" class="form-select">
+                      <option value="Mahajanga">Mahajanga</option>
+                      <option value="Antananarivo">Antananarivo</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
-          <!--/ Layout Demo -->
-        </div>
-
+            <button class="btn btn-primary" type="submit" name="btn_search">Ajouter</button>
+          </nav>
+        </form> -->
         <!-- / add bar -->
 
         <?php
         // ajouter a la variable $vile le poste
+        $ville = "Mahajanga";
 
-        // require('presence.php');
+        require('presence.php');
 
-        // // liste pendant un mois
-        // require('abst.php');
+        echo $ville;
+
+        $ville = "Antananarivo";
+        require('presence.php');
+        // liste pendant un mois
+        //require('abst.php');
 
         // presence
         ?>

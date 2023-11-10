@@ -9,7 +9,8 @@
         
         $sql = "INSERT INTO user(username, vente, achat, stock) VALUES ('$username', $action, $action1, $action2)";
         $stmt = $db->prepare($sql);
-        echo $action.$action1.$action2." // ".$username." // ".$sql;
+
+        
         
         if ($stmt->execute()) {
             

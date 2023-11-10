@@ -29,6 +29,7 @@ foreach ($fetchAll as $fetch) {
         <td><?= $nom_poisson ?></td>
         <td>
             <form action="updatefilao.php" method="post">
+                <input type="hidden" name="qttf" value="<?= $qtt_poisson ?>">
                 <input type="hidden" name="idf" value="<?= $id ?>">
                 <select name="newid" class="form-control" id="">
                     <?= require("../poisson/liste.php"); ?>

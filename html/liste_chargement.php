@@ -20,7 +20,6 @@
                     <tr class="text-nowrap">
                       <th>   </th>
                       <th><strong>Numéro</strong></th>
-                      <th><strong>destination au</strong> </th>
                       <th><strong>Date</strong></th>
                       
                     </tr>
@@ -33,7 +32,6 @@
                         <tr>
                             <th>   </th>
                             <th scope="row"><?=$get_fact['id']?></th>
-                            <td><?=($get_fact['destination'])?></td>
                             <td><?=$get_fact['date']?></td>
                             <td>
                             <a class="btn btn-success" href="../activity/charge_one.php?num=<?=$get_fact['id']?>">

@@ -7,6 +7,10 @@
         $poste = $_POST['poste'];
         echo $name.$contact.$poste;
 
+        $insert_img = $db->prepare("INSERT INTO cv (cv) VALUES ('$name')");
+        $insert_img -> execute();
+        $insert_img = $db->prepare("INSERT INTO imgpers (img) VALUES ('$name')");
+        $insert_img -> execute();
         $sql = "INSERT INTO personnel(`nom`, `contact`, `poste`) VALUES ('$name', '$contact', '$poste')";
         $stmt = $db->prepare($sql);
         

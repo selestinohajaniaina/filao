@@ -91,34 +91,26 @@
                               <label class="form-label" for="password">Selection Poisson</label>
 
                             </div>
-
-
                             <div class="d-flex mb-3">
-
                               <div class="flex-grow-1 row">
                                 <div class="input-group input-group-merge">
                                   <select id="defaultSelect" name="poisson" class="form-select">
                                     <?php foreach ($all_facture as $get_fact) : ?>
                                       <option value="<?= $get_fact['idfilao'] ?>"><?= getNomPoisson($get_fact['idfilao']) ?></option>
                                     <?php endforeach; ?>
-
                                   </select>
                                 </div>
-
                                 <!-- </div> -->
                               </div>
                             </div>
                             <div class="d-flex justify-content-between">
-
                               <label class="form-label" for="password">Poid en Kg</label>
-
                             </div>
                             <div class="input-group input-group-merge">
                               <input type="number" id="" class="form-control" name="qtt" placeholder="" require />
                             </div>
                             <div class="d-flex justify-content-between">
                               <label class="form-label" for="password">Nombre de sac</label>
-
                             </div>
                             <div class="input-group input-group-merge">
                               <input type="number" class="form-control" name="sac" placeholder="" aria-describedby="" require />
@@ -128,19 +120,15 @@
                             <button class="btn btn-primary d-grid w-100" type="submit">Ajouter</button>
                           </div>
                         </form>
-
                         <!-- Connections -->
-
                       </div>
                     </div>
                   </div>
-
                   <div class="col-md-8 col-12">
                     <div class="card">
                       <div class="row">
                         <div class="col-md">
                           <h5 class="my-4">Classement des poissons en stock</h5>
-
                           <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#mutation">Voir la facture <label for=""></label></button>
                         </div>
                       </div>
@@ -165,8 +153,6 @@
                       </div>
                     </div>
                   </div>
-
-
                 </div>
               </div>
             </div>

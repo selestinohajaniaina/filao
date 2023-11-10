@@ -1,10 +1,5 @@
 <?php
-require('../db.php');
-$sql_personnel = "SELECT * FROM personnel WHERE poste='Mahajanga' ORDER BY nom ASC";
-$stmt_personnel = $db->prepare($sql_personnel);
-$stmt_personnel->execute();
 
-$stmt_personnel_pre = $stmt_personnel->fetchAll(PDO::FETCH_ASSOC);
 function is_present($id_selector)
 {
   require('../db.php');
@@ -14,12 +9,17 @@ function is_present($id_selector)
   return ($fetchBy);
 }
 
+require('../db.php');
+$sql_personnel = "SELECT * FROM personnel WHERE poste='Antananarivo' ORDER BY nom ASC";
+$stmt_personnel = $db->prepare($sql_personnel);
+$stmt_personnel->execute();
 
+$stmt_personnel_pre = $stmt_personnel->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 
 
-<div class="container-fluid flex-grow-1 container-p-y col-md-8 col-lg-12 order-2 mb-12">
+<!-- <div class="container-fluid flex-grow-1 container-p-y col-md-8 col-lg-12 order-2 mb-12"> -->
 
   <div class="card">
     <h5 class="card-header">Fiche de presence</h5>
@@ -84,4 +84,7 @@ function is_present($id_selector)
     </div>
   </div>
   <!--/ Layout Demo -->
+</div>
+
+
 </div>
