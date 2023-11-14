@@ -1,24 +1,10 @@
 <?php
 require('../db.php');
-$sql_personnel = "SELECT * FROM personnel WHERE poste='Mahajanga' ORDER BY nom ASC";
+$sql_personnel = "SELECT * FROM personnel WHERE poste='$ville' ORDER BY nom ASC";
 $stmt_personnel = $db->prepare($sql_personnel);
 $stmt_personnel->execute();
-
 $stmt_personnel_pre = $stmt_personnel->fetchAll(PDO::FETCH_ASSOC);
-function is_present($id_selector)
-{
-  require('../db.php');
-  $getBy = $db->prepare("SELECT * FROM present WHERE id_personnel=$id_selector AND date(`date`)=CURDATE()");
-  $getBy->execute();
-  $fetchBy = $getBy->fetch();
-  return ($fetchBy);
-}
-
-
-
 ?>
-
-
 <div class="container-fluid flex-grow-1 container-p-y col-md-8 col-lg-12 order-2 mb-12">
 
   <div class="card">

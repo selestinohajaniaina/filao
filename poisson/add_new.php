@@ -6,6 +6,8 @@
         $num_fournisseur_one = $_POST['id_fournisseur'];
         $num_facture_one = $_POST['numFact'];
         // echo $nomfilao.$num_facture_one.$num_fournisseur_one;
+        $sql01 = "INSERT INTO froidf(`nomFilao`) VALUES ('$nomfilao')";
+        $stmt01 = $db->prepare($sql01);
 
         $sql = "INSERT INTO poisson(`nomFilao`) VALUES ('$nomfilao')";
         $stmt = $db->prepare($sql);

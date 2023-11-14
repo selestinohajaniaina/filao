@@ -7,7 +7,7 @@
         $action1 = empty($_POST['action1'])?0:1;
         $action2 = empty($_POST['action2'])?0:1;
         
-        $sql = "INSERT INTO user(username, vente, achat, stock) VALUES ('$username', $action, $action1, $action2)";
+        $sql = "INSERT INTO user(username, vente, achat, stock, lots) VALUES ('$username', $action, $action1, $action2)";
         $stmt = $db->prepare($sql);
 
         

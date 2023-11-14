@@ -8,7 +8,7 @@
         $anarana = $_POST['anarana'];
         // echo $qtt." / ".$id_poisson." / ".$num_facture;
 
-        $sql = "INSERT INTO detailavant(`idfilao`, `id_poisson`, `NumFac`, `qtt`) VALUES ($id_poisson, $id_poisson, $num_facture, $qtt)";
+        $sql = "INSERT INTO detailavant(`idfilao`, `id_poisson`, `NumFac`, `qtt`,`lanja`) VALUES ($id_poisson, $id_poisson, $num_facture, $qtt, $qtt)";
         $stmt = $db->prepare($sql);
         
         if ($stmt->execute()) {

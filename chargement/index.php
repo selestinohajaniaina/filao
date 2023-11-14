@@ -127,6 +127,8 @@
                   <div class="col-md-8 col-12">
                     <div class="card">
                       <div class="row">
+                      <center><a href="all_charge.php">Consulte les listes > </a></center>
+
                         <!-- Bootstrap carousel -->
                         <div class="col-md">
                           <h5 class="my-4">Bon de livraison numero <?=$_GET["id"]?> du chargemnt aujourd'hui</h5>

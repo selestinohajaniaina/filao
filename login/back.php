@@ -30,6 +30,10 @@ if($nbrExist>0){
         $_SESSION["id"] = true;
         $_SESSION["id"] = $fetch["id"];
         $_SESSION["name"] = $fetch["username"];
+        $_SESSION["lots"] = $fetch[""];
+
+        $_SESSION["lots"] = $fetch[""];
+
         ?>
         <script>
             document.location.href = "../html/";

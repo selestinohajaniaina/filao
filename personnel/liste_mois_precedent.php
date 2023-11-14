@@ -59,7 +59,6 @@ $jrpresent = pointage_precedantday($all_per['id'], $anneeActuelle, $moisPreceden
     <div class="card">
         <h5 class="card-header">Liste de suivis pendant le precedant (<?= $nomMoisPrecedent ?>)</h5>
         <div class="table-responsive text-nowrap">
-            <?= $nombreDeJours ?>
             <table class="table">
                 <thead>
                     <tr class="text-nowrap">

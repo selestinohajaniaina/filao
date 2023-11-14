@@ -110,7 +110,7 @@
         <!-- / Navbar -->
 
         <!-- add bar -->
-       
+
         <!-- <form method="post" action="add.php">
           <nav class="container-fluid flex-grow-1 container-p-y col-md-8 col-lg-12 order-2 mb-12" id="layout-navbar">
             <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
@@ -147,11 +147,18 @@
 
         <?php
         // ajouter a la variable $vile le poste
+        function is_present($id_selector)
+        {
+          require('../db.php');
+          $getBy = $db->prepare("SELECT * FROM present WHERE id_personnel=$id_selector AND date(`date`)=CURDATE()");
+          $getBy->execute();
+          $fetchBy = $getBy->fetch();
+          return ($fetchBy);
+        }
         $ville = "Mahajanga";
 
         require('presence.php');
 
-        echo $ville;
 
         $ville = "Antananarivo";
         require('presence.php');

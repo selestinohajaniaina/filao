@@ -126,7 +126,6 @@
             require('liste_mj.php');
             ?>
           </div>
-
           <div id="Paris" class="tabcontent">
             <h3>Personnel à Antananarivo</h3>
             <?php
@@ -134,69 +133,60 @@
             require('liste_mj.php');
             ?>
           </div>
-
-
-          <?php
-          //$ville = "Mahajanga";
-          //require('abst.php');
-          //require('liste_mois_precedent.php'); 
-          ?>
-
-
         </div>
-        <div class="container-fluid flex-grow-1 container-p-y col-md-12 col-lg-12 order-2 mb-12">
-          <div class="card"><br>
-          <h5 class="card-header">Liste de suivis pendant le precedant (<?= $nomMoisPrecedent ?>)</h5>
-
+        <div class="container-fluid flex-grow-1 container-p-y col-md-8 col-lg-8 order-2 mb-8">
+          <div class="card">
+            <div class="card-body">
+              <center>
+                <h3 class="card-header">Ajout Personnel</h3>
+              </center>
               <form method="post" action="add.php">
-                
-                
+                <br>
+                <div class="mx-2">Nom: </div>
+                <div>
+                  <input type="text" name="name" class="form-control" />
+                </div><br>
+                <div class="mx-2">Contact: </div>
+                <div>
+                  <input type="text" name="contact" class="form-control" />
+                </div><br>
+                <div class="mx-2">Poste: </div>
+                <div>
+                  <select name="poste" class="form-select">
+                    <option value="Mahajanga">Mahajanga</option>
+                    <option value="Antananarivo">Antananarivo</option>
+                  </select>
 
-                  <br>
-                        <div class="mx-2">Nom: </div>
-                        <div>
-                          <input type="text" name="name" class="form-control" />
-                        </div><br>
-                        <div class="mx-2">Contact: </div>
-                        <div>
-                          <input type="text" name="contact" class="form-control" />
-                        </div><br>
-                        <div class="mx-2">Poste: </div>
-                        <div>
-                          <select name="poste" class="form-select">
-                            <option value="Mahajanga">Mahajanga</option>
-                            <option value="Antananarivo">Antananarivo</option>
-                          </select>
-                     
-                  </div>
-                  <br>
-                  <button class="btn btn-primary form-control" type="submit" name="btn_search">Ajouter</button>
-                
+                </div>
+                <br>
+                <button class="btn btn-primary form-control" type="submit" name="btn_search">Ajouter</button>
+
               </form>
             </div>
           </div>
-          <!--/ Layout Demo -->
         </div>
-
-        <!-- / add bar -->
-
-        <?php
-        // ajouter a la variable $vile le poste
-
-        // require('presence.php');
-
-        // // liste pendant un mois
-        // require('abst.php');
-
-        // presence
-        ?>
+        <!--/ Layout Demo -->
       </div>
-      <!-- / Layout page -->
-    </div>
-    <!-- Tab links -->
 
-    <!-- Overlay -->
-    <div class="layout-overlay layout-menu-toggle"></div>
+      <!-- / add bar -->
+
+      <?php
+      // ajouter a la variable $vile le poste
+
+      // require('presence.php');
+
+      // // liste pendant un mois
+      // require('abst.php');
+
+      // presence
+      ?>
+    </div>
+    <!-- / Layout page -->
+  </div>
+  <!-- Tab links -->
+
+  <!-- Overlay -->
+  <div class="layout-overlay layout-menu-toggle"></div>
   </div>
 
   <!-- / Layout wrapper -->
