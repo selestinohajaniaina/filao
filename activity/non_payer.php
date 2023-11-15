@@ -14,6 +14,7 @@
     $apayee= getpaied( $id ) + $payee;
     $rest = $_POST["totalapayer"] - $apayee ;
 
+if ($rest >=  0 ) {
     $sql = "UPDATE `facture` SET `payee`= $apayee,`restapayer`=$rest WHERE id=$id";
     $stmt = $db->prepare($sql);
 
@@ -26,4 +27,12 @@
     } else {
         echo " $sql Erreur lors de supression des personnel.";
     }
+}else {
+    ?>
+    <script>
+        alert('Verifier bien ton compte');
+        document.location.href = "facture.php?num=<?=$id?>";
+    </script>
+    <?php
+}
 ?>

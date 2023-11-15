@@ -1,35 +1,35 @@
 <?php
-    require('../db.php');
+require('../db.php');
 
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $nomfilao = $_POST["nom"];
-        $num_fournisseur_one = $_POST['id_fournisseur'];
-        $num_facture_one = $_POST['numFact'];
-        // echo $nomfilao.$num_facture_one.$num_fournisseur_one;
-        $sql01 = "INSERT INTO froidf(`nomFilao`) VALUES ('$nomfilao')";
-        $stmt01 = $db->prepare($sql01);
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $nomfilao = $_POST["nom"];
+    $num_fournisseur_one = $_POST['id_fournisseur'];
+    $num_facture_one = $_POST['numFact'];
 
-        $sql01 = "INSERT INTO stockf(`nomFilao`) VALUES ('$nomfilao')";
-        $stmt01 = $db->prepare($sql01);
+    // Utilisation de requêtes préparées pour éviter les injections SQL
+    $insertQueries = [
+        "INSERT INTO froidf (`nomFilao`) VALUES (:nomfilao)",
+        "INSERT INTO stockf (`nomFilao`) VALUES (:nomfilao)",
+        "INSERT INTO ventetana (`nomFilao`, `qtt`) VALUES (:nomfilao, 0)",
+        "INSERT INTO poisson (`nomFilao`) VALUES (:nomfilao)"
+    ];
 
-        $sql02 = "INSERT INTO ventetana(`nomFilao`, `qtt`) VALUES ('$nomfilao', 0)";
-        $stmt02 = $db->prepare($sql02);
-
-        $sql = "INSERT INTO poisson(`nomFilao`) VALUES ('$nomfilao')";
-        $stmt = $db->prepare($sql);
-        
-        if ($stmt->execute()) {
-            
-            // header("location:../html/FactureAchat.php?id_fournisseur=".$num_fournisseur_one."&numFact=".$num_facture_one);
-            ?>
-    <script>
-        window.document.location.href = "../html/FactureAchat.php?id_fournisseur=<?=$num_fournisseur_one?>&numFact=<?=$num_facture_one?>";
-    </script>
-<?php
-        } else {
-            echo "Erreur lors de l'insertion des données au poisson.";
+    // Gestion des erreurs avec try-catch
+    try {
+        foreach ($insertQueries as $query) {
+            $stmt = $db->prepare($query);
+            $stmt->bindParam(':nomfilao', $nomfilao);
+            $stmt->execute();
         }
-    }
-        
-?>
 
+        // Redirection côté serveur
+        header("Location: ../html/FactureAchat.php?id_fournisseur=$num_fournisseur_one&numFact=$num_facture_one");
+        exit();
+    } catch (Exception $e) {
+        echo "Erreur lors de l'insertion des données au poisson. Détails : " . $e->getMessage();
+    } finally {
+        // Assurez-vous de fermer la connexion à la base de données
+        $db = null;
+    }
+}
+?>

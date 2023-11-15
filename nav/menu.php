@@ -32,6 +32,12 @@
       </a>
     </li>
     <li class="menu-item">
+      <a href="../chargement/all_charge.php" class="menu-link">
+        <i class="menu-icon tf-icons bx bx-dock-top"></i>
+        <div class=" card-title mb-9 fw-semibold text-black">Traitement TANA</div>
+      </a>
+    </li>
+    <li class="menu-item">
       <a href="../stock" class="menu-link">
         <i class="menu-icon tf-icons bx bx-dock-top"></i>
         <div class="card-title mb-9 fw-semibold text-black">Gestion de Stock</div>

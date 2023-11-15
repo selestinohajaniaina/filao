@@ -125,15 +125,13 @@
           <!-- Tab content -->
           <div id="London" class="tabcontent">
 
-            <?php
-            if ($placeSession = 'majunga'){
-              ?>
+           
               <a href="presecepage.php"class="btn btn-primary">
                 Liste de presence
               </button></a>
               <?php 
 
-            }
+          
             $ville = "Mahajanga";
             require('liste_mj.php');
             ?>
@@ -141,7 +139,7 @@
           <div id="Paris" class="tabcontent">
             <h3>Personnel à Antananarivo</h3>
             <?php
-            $ville = "Antananarivo";
+           $ville = "Antananarivo";
             require('liste_mj.php');
             ?>
           </div>

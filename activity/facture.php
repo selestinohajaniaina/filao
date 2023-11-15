@@ -134,7 +134,7 @@ function getRest($id_selector)
                     <div class="card" id="content">
                       <center><h2>Payment</h2></center>
                       <div class="col-md">
-                        <h3>somme payer :</h3>  <?= getpaied($_GET['num']) ?> AR
+                        <h3>somme à payer :</h3>  <?= $total ?> AR
                         <h3>Reste à payer:</h3>  <?= getRest($_GET['num']) ?> AR
                         <?php
                         $vita =  $total;
@@ -143,19 +143,20 @@ function getRest($id_selector)
                         ?>
                           <br><br>
                           <form action="non_payer.php" method="post">
-                            <input type="text" name="totalapayer"class="form-control"value="<?= $total ?> Ariary" readonly>
-                            <br><input type="text" name="numfac" class="form-control" value="<?= $_GET['num'] ?>" readonly>
-                            <br><input type="text" name="payeena"class="form-control"value="facture fa vita" readonly id="">
-                            <br><input type="button" class="form-control btn btn-primary"disabled value="Enregistrer">
+                            <input type="text" name="totalapayer" class="form-control"value="<?= $total ?>" readonly>
+                            <input type="hidden" name="numfac" class="form-control" value="<?= $_GET['num'] ?>" readonly>
+                            <input type="text" name="payeena"class="form-control"value="facture Payee" readonly id="">
+                            <input type="button" class="form-control btn btn-primary"disabled value="Enregistrer">
                           </form>
                         <?php
                         } else {
                         ?>
                           <form action="non_payer.php" method="post">
-                            <input type="text" name="totalapayer" value="<?= $total ?>" readonly>
-                            <input type="text" name="numfac" value="<?= $_GET['num'] ?>" readonly>
-                            <input type="number" name="payeena" id="">
-                          
+                            <input type="text" class="form-control"name="totalapayer" value="<?=$total?>" readonly>
+                            <input type="hidden" name="numfac" value="<?= $_GET['num'] ?>" readonly>
+                            <input type="number"class="form-control" name="payeena" id="">
+                            <input type="submit" class="form-control btn btn-primary" value="Enregistrer">
+
                           </form>
                         <?php
                         }
