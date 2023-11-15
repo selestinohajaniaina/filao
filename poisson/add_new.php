@@ -9,6 +9,12 @@
         $sql01 = "INSERT INTO froidf(`nomFilao`) VALUES ('$nomfilao')";
         $stmt01 = $db->prepare($sql01);
 
+        $sql01 = "INSERT INTO stockf(`nomFilao`) VALUES ('$nomfilao')";
+        $stmt01 = $db->prepare($sql01);
+
+        $sql02 = "INSERT INTO ventetana(`nomFilao`, `qtt`) VALUES ('$nomfilao', 0)";
+        $stmt02 = $db->prepare($sql02);
+
         $sql = "INSERT INTO poisson(`nomFilao`) VALUES ('$nomfilao')";
         $stmt = $db->prepare($sql);
         

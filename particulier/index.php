@@ -1,5 +1,10 @@
 <?php
   require('../session.php');
+  require('../db.php');
+$id = $_GET['id'];
+$selection = $db->prepare("SELECT * FROM particulier WHERE id = $id");
+$selection->execute();
+$fetchAll = $selection->fetchAll();
   ?>
   <!DOCTYPE html>
 <html lang="en" class="light-style layout-menu-fixed" dir="ltr" data-theme="theme-default" data-assets-path="../assets/"
@@ -106,6 +111,8 @@
                                 
                             </div>
                             <div class="input-group input-group-merge">
+                              <input type="hidden" name="id" value="<?=$_GET['id']?>">
+                            
                                 <input type="number" id="" class="form-control" name="qtt" placeholder="" required/>
                             </div>
                             <div class="d-flex justify-content-between">
@@ -132,8 +139,6 @@
                         <!-- Bootstrap carousel -->
                         <div class="col-md">
                           <h5 class="my-4">Vente d' aujourd'hui </h5>
-
-
                         </div>
                       </div>
                       <div class="card-body">
@@ -146,8 +151,7 @@
                                 <tr>
                                   <th>Poisson</th>
                                   <th>Poid</th>
-                                  <th>Nombre de sac</th>
-
+                                  <th>prix Unitaire</th>
                                 </tr>
                               </thead>
                               <tbody class="table-border-bottom-0">
@@ -155,6 +159,8 @@
                               </tbody>
                             </table>
                           </div>
+                          Prix total<?= $total?> Ar<br>
+                          Poids Total <?= $total_poid?>Kg
                         </div>
                         <!-- /Social Accounts -->
                       </div>

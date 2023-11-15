@@ -174,7 +174,7 @@
                            <table class="table">
                               
                                 <tr>
-                                  <th style="width:200px, background:red"> <br><br>
+                                  <th style="width:200px"> <br><br>
                                     <div  class="col-md-12  w-300">
                                      <center> <img src="../assets/img/logonordine.jpg"width="150px" alt=""></center>
                                     </div>

@@ -1,13 +1,14 @@
 <?php
     require('../db.php');
+    $idc = $_GET["idc"];
     $id = $_GET["id"];
-    $sql = "DELETE FROM `particulier` WHERE id=$id";
+    $sql = "DELETE FROM `particulier` WHERE idc=$idc";
     $stmt = $db->prepare($sql);
 
     if ($stmt->execute()) {
         ?>
             <script>
-                document.location.href = "../particulier";
+                document.location.href = "../particulier/?id=<?=$id?>";
             </script>
        <?php
     } else {

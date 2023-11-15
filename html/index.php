@@ -203,7 +203,7 @@
     });
     // console.log(get_jour(6),get_jour(5),get_jour(4),get_jour(3),get_jour(2),get_jour(1),get_jour(0),);
     var ctx2 = document.getElementById("myChart2").getContext("2d");
-    var stockexterne = <?=(get_all(2)[1]-get_sortie(2)[1])?>;
+    var stockexterne = <?=(get_all($fecth2["qtt"]))?>;
     var stockinterne = <?=(get_all(1)[1]-get_sortie(1)[1])?>;
     var myChart2 = new Chart(ctx2, {
       type: "doughnut",

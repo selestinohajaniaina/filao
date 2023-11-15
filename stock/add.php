@@ -25,6 +25,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $sql01 = $db->prepare("UPDATE froidf SET qtt = qtt - $qtt WHERE id = $poisson");
             $sql01->execute();
 
+            $sql02 = $db->prepare("UPDATE stockf SET qtt = qtt + $qtt WHERE id = $poisson");
+            $sql02->execute();
+
             $sql = "INSERT INTO stock(`id_poisson`, `qtt`, `nombre_sac`, `place`) VALUES ($poisson, $qtt, $sac, $place)";
             $stmt = $db->prepare($sql);
 
