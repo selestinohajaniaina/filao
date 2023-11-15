@@ -26,26 +26,10 @@
 
     </li>
     <li class="menu-item">
-      <?php
-      $isessid = $_SESSION['id'];
-      if ($isessid == 1) {
-      ?>
-        <a href="../html/listeFact.php" class="menu-link">
-          <i class="menu-icon tf-icons bx bx-dock-top"></i>
-          <div class=" card-title mb-9 fw-semibold text-black">Suivi Traitement</div>
-        </a>
-      <?php
-      } elseif ($isessid == 2) {
-      ?>
-        <a href="../html/listeFact.php" class="menu-link">
-          <i class="menu-icon tf-icons bx bx-dock-top"></i>
-          <div class=" card-title mb-9 fw-semibold text-black">Suivi Traitement</div>
-        </a>
-      <?php
-      }
-      ?>
-
-
+      <a href="../html/listeFact.php" class="menu-link">
+        <i class="menu-icon tf-icons bx bx-dock-top"></i>
+        <div class=" card-title mb-9 fw-semibold text-black">Suivi Traitement</div>
+      </a>
     </li>
     <li class="menu-item">
       <a href="../stock" class="menu-link">
@@ -59,31 +43,19 @@
         <i class="menu-icon tf-icons bx bx-dock-top"></i>
         <div class="card-title mb-9 fw-semibold text-black">Gestion de Chargement</div>
       </a>
-
-
-    </li>
-    <li class="menu-item">
-      <form action="../particulier/factmj.php" method="post">
-        <a href="" class="menu-link">
-          <i class="menu-icon tf-icons bx bx-dock-top"></i>
-          <button type="submit" class="card-title mb-9 fw-semibold text-black">Vente Majunga</button>
-
-        </a>
-      </form>
-
-    </li>
-    <li class="menu-item">
-      <form action="../ventetana/factureTana.php" method="post">
-        <a href="" class="menu-link">
-          <i class="menu-icon tf-icons bx bx-dock-top"></i>
-          <button type="submit" class="card-title mb-9 fw-semibold text-black">Vente TANA</button>
-
-        </a>
-      </form>
-
     </li>
 
-    <li class="menu-item">
+      <li class="menu-item">
+        <form action="../particulier/factmj.php" method="post">
+          <a href="" class="menu-link">
+            <i class="menu-icon tf-icons bx bx-dock-top"></i>
+            <button type="submit" class="card-title mb-9 fw-semibold text-black">Vente Majunga</button>
+
+          </a>
+        </form>
+
+      </li>
+      <li class="menu-item">
       <a href="../personnel" class="menu-link">
         <i class="menu-icon tf-icons bx bx-dock-top"></i>
         <div class="card-title mb-9 fw-semibold text-black">Controle des personnel</div>
@@ -99,6 +71,17 @@
       </a>
 
     </li>
+
+      <li class="menu-item">
+        <form action="../ventetana/factureTana.php" method="post">
+          <a href="" class="menu-link">
+            <i class="menu-icon tf-icons bx bx-dock-top"></i>
+            <button type="submit" class="card-title mb-9 fw-semibold text-black">Vente TANA</button>
+          </a>
+        </form>
+
+      </li>
+
 
   </ul>
 </aside>

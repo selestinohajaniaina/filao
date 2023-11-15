@@ -26,13 +26,21 @@ if($nbrExist>0){
     $dbpassword=$fetch["password"];
     $dbname=$fetch["username"];
     
-    if(($password == $dbpassword) & ($dbname == $name)  ) {
+    if(($password == $dbpassword) && ($dbname == $name)  ) {
+        $id = $fetch["id"];
+        $username = $fetch["username"];
+        $vente = $fetch["vente"];
+        $achat = $fetch["achat"];
+        $stock = $fetch["stock"];
+        $lots = $fetch["lieukandra"];
+        
         $_SESSION["id"] = true;
-        $_SESSION["id"] = $fetch["id"];
-        $_SESSION["name"] = $fetch["username"];
-        $_SESSION["lots"] = $fetch[""];
-
-        $_SESSION["lots"] = $fetch[""];
+        $_SESSION["id"] = $id;
+        $_SESSION["name"] = $username;
+        $_SESSION["action"] = $vente;
+        $_SESSION["action1"] = $achat;
+        $_SESSION["action2"] = $stock;
+        $_SESSION["lieukandra"] = $lots;        
 
         ?>
         <script>
@@ -40,22 +48,20 @@ if($nbrExist>0){
         </script>
         <?php
             }else{
-                echo "
+                ?>
                 <script>
-                    alert('votre mot de passe est incorrect, veillez ressayer');
-                    document.location.href = '../html/login.php;
+                    alert('Identification Incorrect');
+                    window.document.location.href = "../html/login.php";
                 </script>
-                ";
+                <?php
             }
-            
         }else{
-
-            echo "
+            ?>
             <script>
                 alert('Identification introuvable');
-                document.location.href = '../html/login.php;
+                window.document.location.href = "../html/login.php";
             </script>
-            ";
+            <?php
 
         }
 

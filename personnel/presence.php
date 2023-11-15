@@ -8,8 +8,10 @@ $stmt_personnel_pre = $stmt_personnel->fetchAll(PDO::FETCH_ASSOC);
 <div class="container-fluid flex-grow-1 container-p-y col-md-8 col-lg-12 order-2 mb-12">
 
   <div class="card">
-    <h5 class="card-header">Fiche de presence</h5>
+    <h5 class="card-header">Fiche de presence <?=$ville?></h5>
     <div class="table-responsive text-nowrap">
+    <a href="abs<?=$ville?>.php" class="btn btn-primary">Suivie de presence</a>
+
       <table class="table">
         <thead>
           <tr class="text-nowrap">
@@ -21,7 +23,7 @@ $stmt_personnel_pre = $stmt_personnel->fetchAll(PDO::FETCH_ASSOC);
 
           </tr>
         </thead>
-        <tbody>
+  git      <tbody>
           <!-- selection des facture aujourd'hui -->
 
 

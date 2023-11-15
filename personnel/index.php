@@ -1,3 +1,7 @@
+<?php 
+  require('../session.php');
+  require('../sessioncontrole.php');
+?>
 <!DOCTYPE html>
 <html lang="en" class="light-style layout-menu-fixed" dir="ltr" data-theme="theme-default" data-assets-path="../assets/" data-template="vertical-menu-template-free">
 
@@ -120,8 +124,16 @@
 
           <!-- Tab content -->
           <div id="London" class="tabcontent">
-            <h3>Personnel à Mahajanga</h3>
+
             <?php
+            if ($placeSession = 'majunga'){
+              ?>
+              <a href="presecepage.php"class="btn btn-primary">
+                Liste de presence
+              </button></a>
+              <?php 
+
+            }
             $ville = "Mahajanga";
             require('liste_mj.php');
             ?>

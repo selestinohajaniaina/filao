@@ -1,3 +1,8 @@
+<?php
+require('../session.php');
+require('../sessioncontrole.php');
+
+?>
 <!DOCTYPE html>
 <html lang="en" class="light-style layout-menu-fixed" dir="ltr" data-theme="theme-default" data-assets-path="../assets/" data-template="vertical-menu-template-free">
 
@@ -105,7 +110,7 @@
       <div class="layout-page">
 
         <!-- Navbar -->
-        <?php $title = 'Gestion des Personnelles' ?>
+        <?php $title = $_SESSION["lieukandra"]; ?>
         <?php require('../nav/header.php') ?>
         <!-- / Navbar -->
 
@@ -146,7 +151,8 @@
         <!-- / add bar -->
 
         <?php
-        // ajouter a la variable $vile le poste
+
+        // a la variable $vile le poste
         function is_present($id_selector)
         {
           require('../db.php');
@@ -155,13 +161,16 @@
           $fetchBy = $getBy->fetch();
           return ($fetchBy);
         }
+    
         $ville = "Mahajanga";
-
         require('presence.php');
-
-
         $ville = "Antananarivo";
         require('presence.php');
+        require('liste_mois_precedent.php');
+
+
+
+
         // liste pendant un mois
         //require('abst.php');
 

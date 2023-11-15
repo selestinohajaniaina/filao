@@ -102,6 +102,14 @@
               <label for="nameBasic" class="form-label">Nom De l' utilisateur</label>
               <input type="text" id="nameBasic" autocomplete="off" class="form-control" placeholder="Nom d'utilisateur" name="username" />
             </div>
+            <div class="col mb-3">
+              <label for="nameBasic" class="form-label">Lieu de Travail</label>
+              <select name="place" id="" class="form-control">
+                <option value=""></option>
+                <option value="majunga">Majunga</option>
+                <option value="tana">Antananarivo</option>
+              </select>
+            </div>
 
             <div class="col m-3">
               <label for="nameBasic" class="form-label">Responsabilité</label>
@@ -118,10 +126,10 @@
               <input type="checkbox" name="action2" id="stock">
               <label for="stock">Responsable de Stock et Chargement</label>
             </div>
-            <div class="col">
+            <!-- <div class="col">
               <input type="checkbox" name="action3" id="stock">
               <label for="stock">Trésorerie et Dépense</label>
-            </div>
+            </div> -->
           </div>
 
         </div>
